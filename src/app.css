@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+/* base styles */
+* {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  color: #333;
+}
+
+button {
+  border: none;
+  border-radius: 6px;
+  background-color: blue;
+  color: whitesmoke;
+  padding: 10px;
+  margin: 10px;
+  font-weight: 900;
+}
+.value-list {
+  list-style-type: none;
+  display: block;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 0px;
+}
+
+.left-section {
+  position: relative;
+}
+.value-list-item {
+  padding: 0.5rem;
+  border-bottom: 1px solid #afafaf36;
+}
+.value-list-item label {
+  width: 95%;
+  display: inline-block;
+}
+input.value-list-checkbox {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-bottom: 0px;
+}
+.sectionWrapper {
+}
+input[type="checkbox"] {
+  float: right;
+  display: inline-block;
+}
+
+.valueWrapper {
+  height: 100%;
+  width: 95%;
+  background-color: whitesmoke;
+  padding: 15px;
+  border-radius: 6px;
+  margin-top: 25px;
+
+  height: 100%;
+  width: 95%;
+  background-color: whitesmoke;
+  border-radius: 6px;
+}
+
+h3.valueWrapper {
+  text-align: center;
+}
+
+.next {
+  width: 100%;
+  background-color: blue;
+  border: 0px;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  padding: 5px;
+}
+.next p {
+  font-weight: 1000;
+  font-size: 1rem;
+  color: #f2f2f2;
+}
+
+.div {
+  font-family: sans-serif;
+}
+
+.navbar {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  border-bottom: 1px solid #f2f2f2;
+}
+.navbar h1 {
+  color: #f1356d;
+  float: left;
+}
+.navbar .links {
+  margin-left: auto;
+}
+.navbar a {
+  margin-left: 16px;
+  text-decoration: none;
+  padding: 6px;
+}
+.navbar a:hover {
+  color: #f1356d;
+}
+.content {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.topCard,
+.bottomCard {
+  text-align: left;
+  margin: 0px;
+  font-weight: 500;
+  background-color: whitesmoke;
+  color: #333;
+  width: 100%;
+  display: inline-block;
+  padding: 15px;
+  border: 1px solid grey;
+  border-radius: 6px;
+  font-size: 1.2rem;
+}
+.topCard h3,
+.bottomCard h3 {
+  font-size: 1.5rem;
+}
+
+.valueSorterWrapper {
+  width: 90%;
+}
+
+.eller {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: auto;
+}
+
+.show {
+  visibility: visible;
+}
+
+.hidden {
+  visibility: hidden;
+}
