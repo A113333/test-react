@@ -121,6 +121,7 @@ h3.valueWrapper {
   background-color: whitesmoke;
   color: #333;
   width: 100%;
+  height: 100%;
   display: inline-block;
   padding: 15px;
   border: 1px solid grey;
@@ -136,6 +137,9 @@ h3.valueWrapper {
   width: 90%;
 }
 
+.bottomCardWrapper {
+}
+
 .eller {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -148,8 +152,30 @@ h3.valueWrapper {
 
 .show {
   visibility: visible;
+
+  text-align: left;
+  width: 90%;
+  margin: 0px;
+  font-weight: 500;
+  background-color: whitesmoke;
+  color: #333;
+
+  display: inline-block;
+  padding: 15px;
+  border: 1px solid grey;
+  border-radius: 6px;
+  font-size: 1.2rem;
 }
 
 .hidden {
   visibility: hidden;
+  position: absolute;
+}
+
+.testBottom {
+  position: absolute;
+}
+
+.noStyleList {
+  list-style: none;
 }

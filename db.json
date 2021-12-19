@@ -2,7 +2,7 @@
   "valueList": [
     {
       "id": 1,
-      "title": "asdads",
+      "title": "Accepterande",
       "desc": "öppen för, tillåtande av eller tillfreds med mig själv, andra, livet, mina känslor osv.",
       "pts": 0
     },
@@ -71,42 +71,6 @@
       "desc": "Att ha lugn och ro.",
       "categori": "Fritid",
       "id": 12
-    },
-    {
-      "title": " lol",
-      "desc": " 1244",
-      "categori": "Fritid",
-      "id": 13
-    },
-    {
-      "title": " asdasd",
-      "desc": " eades",
-      "categori": "Fritid",
-      "id": 14
-    },
-    {
-      "title": " eehehe",
-      "desc": "lalalalalal",
-      "categori": "Fritid",
-      "id": 15
-    },
-    {
-      "title": " asdedd",
-      "desc": " aasddee",
-      "categori": "Fritid",
-      "id": 16
-    },
-    {
-      "title": " testar",
-      "desc": " ererer",
-      "categori": "Fritid",
-      "id": 17
-    },
-    {
-      "title": "Var en snäll son",
-      "desc": "visa kärlek till sin far",
-      "categori": "Fritid",
-      "id": 18
     }
   ]
 }

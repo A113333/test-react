@@ -1,20 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import ValueList from "./components/ValueList";
 import "./app.css";
 import Navbar from "./components/navbar";
 import Home from "./components/Home";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Create from "./components/CreateValue";
 import ValueDetalis from "./components/ValueDetails";
 import CreateValue from "./components/CreateValue";
 import NotFound from "./components/NotFound";
 import ValueSorter from "./components/ValueSorter";
+import ValueResults from "./components/ValueResults";
 //const ValueList = valueList
 //console.log(ValueList)
 
 // json-server --watch db.json --port8000
 function App() {
-  const [values, setValues] = useState(SAMPLE_VALUELIST);
   const text = "lalal";
   //console.log(values);
 
@@ -39,7 +38,10 @@ function App() {
               <ValueList text={text} />
             </Route>
             <Route exact path="/valueSorter">
-              <ValueSorter valueArray={SAMPLE_VALUELIST} />
+              <ValueSorter />
+            </Route>
+            <Route exact path="/valueResults">
+              <ValueResults />
             </Route>
 
             <Route path="/createValue">

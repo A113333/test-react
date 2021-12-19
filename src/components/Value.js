@@ -1,4 +1,5 @@
-import React, { useState, Link } from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 //import FormGroup from "@mui/material/FormGroup";
 //import FormControlLabel from "@mui/material/FormControlLabel";
@@ -11,9 +12,9 @@ export default function Value({ values }) {
     new Array(values.length).fill(false)
   );
   const [userValue, setUserValues] = useState([]);
-  // on click för items i listan
+
   const handleOnChange = ({ id, title }) => {
-    //console.log(id);
+    // sätter true / false för checkbox items
     const updatedCheckedState = checkedState.map((item, index) =>
       index === id ? !item : item
     );
@@ -21,8 +22,24 @@ export default function Value({ values }) {
     // setUserValues(updatedValues);
     console.log(userValue);
   };
+  const history = useHistory();
 
-  //hadnler för nästa knappen
+  //handler för nästa knappen
+  const nextPage = () => {
+    const userValueArray = [];
+
+    console.log(checkedState);
+    checkedState.map((item, index) => {
+      if (item) {
+        userValueArray.push(values[index]);
+      }
+    });
+    console.log(userValueArray);
+    history.push({
+      pathname: "/valuesorter",
+      state: userValueArray,
+    });
+  };
 
   return (
     <div>
@@ -51,7 +68,7 @@ export default function Value({ values }) {
           );
         })}
       </ul>
-      <button className="next" onClick={() => console.log("hehes")}>
+      <button className="next" onClick={() => nextPage()}>
         <p>Nästa</p>
       </button>
     </div>
@@ -60,4 +77,4 @@ export default function Value({ values }) {
 
 //onClick = {()=> setChecked(!checked)}
 //{checked ?   <h3 style={{color:"gray"}}>   {value.value.title + " - "} </h3> :
-//<h3 style={{color:"blue"}}>   {value.value.title + " - "} </h3> }
+//<h3 style={{color:"blue"}}>   {value.value.title + " - "} </h3>
