@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-
+import Paper from "@mui/material/Paper";
+import { Button, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import { Divider } from "@mui/material";
+import Slide from "@mui/material/Slide";
 function BottomValueCard({ valueArray: arryOfValues }) {
   console.log("arryOfValues ");
   console.log(arryOfValues);
@@ -81,34 +85,96 @@ function BottomValueCard({ valueArray: arryOfValues }) {
 
   return (
     <div>
-      <div className="topCardWrapper">
+      <div className="">
+        <Typography variant="h2"> Sortera din lista </Typography>
+        <Typography variant="body1">
+          {" "}
+          Om du enbart kunde leva efter en av de två värderingarna, vilken hade
+          du valt?
+        </Typography>
         {valueArray.map(({ title, desc, id }, index) => {
           return (
-            <div
+            <Box
               className={index === showTop ? "show" : "hidden"}
               onClick={() => clickTop({ index: index, id: id })}
+              component="span"
+              sx={{
+                display: "inline-block",
+                mx: "2px",
+                transform: "scale(1)",
+                margin: "auto",
+                marginTop: "20px",
+                boxShadow: 3,
+                borderColor: "grey.500",
+                minHeight: "90px",
+              }}
             >
-              <h3 key={index}>{title}</h3>
-              <p> {desc}</p>
-            </div>
+              <Typography
+                variant="h3"
+                key={index}
+                sx={{ textAlign: "center", paddingBottom: "5px" }}
+              >
+                {title}
+              </Typography>
+              <Divider></Divider>
+              <Typography
+                variant="body1"
+                key={index}
+                sx={{ paddingTop: "5px" }}
+              >
+                {desc}
+              </Typography>
+            </Box>
           );
         })}
       </div>
-      <p className="eller">Eller...</p>
 
-      <div className="bottomCardWrapper">
+      <Divider>
+        {" "}
+        <Typography className="eller" variant="h4" margin={"auto"} gutterBottom>
+          Eller..
+        </Typography>{" "}
+      </Divider>
+
+      <div className="">
         {valueArray.map(({ title, desc, id }, index) => {
           return (
-            <div
+            <Box
               className={index === showBottom ? "show" : "hidden"}
               onClick={() => clickBottom({ index: index, id: id })}
+              component="span"
+              sx={{
+                display: "inline-block",
+                mx: "2px",
+                transform: "scale(1)",
+                margin: "auto",
+                boxShadow: 2,
+                borderColor: "grey.500",
+                minHeight: "90px",
+              }}
             >
-              <h3 key={index}>{title}</h3>
-              <p> {desc}</p>
-            </div>
+              <Typography
+                variant="h3"
+                key={index}
+                sx={{ textAlign: "center", paddingBottom: "5px" }}
+              >
+                {title}
+              </Typography>
+              <Divider></Divider>
+              <Typography
+                variant="body1"
+                key={index}
+                sx={{ paddingTop: "5px" }}
+              >
+                {desc}
+              </Typography>
+            </Box>
           );
         })}
       </div>
+      <Slide direction="up" mountOnEnter unmountOnExit>
+        lalal
+      </Slide>
     </div>
   );
 }

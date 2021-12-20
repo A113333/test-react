@@ -9,55 +9,80 @@ import CreateValue from "./components/CreateValue";
 import NotFound from "./components/NotFound";
 import ValueSorter from "./components/ValueSorter";
 import ValueResults from "./components/ValueResults";
+import ValueCompassStep1 from "./components/ValueCompassStep1";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import "material-icons/iconfont/material-icons.css";
+import Container from "@mui/material/Container";
 //const ValueList = valueList
 //console.log(ValueList)
 
 // json-server --watch db.json --port8000
+
+const theme = createTheme({
+  typography: {
+    fontFamily: ['"Montserrat"', "sans-seri"].join(","),
+    h1: {
+      fontSize: "2,2rem",
+      fontWeight: "bolder",
+    },
+    h2: {
+      fontSize: "1.8rem",
+      fontWeight: "bold",
+    },
+    h3: {
+      fontSize: "1,4rem",
+      fontWeight: "bold",
+    },
+    button: {
+      fontWeight: "bold",
+    },
+  },
+});
+
 function App() {
-  const text = "lalal";
-  //console.log(values);
-
-  const ValueListBtn = () => {
-    console.log("heheh");
-  };
-
   return (
     <Router>
       <div className="App">
-        <Navbar />
+        <Container maxWidth="md">
+          <ThemeProvider theme={theme}>
+            <Navbar />
 
-        <div className="content">
-          {/* Switch = endast en kommer visas, route ger en path; i den path
+            {/* Switch = endast en kommer visas, route ger en path; i den path
            visa det i som finns i route elementet, om inte exact path så matchar /creat /*/}
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
 
-            <Route exact path="/valueList">
-              <ValueList text={text} />
-            </Route>
-            <Route exact path="/valueSorter">
-              <ValueSorter />
-            </Route>
-            <Route exact path="/valueResults">
-              <ValueResults />
-            </Route>
+              <Route exact path="/values1">
+                <ValueCompassStep1 />
+              </Route>
 
-            <Route path="/createValue">
-              <CreateValue />
-            </Route>
-            {/*  /:id för att dynamiskt kunna visa resultat uifrån route parmeter /*/}
-            <Route path="/values/:id">
-              <ValueDetalis />
-            </Route>
+              <Route exact path="/valueList">
+                <ValueList text={" "} />
+              </Route>
+              <Route exact path="/valueSorter">
+                <ValueSorter />
+              </Route>
+              <Route exact path="/valueResults">
+                <ValueResults />
+              </Route>
 
-            {/*  * fångar alla routes, måste vara i botten 404*/}
-            <Route path="*">
-              <NotFound />
-            </Route>
-          </Switch>
-        </div>
+              <Route path="/createValue">
+                <CreateValue />
+              </Route>
+              {/*  /:id för att dynamiskt kunna visa resultat uifrån route parmeter /*/}
+              <Route path="/values/:id">
+                <ValueDetalis />
+              </Route>
+
+              {/*  * fångar alla routes, måste vara i botten 404*/}
+              <Route path="*">
+                <NotFound />
+              </Route>
+            </Switch>
+          </ThemeProvider>
+        </Container>
       </div>
     </Router>
   );

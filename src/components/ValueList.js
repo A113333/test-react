@@ -1,7 +1,7 @@
+import { Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import useFetch from "../useFetch";
 import ValuesComponent from "./Value";
-
 
 // destruct props .text och .values samma som  (props) const = props.value
 //export default function ValueList({ text, values })
@@ -13,7 +13,6 @@ export default function ValueList({ text }) {
     error,
   } = useFetch("http://localhost:8000/valueList");
 
-
   // useEffect körs på varje render, här hämtas data från JSON server
 
   return (
@@ -21,18 +20,17 @@ export default function ValueList({ text }) {
       {isPending && <div> Laddar ....</div>}
       {error && <div> {error} </div>}
       <div className="valueWrapper">
-        <h2>Skapa din personliga värderingslista</h2>
-        <p>
+        <Typography variant="h1"> Välj dina värderingsord </Typography>
+        <Typography variant="body1">
           {text}
-          Välj alla värderingsord som känns viktiga för dig. Detta för att göra
-          listan mer överskådlig inför nästa steg och för att du ska få bekanta
-          dig med värderingsorden. (försvinner på scroll)
-        </p>
-        {/* om values finns så körs ValuesComponet  */     }
-    
-              {values &&  <ValuesComponent values={values}/> }
-    
-
+          Välj alla värderingsord som känns viktiga för dig. Välj minst fem och
+          max 10. Har du svårt att välja, testa att ställa dig frågan: med vilka
+          ord hade jag velat att den som kännde mig bäst hade beskrivigt mig med
+          på min egna begravning?
+        </Typography>
+        <br></br>
+        {/* om values finns så körs ValuesComponet  */}
+        {values && <ValuesComponent values={values} />}
       </div>
     </div>
   );
