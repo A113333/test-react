@@ -2,24 +2,23 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Button, Typography } from "@mui/material";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import ListSubheader from "@mui/material/ListSubheader";
-import Container from "@mui/material/Container";
+
 //import FormGroup from "@mui/material/FormGroup";
 //import FormControlLabel from "@mui/material/FormControlLabel";
 //import Checkbox from "@mui/material/Checkbox";
 
 //const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
-export default function Value({ values }) {
+export default function ValueLister({ values }) {
   const [checkedState, setCheckedState] = useState(
     new Array(values.length).fill(false)
   );
   const [nrsPicked, setnrsPicked] = useState(0);
+  const [picked, setPicked] = useState([]);
 
   const handleOnChange = ({ id, title }) => {
     // sätter true / false för checkbox items
+    picked.push(id);
     const updatedCheckedState = checkedState.map((item, index) =>
       index === id ? !item : item
     );
@@ -28,6 +27,10 @@ export default function Value({ values }) {
   };
   const history = useHistory();
 
+  const scroll = () => {
+    window.scrollTo({ top: 0 });
+    console.log("körs");
+  };
   //handler för nästa knappen
   const nextPage = () => {
     const userValueArray = [];
@@ -39,6 +42,7 @@ export default function Value({ values }) {
       }
     });
     console.log(userValueArray);
+    scroll();
     history.push({
       pathname: "/valuesorter",
       state: userValueArray,
@@ -46,8 +50,6 @@ export default function Value({ values }) {
   };
 
   useEffect(() => {
-    // Update the document title using the browser API
-    console.log(checkedState);
     const updatePicked = () => {
       let nrPick = 0;
       console.log();
@@ -78,56 +80,56 @@ export default function Value({ values }) {
           }}
           subheader={<li />}
         >
-          <ListSubheader>
-            {
-              <Typography
-                variant="h3"
-                sx={{
-                  textAlign: "center",
-                  border: "1px",
-                  borderRadius: "50%",
-                  margin: "10px",
-                }}
-              >
-                {nrsPicked} Valda
-              </Typography>
-            }
-          </ListSubheader>
           {values.map(({ title, desc }, id) => {
             return (
               <li key={id}>
-                <div className="value-list-item">
-                  <div>
-                    <input
-                      type="checkbox"
-                      className="value-list-checkbox"
-                      /*${id} låter mig sätta ett dynamiskt värde i html   */
-                      id={`custom-checkbox-${id}`}
-                      title={title}
-                      checked={checkedState[id]}
-                      onChange={() => handleOnChange({ id: id, title: title })}
-                    />
-                    <label htmlFor={`custom-checkbox-${id}`}>
-                      <Typography variant="body1">
-                        {id + 1 + ". " + title + " - " + desc}
-                      </Typography>
-                    </label>
-                  </div>
+                <div className={id === picked ? "picked" : "value-list-item"}>
+                  <input
+                    className="value-list-checkbox"
+                    type="checkbox"
+                    /*${id} låter mig sätta ett dynamiskt värde i html    */
+                    id={`custom-checkbox-${id}`}
+                    title={title}
+                    checked={checkedState[id]}
+                    onChange={() => handleOnChange({ id: id, title: title })}
+                  />
+                  <label htmlFor={`custom-checkbox-${id}`}>
+                    <Typography variant="body1">
+                      {id + 1 + ". " + title + " - " + desc}
+                    </Typography>
+                  </label>
                 </div>
               </li>
             );
           })}
         </List>
+        <br></br>
+        <br></br>
       </div>
-      <Button
-        fullWidth={true}
-        variant="contained"
-        color="primary"
-        onClick={() => nextPage()}
-        sx={{}}
-      >
-        NÄSTA
-      </Button>
+
+      {nrsPicked >= 3 && (
+        <Button
+          fullWidth={true}
+          variant="contained"
+          sx={{ position: "fixed", bottom: "0", maxWidth: "852px" }}
+          onClick={() => nextPage()}
+        >
+          <Typography variant="body1"> Nästa </Typography>
+        </Button>
+      )}
+
+      {nrsPicked <= 2 && (
+        <Button
+          fullWidth={true}
+          variant="contained"
+          sx={{ position: "fixed", bottom: "0", maxWidth: "852px" }}
+        >
+          <Typography variant="body1" sx={{ color: "white" }}>
+            {" "}
+            Välj minst {5 - nrsPicked + " "} till{" "}
+          </Typography>
+        </Button>
+      )}
     </div>
   );
 }

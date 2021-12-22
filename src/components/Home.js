@@ -1,25 +1,42 @@
 import Modal from "./Modal";
 import React from "react";
 import Cards from "./Cards";
+import Grid from "@mui/material/Grid";
+
+// Grid är 12 columer
 
 export default function Home() {
   return (
     <div>
-      <Cards
-        text={
-          "Få hjälp att hitta din kurs, hur vill du vara som människa? Vad är viktigt för dig på riktigt?"
-        }
-        rubrik={"Värderingskompassen, Steg 1"}
-        linkTo={"/values1"}
-      />
-
-      <Cards
-        text={
-          "Fördjupa dig i dina värderingar: vilka livsområden är särskilt viktiga för dig? "
-        }
-        rubrik={"Värderingskompassen, Steg 2."}
-        linkTo={"/values1"}
-      />
+      <Grid container spacing={2}>
+        <Grid flow="vertically" item xs={10} md={4} lg={3}>
+          <Cards
+            text={
+              "Få hjälp att hitta din kurs, hur vill du vara som människa? Vad är viktigt för dig på riktigt?"
+            }
+            rubrik={"Värderingskompassen, Steg 1"}
+            linkTo={"/values1"}
+          />
+        </Grid>
+        <Grid item xs={10} md={4} lg={3}>
+          <Cards
+            text={
+              "Fördjupa dig i dina värderingar: vilka livsområden är särskilt viktiga för dig? "
+            }
+            rubrik={"Värderingskompassen, Steg 2."}
+            linkTo={"/varderingskompassenSteg2"}
+          />
+        </Grid>{" "}
+        <Grid item xs={10} md={4} lg={3}>
+          <Cards
+            text={
+              "Fördjupa dig i dina värderingar: vilka livsområden är särskilt viktiga för dig? "
+            }
+            rubrik={"Värderingskompassen, Steg 3."}
+            linkTo={"/varderingskompassenSteg3"}
+          />
+        </Grid>
+      </Grid>
 
       <Modal
         text={

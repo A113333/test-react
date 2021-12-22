@@ -1,24 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 /* base styles */
-* {
-  margin: 0;
-  font-family: "Montserrat", sans-serif;
-  color: #333;
-}
 
-.App {
+.value-list-item {
+  border-bottom: 1px solid #afafaf36;
   padding: 15px;
 }
 
-.left-section {
-  position: relative;
-}
-.value-list-item {
-  padding: 10px;
+.picked {
   border-bottom: 1px solid #afafaf36;
+  padding: 15px;
+  background-color: #f1f1f15c;
 }
 .value-list-item label {
   width: 95%;
+
   display: inline-block;
 }
 input.value-list-checkbox {
@@ -26,70 +21,11 @@ input.value-list-checkbox {
   height: 1.2rem;
   margin-bottom: 0px;
 }
-.sectionWrapper {
-}
+
 input[type="checkbox"] {
   float: right;
   display: inline-block;
-}
-
-.navbar {
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  max-width: 600px;
-  margin: 0 auto;
-  border-bottom: 1px solid #f2f2f2;
-}
-.navbar h1 {
-  color: #f1356d;
-  float: left;
-}
-.navbar .links {
-  margin-left: auto;
-}
-.navbar a {
-  margin-left: 16px;
-  text-decoration: none;
-  padding: 6px;
-}
-.navbar a:hover {
-  color: #f1356d;
-}
-.content {
-}
-
-.topCard,
-.bottomCard {
-  text-align: left;
-  margin: 0px;
-  font-weight: 500;
-  background-color: whitesmoke;
-  color: #333;
-  width: 100%;
-  height: 100%;
-  display: inline-block;
-  padding: 15px;
-  border: 1px solid grey;
-  border-radius: 6px;
-  font-size: 1.2rem;
-}
-.topCard h3,
-.bottomCard h3 {
-  font-size: 1.5rem;
-}
-
-.bottomCardWrapper {
-}
-
-.eller {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  text-align: center;
-  vertical-align: middle;
-  font-size: 2rem;
-  font-weight: bold;
-  margin: auto;
+  padding-top: 25px;
 }
 
 .show {
@@ -107,10 +43,41 @@ input[type="checkbox"] {
   position: absolute;
 }
 
-.testBottom {
-  position: absolute;
-}
-
 .noStyleList {
   list-style: none;
+}
+
+.links a {
+  margin-left: 10px;
+}
+
+.zindex {
+  z-index: -100;
+  margin: "auto";
+
+  border: "1px solid";
+
+  height: "120px";
+  width: "75%";
+
+  position: "relative";
+  top: "-130px";
+  left: "5px";
+}
+
+.app {
+  background-color: "rgb(241 242 255 / 23%)";
+  max-width: 852px;
+  margin: auto;
+}
+
+.lala {
+  width: 100%;
+  max-width: 852px;
+  margin: auto;
+  height: 2rem;
+  position: fixed;
+  bottom: 0;
+
+  padding-bottom: 2rem;
 }

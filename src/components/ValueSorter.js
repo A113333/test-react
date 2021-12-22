@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import BottomValueCard from "./BottomValueCard";
-import ValueCard from "./ValueCard";
+import CardSorter from "./Cardsorter";
 import { useLocation } from "react-router-dom";
+import ExerciseAppbar from "./ExerciseAppbar";
 
 export default function ValueSorter(obj) {
   const location = useLocation();
@@ -11,10 +10,13 @@ export default function ValueSorter(obj) {
   // console.log(obj);
 
   // if current === length - 1: return 0 else return +1
+  console.log(obj);
 
   return (
-    <div className="valueSorterWrapper">
-      {valueArray && <BottomValueCard valueArray={valueArray} />}
+    <div>
+      <ExerciseAppbar step="2 av 3" header="Rangordnare" />
+
+      {valueArray && <CardSorter valueArray={valueArray} />}
     </div>
   );
 }

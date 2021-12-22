@@ -38,7 +38,7 @@ export default function Modalen({ text }) {
         }}
       >
         <Fade in={open}>
-          <Box sx={style}>
+          <Box>
             <Typography id="transition-modal-title" variant="h6" component="h2">
               Text in a modal
             </Typography>
