@@ -3,12 +3,18 @@
 
 .value-list-item {
   border-bottom: 1px solid #afafaf36;
+  border-radius: 6px;
+  border-top-left-radius: 0px;
+  border-top-left-radius: 0px;
   padding: 15px;
 }
 
 .picked {
   border-bottom: 1px solid #afafaf36;
   padding: 15px;
+  border-radius: 6px;
+  border-top-left-radius: 0px;
+  border-top-left-radius: 0px;
   background-color: #f1f1f15c;
 }
 .value-list-item label {
@@ -23,9 +29,13 @@ input.value-list-checkbox {
 }
 
 input[type="checkbox"] {
-  float: right;
   display: inline-block;
   padding-top: 25px;
+  padding-top: 25px;
+  position: relative;
+  top: 15px;
+  right: 0px;
+  float: right;
 }
 
 .show {
@@ -43,6 +53,10 @@ input[type="checkbox"] {
   position: absolute;
 }
 
+.topCardContainer {
+  position: relative;
+}
+
 .noStyleList {
   list-style: none;
 }
@@ -54,12 +68,9 @@ input[type="checkbox"] {
 .zindex {
   z-index: -100;
   margin: "auto";
-
   border: "1px solid";
-
   height: "120px";
   width: "75%";
-
   position: "relative";
   top: "-130px";
   left: "5px";
@@ -80,4 +91,31 @@ input[type="checkbox"] {
   bottom: 0;
 
   padding-bottom: 2rem;
+}
+
+.slideOut {
+  position: relative;
+  animation-name: myfirst;
+  animation-duration: 500ms;
+  animation-timing-function: linear;
+  animation-delay: 50ms;
+}
+
+@keyframes myfirst {
+  0% {
+    left: 0px;
+    top: 0px;
+  }
+  50% {
+    left: 500px;
+    top: 0px;
+  }
+  100% {
+    left: 0px;
+    top: 1000000px;
+  }
+}
+
+.appBarPadder {
+  height: 65px;
 }

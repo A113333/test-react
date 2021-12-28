@@ -16,29 +16,38 @@ export default function ExerciseAppbar({ header: header, step: step }) {
     });
   };
   return (
-    <Box sx={{ flexGrow: 1, mb: "15px" }}>
-      <AppBar
-        position="sticky"
-        sx={{ width: "100%", maxWidth: "852px", mx: "auto", padding: "0px" }}
-      >
-        <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            {header}
-          </Typography>
+    <div className="appBarPadder">
+      <Box sx={{ flexGrow: 1, mb: "15px" }}>
+        <AppBar
+          position="fixed"
+          sx={{
+            width: "100%",
+            maxWidth: "852px",
+            mx: "auto",
+            padding: "0px",
+            left: "50%",
+            transform: "translate(-50%, 0)",
+          }}
+        >
+          <Toolbar>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              {header}
+            </Typography>
 
-          <Button color="inherit"> Steg {step}</Button>
+            <Button color="inherit"> Steg {step}</Button>
 
-          <IconButton
-            onClick={() => close()}
-            size="medium"
-            edge="end"
-            color="inherit"
-            aria-label="close"
-          >
-            <CloseIcon />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-    </Box>
+            <IconButton
+              onClick={() => close()}
+              size="medium"
+              edge="end"
+              color="inherit"
+              aria-label="close"
+            >
+              <CloseIcon />
+            </IconButton>
+          </Toolbar>
+        </AppBar>
+      </Box>
+    </div>
   );
 }

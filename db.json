@@ -132,5 +132,8 @@
       "categori": "Fritid",
       "id": 12
     }
-  ]
+  ],
+  "user": {
+    "name": "Alexander"
+  }
 }

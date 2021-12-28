@@ -49,8 +49,6 @@ function App() {
     <React.Fragment>
       <CssBaseline />
       <Router>
-        <Navbar />
-
         <div className="app">
           <ThemeProvider theme={theme}>
             {/* Switch = endast en kommer visas, route ger en path; i den path

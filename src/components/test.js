@@ -2,22 +2,25 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Button, Typography } from "@mui/material";
 import List from "@mui/material/List";
-
-//import FormGroup from "@mui/material/FormGroup";
-//import FormControlLabel from "@mui/material/FormControlLabel";
-//import Checkbox from "@mui/material/Checkbox";
+import Checkbox from "@mui/material/Checkbox";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
+import { Title } from "@mui/icons-material";
 
 //const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
-export default function ValueLister({ values }) {
+export default function Test({ values }) {
   const [checkedState, setCheckedState] = useState(
     new Array(values.length).fill(false)
   );
   const [nrsPicked, setnrsPicked] = useState(0);
   const [picked, setPicked] = useState([]);
 
+  // sätter true / false för checkbox items
   const handleOnChange = ({ id, title }) => {
-    // sätter true / false för checkbox items
+    // counter för att se hur många values man valt
     picked.push(id);
     const updatedCheckedState = checkedState.map((item, index) =>
       index === id ? !item : item
@@ -106,6 +109,7 @@ export default function ValueLister({ values }) {
             );
           })}
         </List>
+
         <br></br>
         <br></br>
       </div>
