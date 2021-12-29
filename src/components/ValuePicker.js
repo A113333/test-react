@@ -14,7 +14,7 @@ export default function ValueList({ text }) {
     data: values,
     isPending,
     error,
-  } = useFetch("http://localhost:8000/valueList");
+  } = useFetch("http://localhost:3000/valueList");
 
   const [slide, setSlide] = useState(false);
 

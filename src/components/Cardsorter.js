@@ -6,6 +6,9 @@ import Box from "@mui/material/Box";
 import { Divider } from "@mui/material";
 import Slide from "@mui/material/Slide";
 import Container from "@mui/material/Container";
+import IconButton from '@mui/material/IconButton';
+import UndoRoundedIcon from '@mui/icons-material/UndoRounded';
+import LinearProgress from '@mui/material/LinearProgress';
 
 function CardSorter({ valueArray: arryOfValues }) {
   //  console.log("arryOfValues ");
@@ -22,6 +25,11 @@ function CardSorter({ valueArray: arryOfValues }) {
   const [totalClicks, settotalClicks] = useState(0);
   const [whatIf, setwhatIf] = useState("");
 
+  const [pickedCards, setPickedCards] = useState([]);
+
+  const [isItDone, setisItDone] = useState(false);
+
+
   useEffect(() => {
     setSlide(true);
     countTotalClicks();
@@ -35,13 +43,13 @@ function CardSorter({ valueArray: arryOfValues }) {
   const countTotalClicks = () => {
     let clicks = 0;
     arryOfValues.map((item, index) => {
-      console.log(index);
-
       clicks = clicks + index;
     });
     console.log("clicks :" + clicks);
     settotalClicks(clicks);
   };
+
+
 
   const scroll = () => {
     window.scrollTo({ top: 0 });
@@ -63,23 +71,27 @@ function CardSorter({ valueArray: arryOfValues }) {
 
   // id kommer vara samma tills den startar om
   const clickTop = ({ index, id }) => {
+    setPickedCards(prevArray => [...prevArray, id])
+    console.log(pickedCards)
     console.log("startValue" + startValue);
     console.log("valueArr lenght" + valueArray.length);
 
     setcardsSorted(cardsSorted + 1);
-    settotalClicks(totalClicks - 1);
+ 
     if (startValue === valueArray.length) {
       // om övningen är klar
+    
       console.log("done");
       console.log(valueArray);
-      history.push({
+      setisItDone(true)
+    /*  history.push({
         pathname: "/valueResults",
         state: valueArray,
-      });
+      }); */
     }
     //lägger till pts
     valueArray.map((item, index) => {
-      id === item.id ? (item.pts = item.pts + 1) : console.log("item");
+      if (id === item.id) {  (item.pts = item.pts + 1) }
     });
     // om vi är på sista kortet
 
@@ -98,8 +110,9 @@ function CardSorter({ valueArray: arryOfValues }) {
   };
 
   const clickBottom = ({ index, id }) => {
-    settotalClicks(totalClicks - 1);
+   
     setcardsSorted(cardsSorted + 1);
+    setPickedCards(prevArray => [...prevArray, id])
 
     //om övningen är klart
     if (startValue === valueArray.length) {
@@ -116,40 +129,52 @@ function CardSorter({ valueArray: arryOfValues }) {
 
     index + 1 === valueArray.length ? restartArr() : setShowBottom(index + 1);
     valueArray.map((item, index) => {
-      id === item.id ? (item.pts = item.pts + 1) : console.log("hehe");
+      if (id === item.id) {  (item.pts = item.pts + 1) }
     });
     console.log(valueArray);
   };
 
   const goBack = () => {
+
+      // om i början av övningen q
+      if (cardsSorted === 0) {
+        console.log("om i början av övningen q")
+        return;
+
+        // todo visa usern att hen inte kan backa mer
+      }
+
     // för att rätt antal klick ska vara kvar
-    settotalClicks(totalClicks + 1);
+  
     setcardsSorted(cardsSorted - 1);
 
-    console.log("arryOfValues ");
-    console.log(arryOfValues);
+    console.log("cardsSorted ");
+    console.log(cardsSorted);
 
-    // om i början av övningen q
-    if (showTop === 0) {
-      return;
-    }
+
+    // tar bort pts från kort när man backar
+    const id = pickedCards[pickedCards.length-1]
+    pickedCards.pop()
+    valueArray.map((item, index) => {
+      if (id === item.id) {  (item.pts = item.pts - 1) }
+    });
+
+  
     // om vi är på sista kortet
     if (startValue === valueArray.length) {
       console.log("sista kortet");
       // return;
     }
 
-    // om vi är på första kortet i top, dvs om vi måste ändra showTop
-    if (startValue === showTop) {
+    // om vi är på första kortet i bottenhögen, dvs om vi måste ändra showTop
+    if (startValue === showBottom+1) {
+      console.log("är på första kortet i top, dvs om vi måste ändra showTop")
       setstartValue(startValue - 1);
       setShowTop(showTop - 1);
 
       setShowBottom(valueArray.length - 1);
 
-      setstartValue(startValue + 1);
-      setShowTop(showTop + 1);
-
-      setShowBottom(startValue);
+    
       console.log("-------------");
       console.log(startValue);
       console.log(valueArray.length);
@@ -164,6 +189,12 @@ function CardSorter({ valueArray: arryOfValues }) {
     <Slide direction="left" in={slide}>
       <div>
         <Container>
+        <Button variant="outlined"  startIcon={<UndoRoundedIcon />}  sx={{
+            position: "relative",
+           
+          }}onClick={() => goBack()}>
+          Ångra
+        </Button>
           <Typography variant="h2"> Sortera din lista </Typography>
           <Typography variant="body1">
             {" "}
@@ -195,7 +226,7 @@ function CardSorter({ valueArray: arryOfValues }) {
                   variant="h3"
                   sx={{ textAlign: "center", paddingBottom: "5px" }}
                 >
-                  {title}
+                  {title}  {id}
                 </Typography>
                 <Divider></Divider>
                 <Typography variant="body1" sx={{ padding: "5px" }}>
@@ -211,6 +242,8 @@ function CardSorter({ valueArray: arryOfValues }) {
               Eller..
             </Typography>
           </Divider>
+          <LinearProgress variant="determinate" value={Math.round((100 / totalClicks) * cardsSorted)
+} />
 
           {valueArray.map(({ title, desc, id }, index) => {
             return (
@@ -237,7 +270,7 @@ function CardSorter({ valueArray: arryOfValues }) {
                     variant="h3"
                     sx={{ textAlign: "center", paddingBottom: "5px" }}
                   >
-                    {title}
+                    {title} {id}
                   </Typography>
                   <Divider></Divider>
                   <Typography variant="body1" sx={{ paddingTop: "5px" }}>
@@ -287,10 +320,10 @@ function CardSorter({ valueArray: arryOfValues }) {
               borderRadius: "6px",
             }}
           ></Paper>
+
+    
         </Container>
-        <Button variant="outlined" onClick={() => goBack()}>
-          Backa
-        </Button>
+       
 
         <Button
           fullWidth={true}
@@ -301,10 +334,11 @@ function CardSorter({ valueArray: arryOfValues }) {
             paddingLeft: "0",
             paddingRight: "0",
             maxWidth: "852px",
+            borderRadius: "0px",
           }}
         >
           <Typography variant="body1" sx={{ color: "white" }}>
-            {totalClicks} Kvar att sortera
+            {totalClicks-cardsSorted} Kvar att sortera
           </Typography>
         </Button>
       </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Button, Typography } from "@mui/material";
 import List from "@mui/material/List";
+import ItsDoneComponent from "./ItsDoneComponent";
 
 //import FormGroup from "@mui/material/FormGroup";
 //import FormControlLabel from "@mui/material/FormControlLabel";
@@ -15,15 +16,52 @@ export default function ValueLister({ values }) {
   );
   const [nrsPicked, setnrsPicked] = useState(0);
   const [picked, setPicked] = useState([]);
+  const [itsDone, setitsDone] = useState(false);
+  let pickedNumbers = 0
+
+  useEffect(() => {
+    const updatePicked = () => {
+      let nrPick = 0;
+      
+      checkedState.map((item, index) => {
+        if (item) {
+          nrPick = nrPick + 1;
+          pickedNumbers = pickedNumbers+1
+        
+        }
+      });
+     
+      setnrsPicked(nrPick);
+
+    };
+    updatePicked();
+// för att infomera usern att hen valt sina X värden
+    if(pickedNumbers >= 3 )
+    {
+      setitsDone(true)
+      console.log("done true")
+      console.log(pickedNumbers)
+    } else { setitsDone(false)}
+
+  
+
+
+  });
 
   const handleOnChange = ({ id, title }) => {
+    if(itsDone && !checkedState[id] ) {console.log("du har valt")}
+    else{
     // sätter true / false för checkbox items
     picked.push(id);
+   // console.log(picked)
     const updatedCheckedState = checkedState.map((item, index) =>
       index === id ? !item : item
     );
     setCheckedState(updatedCheckedState);
     // setUserValues(updatedValues);
+
+
+  }
   };
   const history = useHistory();
 
@@ -49,25 +87,11 @@ export default function ValueLister({ values }) {
     });
   };
 
-  useEffect(() => {
-    const updatePicked = () => {
-      let nrPick = 0;
-      console.log();
-      checkedState.map((item, index) => {
-        if (item) {
-          nrPick = nrPick + 1;
-          console.log(item);
-        }
-      });
-      console.log(nrPick);
-      setnrsPicked(nrPick);
-    };
-    updatePicked();
-  });
+
 
   return (
     <div>
-      <div>
+      <div >
         <List
           sx={{
             width: "100%",
@@ -110,6 +134,9 @@ export default function ValueLister({ values }) {
         <br></br>
       </div>
 
+      {itsDone && <ItsDoneComponent title= "Du har valt tio värderingar" text="Välj bort en värdering om du vill välja en ny"/>
+     
+      }
       {nrsPicked >= 3 && (
         <Button
           color="success"
