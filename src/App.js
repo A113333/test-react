@@ -20,24 +20,38 @@ import CssBaseline from "@mui/material/CssBaseline";
 // json-server --watch db.json --port8000
 
 const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#14539a',
+    },
+    secondary: {
+      main: "#2a5381",
+    },
+  },
+
   typography: {
-    fontFamily: ['"Montserrat"', "sans-seri"].join(","),
+    
+    fontFamily: 'Montserrat',
+    fontWeightRegular: 500,
+    fontWeightMedium: 600,
+    fontWeightBold: 800,
     h1: {
-      fontSize: "2,2rem",
+      fontSize: "2rem",
       fontWeight: "bolder",
     },
     h2: {
-      fontSize: "1.8rem",
+      fontSize: "1.6rem",
       fontWeight: "bold",
     },
     h3: {
-      fontSize: "1,4rem",
+      fontSize: "1,3rem",
       fontWeight: "bold",
     },
     h4: {
       fontSize: "1rem",
       fontWeight: "bold",
     },
+   
     button: {
       fontWeight: "bold",
     },

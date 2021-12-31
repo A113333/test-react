@@ -41,11 +41,7 @@ input[type="checkbox"] {
 .show {
   visibility: visible;
   text-align: left;
-  width: 90%;
-  padding: 15px;
-  border: 1px solid grey;
-  border-radius: 6px;
-  font-size: 1.2rem;
+
 }
 
 .hidden {
@@ -119,3 +115,8 @@ input[type="checkbox"] {
 .appBarPadder {
   height: 65px;
 }
+
+.padderTop {
+  padding-top: 35px;
+}
+

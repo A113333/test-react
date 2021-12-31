@@ -6,16 +6,26 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
+import { useHistory } from "react-router-dom";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
 
 
-function ItsDoneComponent({title, text, onYes, option1, option2}) {
+function CloseIt({title, text, donotQuite }) {
+  const history = useHistory();
 
 
         const [open, setOpen] = React.useState(true);
+
+
+
+        const closeExercise = () => {
+          history.push({
+            pathname: "/",
+          });
+        };
       
         const handleClickOpen = () => {
           setOpen(true);
@@ -33,7 +43,7 @@ function ItsDoneComponent({title, text, onYes, option1, option2}) {
         open={open}
         TransitionComponent={Transition}
         keepMounted
-        onClose={handleClose}
+        onClose={donotQuite}
         aria-describedby="alert-dialog-slide-description"
       >
         <DialogTitle>{title}</DialogTitle>
@@ -43,8 +53,8 @@ function ItsDoneComponent({title, text, onYes, option1, option2}) {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>{option1}</Button>
-         <Button onClick={ onYes? onYes : handleClose}>{option2}</Button>
+          <Button onClick={donotQuite}>Nej</Button>
+         <Button onClick={closeExercise} >Ja</Button>
         </DialogActions>
       </Dialog>
 
@@ -52,4 +62,4 @@ function ItsDoneComponent({title, text, onYes, option1, option2}) {
     )
 }
 
-export default ItsDoneComponent
+export default CloseIt

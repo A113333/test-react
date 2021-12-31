@@ -11,7 +11,7 @@ export default function MultiActionAreaCard({
   rubrik: rubrik,
   linkTo: linkTo,
 }) {
-  console.log(linkTo);
+
   const history = useHistory();
   const goTo = () => {
     history.push({
@@ -22,8 +22,9 @@ export default function MultiActionAreaCard({
     <Card
       sx={{
         bgcolor: "background.paper",
-        boxShadow: 1,
+        boxShadow: 5,
         mx: "auto",
+        transform: "scale(1)",
       }}
     >
       <CardActionArea onClick={goTo}>
@@ -35,10 +36,10 @@ export default function MultiActionAreaCard({
         />
 
         <CardContent sx={{ padding: "8px" }}>
-          <Typography gutterBottom variant="h1" component="div">
+          <Typography gutterBottom variant="h3" component="div">
             {rubrik}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body1" color="text.secondary">
             {text}
           </Typography>
         </CardContent>

@@ -9,10 +9,11 @@ import Container from "@mui/material/Container";
 import IconButton from '@mui/material/IconButton';
 import UndoRoundedIcon from '@mui/icons-material/UndoRounded';
 import LinearProgress from '@mui/material/LinearProgress';
+import ItsDoneComponent from "./ItsDoneComponent";
 
 function CardSorter({ valueArray: arryOfValues }) {
   //  console.log("arryOfValues ");
-  //  console.log(arryOfValues);
+    console.log(arryOfValues);
   const history = useHistory();
   const [valueArray, setvalueArray] = useState(arryOfValues);
 
@@ -28,6 +29,13 @@ function CardSorter({ valueArray: arryOfValues }) {
   const [pickedCards, setPickedCards] = useState([]);
 
   const [isItDone, setisItDone] = useState(false);
+
+  const goToResult = ()=>{
+    history.push({
+      pathname: "/valueResults",
+      state: valueArray,
+    });
+  }
 
 
   useEffect(() => {
@@ -71,14 +79,20 @@ function CardSorter({ valueArray: arryOfValues }) {
 
   // id kommer vara samma tills den startar om
   const clickTop = ({ index, id }) => {
-    setPickedCards(prevArray => [...prevArray, id])
-    console.log(pickedCards)
-    console.log("startValue" + startValue);
-    console.log("valueArr lenght" + valueArray.length);
+    //lägger idet på valde kortet sist i arrayn (för backa funktionen)
+   setPickedCards(prevArray => [...prevArray, id])
 
-    setcardsSorted(cardsSorted + 1);
- 
+
+       //lägger till pts
+       !isItDone &&  valueArray.map((item, index) => {
+        if (id === item.id) {  (item.pts = item.pts + 1) }
+      });
+// !isItDone för att den inte ska ändra sig på click vid färdigt
+      !isItDone && setcardsSorted(cardsSorted + 1);
+
+
     if (startValue === valueArray.length) {
+      
       // om övningen är klar
     
       console.log("done");
@@ -88,50 +102,47 @@ function CardSorter({ valueArray: arryOfValues }) {
         pathname: "/valueResults",
         state: valueArray,
       }); */
+      return
     }
-    //lägger till pts
-    valueArray.map((item, index) => {
-      if (id === item.id) {  (item.pts = item.pts + 1) }
-    });
-    // om vi är på sista kortet
 
+    
+    // om vi är på sista kortet
     if (showBottom + 1 === valueArray.length) {
-      console.log("-----------xxxxxxxxxx--------");
-      console.log(arryOfValues);
       setstartValue(startValue + 1);
       setShowTop(showTop + 1);
       setShowBottom(startValue);
     } else {
       setShowBottom(showBottom + 1);
     }
-    console.log("--------------------------");
-    console.log(showBottom);
-    console.log(valueArray.length);
   };
 
   const clickBottom = ({ index, id }) => {
    
-    setcardsSorted(cardsSorted + 1);
-    setPickedCards(prevArray => [...prevArray, id])
+
+setPickedCards(prevArray => [...prevArray, id])
 
     //om övningen är klart
-    if (startValue === valueArray.length) {
-      console.log("done");
-
-      history.push({
-        pathname: "/valueResults",
-        state: valueArray,
-      });
-    }
-
-    console.log("index");
-    console.log(index);
-
-    index + 1 === valueArray.length ? restartArr() : setShowBottom(index + 1);
-    valueArray.map((item, index) => {
+        //lägger till pts
+        !isItDone &&  valueArray.map((item, index) => {
       if (id === item.id) {  (item.pts = item.pts + 1) }
     });
-    console.log(valueArray);
+
+  // !isItDone för att den inte ska ändra sig på click vid färdigt
+        !isItDone && setcardsSorted(cardsSorted + 1);
+  
+      if (startValue === valueArray.length) {
+        
+        // om övningen är klar
+      
+        console.log("done");
+        console.log(valueArray);
+        setisItDone(true)
+
+        return
+      }
+
+    index + 1 === valueArray.length ? restartArr() : setShowBottom(index + 1);
+
   };
 
   const goBack = () => {
@@ -146,7 +157,7 @@ function CardSorter({ valueArray: arryOfValues }) {
 
     // för att rätt antal klick ska vara kvar
   
-    setcardsSorted(cardsSorted - 1);
+    if (cardsSorted>0) {setcardsSorted(cardsSorted - 1);}
 
     console.log("cardsSorted ");
     console.log(cardsSorted);
@@ -155,6 +166,7 @@ function CardSorter({ valueArray: arryOfValues }) {
     // tar bort pts från kort när man backar
     const id = pickedCards[pickedCards.length-1]
     pickedCards.pop()
+
     valueArray.map((item, index) => {
       if (id === item.id) {  (item.pts = item.pts - 1) }
     });
@@ -163,6 +175,7 @@ function CardSorter({ valueArray: arryOfValues }) {
     // om vi är på sista kortet
     if (startValue === valueArray.length) {
       console.log("sista kortet");
+      setisItDone(false)
       // return;
     }
 
@@ -213,13 +226,16 @@ function CardSorter({ valueArray: arryOfValues }) {
                   mx: "auto",
                   transform: "scale(1)",
                   margin: "auto",
-                  mt: "25px",
-                  boxShadow: 2,
+                  mt: "15px",
+                  boxShadow: 5,
                   borderColor: "grey.500",
                   height: "120px",
                   width: "75%",
                   maxWidth: "500px",
-                  mb: "15px",
+                  backgroundColor: "white",
+                  padding: "15px",
+                  borderRadius: "6px",
+             
                 }}
               >
                 <Typography
@@ -264,13 +280,15 @@ function CardSorter({ valueArray: arryOfValues }) {
                     width: "75%",
                     maxWidth: "500px",
                     backgroundColor: "white",
+                    padding: "15px",
+                    borderRadius: "6px",
                   }}
                 >
                   <Typography
                     variant="h3"
                     sx={{ textAlign: "center", paddingBottom: "5px" }}
                   >
-                    {title} {id}
+                    {title} {"id:" +id}
                   </Typography>
                   <Divider></Divider>
                   <Typography variant="body1" sx={{ paddingTop: "5px" }}>
@@ -288,7 +306,7 @@ function CardSorter({ valueArray: arryOfValues }) {
               margin: "auto",
               marginTop: "20px",
               mb: "25px",
-              boxShadow: 3,
+              boxShadow: 5,
               border: "1px solid",
               borderColor: "grey.500",
               height: "120px",
@@ -341,6 +359,14 @@ function CardSorter({ valueArray: arryOfValues }) {
             {totalClicks-cardsSorted} Kvar att sortera
           </Typography>
         </Button>
+        {isItDone && 
+        <ItsDoneComponent title= "Bra jobbat!" 
+        text="Du är nu klar med värderingskompassen, är du redo att se ditt resultat?"
+        option1="Nej, jag ångrar mitt sista val"
+        option2="Ja!"
+        onYes={goToResult}
+        />
+      }
       </div>
     </Slide>
   );

@@ -36,7 +36,7 @@ export default function ValueLister({ values }) {
     };
     updatePicked();
 // för att infomera usern att hen valt sina X värden
-    if(pickedNumbers >= 3 )
+    if(pickedNumbers >= 5 )
     {
       setitsDone(true)
       console.log("done true")
@@ -134,7 +134,9 @@ export default function ValueLister({ values }) {
         <br></br>
       </div>
 
-      {itsDone && <ItsDoneComponent title= "Du har valt tio värderingar" text="Välj bort en värdering om du vill välja en ny"/>
+      {itsDone && <ItsDoneComponent title= "Du har valt tio värderingar" 
+      text="Välj bort en värdering om du vill välja en ny"
+      option2= "Okej"/>
      
       }
       {nrsPicked >= 3 && (

@@ -70,7 +70,8 @@
       "title": " Inre frid",
       "desc": "Att ha lugn och ro.",
       "categori": "Fritid",
-      "id": 12
+      "id": 12,
+      "pts": 0
     },
     {
       "id": 3,
@@ -130,10 +131,44 @@
       "title": " Inre frid",
       "desc": "Att ha lugn och ro.",
       "categori": "Fritid",
-      "id": 12
+      "id": 12,
+      "pts": 0
     }
   ],
   "user": {
-    "name": "Alexander"
+    "values": [
+      {
+        "id": 9,
+        "title": "Äventyrlig",
+        "desc": "villig att skapa eller sträva efter nya, spännande erfarenheter",
+        "pts": 4
+      },
+      {
+        "id": 8,
+        "title": "Accepterande",
+        "desc": "öppen för, tillåtande av eller tillfreds med mig själv, andra, livet, mina känslor osv.",
+        "pts": 3
+      },
+      {
+        "id": 10,
+        "title": "Självsäker",
+        "desc": "att lugnt, rättvist och respektfullt stå upp för mina rättigheter och våga be om det jag vill ha",
+        "pts": 2
+      },
+      {
+        "id": 11,
+        "title": "Autentisk",
+        "desc": "att vara genuin, äkta och sann mot mig själv",
+        "pts": 1
+      },
+      {
+        "title": " Inre frid",
+        "desc": "Att ha lugn och ro.",
+        "categori": "Fritid",
+        "id": 12,
+        "pts": 0
+      }
+    ],
+    "state": 1
   }
 }

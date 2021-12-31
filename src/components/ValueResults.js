@@ -11,6 +11,7 @@ import Chip from "@mui/material/Chip";
 import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
 import StarIcon from "@mui/icons-material/Star";
+import { borderRadius } from "@mui/system";
 
 const labels = {
   0: "Inte alls",
@@ -43,16 +44,44 @@ function ValueResults(obj) {
   });
 
   const history = useHistory();
+
+
+  const user = {
+    values: results,
+    state: 1, 
+  };
+
+  const postResult = () => {
+
+    fetch("http://localhost:3000/user", {
+      // berättar för servern att det är en post med JSON data
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      //datan som ska skickas
+      body: JSON.stringify(user),
+    }).then(() => {
+      console.log(results);
+      console.log("resultat sparat");
+   
+    // visa confomration att det sparats här?
+    });
+  
+  };
+  postResult()
+
   const nextPage = () => {
     history.push({
       pathname: "/",
+      state: user,
+
     });
   };
 
+  
   return (
     <Slide direction="left" in={slide} mountOnEnter unmountOnExit>
       <div>
-        <ExerciseAppbar header={"Värderinskompassen"} step={"3 av 3"} />
+        <ExerciseAppbar header={"Värderinskompassen"} step={"3 av 3"}  />
         <Container maxWidth="md"></Container>
 
         <div>
@@ -69,24 +98,47 @@ function ValueResults(obj) {
           <div className="noStyleList">
             {results.map(({ title, desc, pts }, id) => {
               return (
+                <Box       sx={{
+                  display: "table",
+                  mx: "auto",
+                  transform: "scale(1)",
+                  margin: "auto",
+                  mt: "15px",
+                  boxShadow: 5,
+                  borderColor: "grey.500",
+                  height: "120px",
+                  width: "75%",
+                  maxWidth: "500px",
+                  backgroundColor: "white",
+                  padding: "15px",
+                  borderRadius: "6px",
+                  mb: "25px",
+                }}>
                 <li key={id}>
-                  <Divider textAlign="left" sx={{ mb: "15px" }}></Divider>
+             
+                  <Typography
+                    variant="h3"
+                    sx={{ textAlign: "center", paddingBottom: "5px" }}
+                  >
+                                     {id + 1 + ". " + title + " (" + pts + " Poäng)"}
 
-                  <Typography variant="h3" gutterBottom>
-                    {id + 1 + ". " + title + " (" + pts + " Poäng)"}
+                  </Typography>
+                  <Divider></Divider>
+                  <Typography variant="body1" sx={{ paddingTop: "5px" }}>
+                  {" Jag vill vara " + desc}
                   </Typography>
 
-                  <Typography variant="body1" gutterBottom>
-                    {" Jag vill vara " + desc}
-                  </Typography>
                   <Typography variant="h4" gutterBottom>
                     Hur bra lever du värderingen {" " + title + " "} idag?
                   </Typography>
 
-                  <Card />
                 </li>
+                </Box>
+               
               );
+           
             })}
+            
           </div>
           <br></br>
           <Typography variant="h3" gutterBottom>
