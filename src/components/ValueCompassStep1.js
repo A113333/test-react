@@ -21,41 +21,42 @@ function ValueCompassStep1() {
       <div>
         <ExerciseAppbar header={"Värderinskompassen"} step={"1 av 3"} />
         <Container maxWidth="md">
-          <Typography variant="h1" gutterBottom>
+          <Typography variant="h2" gutterBottom>
             Värderingar
           </Typography>
 
           <Typography variant="body1" gutterBottom>
-            Dina värderingar står för det som är allra viktigaste för dig. Dom
+            Dina värderingar står för det som är allra viktigaste för dig. Dina värderingar ska
             representerar hur du önskar att du levde ditt liv. Till skillnad
-            från mål går det aldrig att uppnå en värdering. Som expel kan man ta
+            från mål går det aldrig att uppnå en värdering. Som expempel kan man ta
             målet att gifta sig, jämfört med värderingen att vara en öppen,
-            omtänksam partner.
+            omtänksam och kärleksfull partner.
           </Typography>
 
-          <Typography variant="h2" component="div" gutterBottom>
+          <Typography variant="h3" component="div" gutterBottom>
             Varför ska man utforska sina värderingar?
           </Typography>
 
           <Typography variant="body1" gutterBottom>
-            Forskningen är tydlig när det kommer till vinsten i att ha insikt i
+            Forskningen inom psykologi visar gång på gång att det finns vinster i att ha insikt i
             sina egna värderingar och att låta dom fungera vägledande genom
-            livet. Att leva efter sin värderingar kan bland annat; minskar
+            livet. 
+            <br></br>Att leva efter sin värderingar kan bland annat: minskar
             nedstämdhet, skapa mening och motivation, hjälpa dig ta dig igenom
             svåra situationer och underlättar svåra val.
           </Typography>
 
-          <Typography variant="h2" component="div" gutterBottom>
+          <Typography variant="h3" component="div" gutterBottom>
             Hur fungerar värderingskompassen?
           </Typography>
 
           <Typography variant="body1" gutterBottom>
             Värderingskompassen är särskilt framtagen och testad för att hjälpa
             dig hitta dina värderingar. Övningen tar ca X minuter och när du är
-            klar kommer du få en rangordnad lista på dina 5 viktigaste
-            värderingar. Du kommer sedan få övningar som hjälper dig att leva
-            efter dina värderingar och vi kommer använda dina värderingar som
-            bas när vi sätter dina långsiktiga mål.
+            klar kommer du få en topplist med dina 5 viktigaste
+            värderingar. I nästa steg, målkartan, kommer vi använda dina värderingar vägleda dig i dina målsättningar.
+            Lite längre fram i behandlingen kommer du även få övningar och tips som hjälper dig att bli bättre på att leva
+            efter dina värderingar.
           </Typography>
         </Container>
         <Button variant="contained" fullWidth={true} onClick={nextPage}>

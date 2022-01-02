@@ -49,6 +49,7 @@ export default function ExerciseAppbar({ header, step }) {
 
             <Button color="inherit"> Steg {step}</Button>
 
+
             <Tooltip title="Avsluta övningen" > 
             <IconButton
               onClick={() => pressClose()}

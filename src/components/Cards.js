@@ -5,12 +5,18 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import { useHistory } from "react-router-dom";
+import userEvent from "@testing-library/user-event";
+
 
 export default function MultiActionAreaCard({
   text: text,
   rubrik: rubrik,
   linkTo: linkTo,
+  state: state,
+  stateColor:stateColor
 }) {
+console.log(stateColor)
+  
 
   const history = useHistory();
   const goTo = () => {
@@ -49,7 +55,7 @@ export default function MultiActionAreaCard({
           fullWidth={true}
           onClick={goTo}
           variant="contained"
-          color="primary"
+          color={stateColor}
         >
           STARTA ÖVNINGEN
         </Button>

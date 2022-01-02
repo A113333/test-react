@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Button, Typography } from "@mui/material";
 import List from "@mui/material/List";
 import ItsDoneComponent from "./ItsDoneComponent";
-
+import LinearProgress from '@mui/material/LinearProgress';
 //import FormGroup from "@mui/material/FormGroup";
 //import FormControlLabel from "@mui/material/FormControlLabel";
 //import Checkbox from "@mui/material/Checkbox";
@@ -17,69 +17,69 @@ export default function ValueLister({ values }) {
   const [nrsPicked, setnrsPicked] = useState(0);
   const [picked, setPicked] = useState([]);
   const [itsDone, setitsDone] = useState(false);
-  let pickedNumbers = 0
+  const [showItsDone, setshowItsDone] = useState(false);
 
   useEffect(() => {
-    const updatePicked = () => {
-      let nrPick = 0;
-      
-      checkedState.map((item, index) => {
-        if (item) {
-          nrPick = nrPick + 1;
-          pickedNumbers = pickedNumbers+1
-        
-        }
-      });
-     
-      setnrsPicked(nrPick);
-
-    };
-    updatePicked();
-// för att infomera usern att hen valt sina X värden
-    if(pickedNumbers >= 5 )
-    {
-      setitsDone(true)
-      console.log("done true")
-      console.log(pickedNumbers)
-    } else { setitsDone(false)}
-
+     // using camelCase for variable name is recommended.
+     console.log("-.-.-.-.-")
+    console.log(checkedState)
   
+    let nr = 0
+    const updateNrsPicked = () => {
+      checkedState.forEach((item, index) => {
+      if (item) {
+        nr= nr +1
+      }
+    });
+   
+    setnrsPicked(nr);
+  }
+  updateNrsPicked();
+  if(nr >= 5){
+    setitsDone(true)
+  } else {setitsDone(false)}
 
-
-  });
+  }, [checkedState]); // this will call getChildChange when ever name changes.
 
   const handleOnChange = ({ id, title }) => {
-    if(itsDone && !checkedState[id] ) {console.log("du har valt")}
-    else{
-    // sätter true / false för checkbox items
-    picked.push(id);
-   // console.log(picked)
+
+
+     // sätter true / false för checkbox items
     const updatedCheckedState = checkedState.map((item, index) =>
-      index === id ? !item : item
-    );
-    setCheckedState(updatedCheckedState);
-    // setUserValues(updatedValues);
+    index === id ? !item : item
+  );
+     
 
-
-  }
+      if(itsDone && checkedState[id] ) {
+        setCheckedState(updatedCheckedState) 
+        setshowItsDone(false);
+      } else if(itsDone) {
+         setshowItsDone(true);
+      } else {
+        setCheckedState(updatedCheckedState) 
+        setshowItsDone(false);
+      }
+       // setUserValues(updatedValues);
+    
+    
   };
   const history = useHistory();
 
   const scroll = () => {
     window.scrollTo({ top: 0 });
-    console.log("körs");
+    console.log("scroll körs");
   };
   //handler för nästa knappen
   const nextPage = () => {
     const userValueArray = [];
 
-    console.log(checkedState);
+  
     checkedState.map((item, index) => {
       if (item) {
         userValueArray.push(values[index]);
       }
     });
-    console.log(userValueArray);
+
     scroll();
     history.push({
       pathname: "/valuesorter",
@@ -95,7 +95,6 @@ export default function ValueLister({ values }) {
         <List
           sx={{
             width: "100%",
-
             bgcolor: "background.paper",
             position: "relative",
             overflow: "auto",
@@ -134,12 +133,15 @@ export default function ValueLister({ values }) {
         <br></br>
       </div>
 
-      {itsDone && <ItsDoneComponent title= "Du har valt tio värderingar" 
+      {showItsDone && <ItsDoneComponent title= "Du har valt tio värderingar" 
       text="Välj bort en värdering om du vill välja en ny"
       option2= "Okej"/>
      
       }
-      {nrsPicked >= 3 && (
+      <LinearProgress variant="determinate" value={((100/5 )* nrsPicked)
+} sx={{mb:"36px",}}/>
+
+      {nrsPicked >= 5 &&  (
         <Button
           color="success"
           fullWidth={true}
@@ -156,7 +158,7 @@ export default function ValueLister({ values }) {
         </Button>
       )}
 
-      {nrsPicked <= 2 && (
+      {nrsPicked < 5 && (
         <Button
           fullWidth={true}
           variant="contained"

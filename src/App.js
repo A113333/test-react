@@ -13,6 +13,7 @@ import ValueCompassStep1 from "./components/ValueCompassStep1";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "material-icons/iconfont/material-icons.css";
 import CssBaseline from "@mui/material/CssBaseline";
+import { blue } from '@mui/material/colors';
 
 //const ValueList = valueList
 //console.log(ValueList)
@@ -22,15 +23,15 @@ import CssBaseline from "@mui/material/CssBaseline";
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#14539a',
+      main: blue[500],
     },
     secondary: {
-      main: "#2a5381",
+      main: "#f37f21",
     },
   },
 
   typography: {
-    
+
     fontFamily: 'Montserrat',
     fontWeightRegular: 500,
     fontWeightMedium: 600,
@@ -53,7 +54,7 @@ const theme = createTheme({
     },
    
     button: {
-      fontWeight: "bold",
+      fontWeight: "800",
     },
   },
 });
@@ -63,6 +64,7 @@ function App() {
     <React.Fragment>
       <CssBaseline />
       <Router>
+      <div className="appWrapper">
         <div className="app">
           <ThemeProvider theme={theme}>
             {/* Switch = endast en kommer visas, route ger en path; i den path
@@ -100,6 +102,7 @@ function App() {
               </Route>
             </Switch>
           </ThemeProvider>
+        </div>
         </div>
       </Router>
     </React.Fragment>

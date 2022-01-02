@@ -26,7 +26,7 @@ export default function ValueList({ text }) {
   return (
     <Slide direction="left" in={slide} mountOnEnter unmountOnExit>
       <div>
-        <ExerciseAppbar header={"Värderinskompassen"} step={"1 av 3"} />
+        <ExerciseAppbar header={"Värderinskompassen"} step={"2 av 3"} />
         {isPending && <div> Laddar ....</div>}
         {error && <div> {error} </div>}
         <Container maxWidth="md">

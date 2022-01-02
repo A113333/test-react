@@ -47,6 +47,7 @@ export default function Home({usertest}) {
             rubrik={"Värderingskompassen, Steg 1"}
             
             linkTo={"/values1"} 
+            stateColor= {"success"}
           />
 
         </Grid>
