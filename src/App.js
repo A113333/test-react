@@ -15,8 +15,11 @@ import "material-icons/iconfont/material-icons.css";
 import CssBaseline from "@mui/material/CssBaseline";
 import { blue } from '@mui/material/colors';
 
-//const ValueList = valueList
-//console.log(ValueList)
+/* hur många ord i listan?
+mer mellanrum mellan korten
+presentera ångra först när man kan ångra
+container resultat
+*/
 
 // json-server --watch db.json --port8000
 

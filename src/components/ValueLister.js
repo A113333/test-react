@@ -4,6 +4,8 @@ import { Button, Typography } from "@mui/material";
 import List from "@mui/material/List";
 import ItsDoneComponent from "./ItsDoneComponent";
 import LinearProgress from '@mui/material/LinearProgress';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 //import FormGroup from "@mui/material/FormGroup";
 //import FormControlLabel from "@mui/material/FormControlLabel";
 //import Checkbox from "@mui/material/Checkbox";
@@ -19,11 +21,11 @@ export default function ValueLister({ values }) {
   const [itsDone, setitsDone] = useState(false);
   const [showItsDone, setshowItsDone] = useState(false);
 
+  const prevPage = () =>{
+    history.goBack()
+  }
+  //  [checkedState]);  gör att enbart kör när checkedstate ändras
   useEffect(() => {
-     // using camelCase for variable name is recommended.
-     console.log("-.-.-.-.-")
-    console.log(checkedState)
-  
     let nr = 0
     const updateNrsPicked = () => {
       checkedState.forEach((item, index) => {
@@ -39,7 +41,7 @@ export default function ValueLister({ values }) {
     setitsDone(true)
   } else {setitsDone(false)}
 
-  }, [checkedState]); // this will call getChildChange when ever name changes.
+  }, [checkedState]); 
 
   const handleOnChange = ({ id, title }) => {
 
@@ -139,37 +141,34 @@ export default function ValueLister({ values }) {
      
       }
       <LinearProgress variant="determinate" value={((100/5 )* nrsPicked)
-} sx={{mb:"36px",}}/>
+} sx={{mb:"46px",}}/>
+
+<Button variant="contained" color='primary' aria-label="Nästa" startIcon={< ArrowBackIosIcon/>} onClick={prevPage}
+        sx={{ ml:"15px", }}>
+          Tillbaka 
+        </Button>
+
 
       {nrsPicked >= 5 &&  (
-        <Button
-          color="success"
-          fullWidth={true}
-          variant="contained"
-          sx={{
-            position: "fixed",
-            bottom: "0",
-            maxWidth: "852px",
-            fontWeight: "bloder",
-          }}
-          onClick={() => nextPage()}
-        >
-          <Typography variant="body1"> Nästa </Typography>
-        </Button>
+
+<Button variant="contained"  color='primary' aria-label="Backa" endIcon={<ArrowForwardIosIcon />} onClick={nextPage}
+sx={{float:"right", mr:"15px", mb:"15px", }}>
+  Nästa 
+</Button>
+
       )}
 
       {nrsPicked < 5 && (
-        <Button
-          fullWidth={true}
-          variant="contained"
-          sx={{ position: "fixed", bottom: "0", maxWidth: "852px" }}
-        >
-          <Typography variant="body1" sx={{ color: "white" }}>
-            {" "}
-            Välj minst {5 - nrsPicked + " "} till{" "}
-          </Typography>
-        </Button>
+        <Button variant="contained"  disabled ="true" color='success' aria-label="Backa" endIcon={<ArrowForwardIosIcon />} onClick={nextPage}
+sx={{float:"right", mr:"15px", mb:"15px", }}>
+  Välj {5 -nrsPicked} till för att gå vidare
+</Button>
       )}
+
+
+
+ 
+
     </div>
   );
 }

@@ -1,9 +1,13 @@
-import { Button, Typography } from "@mui/material";
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Slide from "@mui/material/Slide";
 import ExerciseAppbar from "./ExerciseAppbar";
 import Container from "@mui/material/Container";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+
 function ValueCompassStep1() {
   useEffect(() => {
     setSlide(true);
@@ -15,6 +19,10 @@ function ValueCompassStep1() {
       pathname: "/valueList",
     });
   };
+
+  const prevPage = () =>{
+    history.goBack()
+  }
   const [slide, setSlide] = useState(true);
   return (
     <Slide direction="left" in={slide} mountOnEnter unmountOnExit>
@@ -59,9 +67,17 @@ function ValueCompassStep1() {
             efter dina värderingar.
           </Typography>
         </Container>
-        <Button variant="contained" fullWidth={true} onClick={nextPage}>
-          Starta Värderingskompassen
+        <Button variant="contained" color='primary' aria-label="Nästa" startIcon={< ArrowBackIosIcon/>} onClick={prevPage}
+        sx={{ ml:"15px", mb:"15px", }}>
+          Tillbaka 
         </Button>
+
+        <Button variant="contained" color='primary' aria-label="Backa" endIcon={<ArrowForwardIosIcon />} onClick={nextPage}
+        sx={{float:"right", mr:"15px", mb:"15px", }}>
+          Nästa 
+        </Button>
+
+
       </div>
     </Slide>
   );

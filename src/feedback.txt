@@ -1,0 +1,4 @@
+hur många ord i listan?
+mer mellanrum mellan korten
+presentera ångra först när man kan ångra
+container resultat

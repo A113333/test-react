@@ -81,8 +81,9 @@ function ValueResults(obj) {
   return (
     <Slide direction="left" in={slide} mountOnEnter unmountOnExit>
       <div>
+      
         <ExerciseAppbar header={"Värderinskompassen"} step={"3 av 3"}  />
-        <Container maxWidth="md"></Container>
+        <Container maxWidth="md">
 
         <div>
           <Typography variant="h2" gutterBottom>
@@ -176,9 +177,11 @@ function ValueResults(obj) {
           </Typography>
         </div>
 
-        <Button variant="contained" fullWidth={true} onClick={nextPage}>
+        <Button variant="contained"  onClick={nextPage}>
           Tillbaka till startsidan
         </Button>
+        
+        </Container>
       </div>
     </Slide>
   );

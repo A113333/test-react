@@ -6,10 +6,12 @@ import Box from "@mui/material/Box";
 import { Divider } from "@mui/material";
 import Slide from "@mui/material/Slide";
 import Container from "@mui/material/Container";
-import IconButton from '@mui/material/IconButton';
 import UndoRoundedIcon from '@mui/icons-material/UndoRounded';
 import LinearProgress from '@mui/material/LinearProgress';
 import ItsDoneComponent from "./ItsDoneComponent";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+
 
 function CardSorter({ valueArray: arryOfValues }) {
   //  console.log("arryOfValues ");
@@ -35,6 +37,10 @@ function CardSorter({ valueArray: arryOfValues }) {
       pathname: "/valueResults",
       state: valueArray,
     });
+  }
+
+  const prevPage = () =>{
+    history.goBack()
   }
 
 
@@ -202,12 +208,7 @@ setPickedCards(prevArray => [...prevArray, id])
     <Slide direction="left" in={slide}>
       <div>
         <Container>
-        <Button variant="outlined"  startIcon={<UndoRoundedIcon />}  sx={{
-            position: "relative",
-           
-          }}onClick={() => goBack()}>
-          Ångra
-        </Button>
+
           <Typography variant="h2"> Sortera din lista </Typography>
           <Typography variant="body1">
             {" "}
@@ -339,27 +340,37 @@ setPickedCards(prevArray => [...prevArray, id])
             }}
           ></Paper>
 
-    
+        <Button variant="outlined"  startIcon={<UndoRoundedIcon />}  sx={{
+            position: "relative",
+           
+          }}onClick={() => goBack()}>
+          Ångra val
+        </Button>
+
+        <Button variant="contained" color='primary' aria-label="Nästa" startIcon={< ArrowBackIosIcon/>} onClick={prevPage}
+        sx={{ ml:"15px", }}>
+          Tillbaka 
+        </Button>
+
+
+      {isItDone &&  (
+
+<Button variant="contained"  color='primary' aria-label="Backa" endIcon={<ArrowForwardIosIcon />} onClick={goToResult}
+sx={{float:"right", mr:"15px", mb:"15px", }}>
+  Visa Resultat 
+</Button>
+
+      )}
+
+      {!isItDone && (
+        <Button variant="contained"  disabled ="true" color='success' aria-label="Backa" endIcon={<ArrowForwardIosIcon />} 
+sx={{float:"right", mr:"15px", mb:"15px", }}>
+   Sortera {totalClicks - cardsSorted} kort till
+</Button>
+      )}
         </Container>
        
-
-        <Button
-          fullWidth={true}
-          variant="contained"
-          sx={{
-            position: "fixed",
-            bottom: "0",
-            paddingLeft: "0",
-            paddingRight: "0",
-            maxWidth: "852px",
-            borderRadius: "0px",
-          }}
-        >
-          <Typography variant="body1" sx={{ color: "white" }}>
-            {totalClicks-cardsSorted} Kvar att sortera
-          </Typography>
-        </Button>
-        {isItDone && 
+  {/*      {isItDone && 
         <ItsDoneComponent title= "Bra jobbat!" 
         text="Du är nu klar med värderingskompassen, är du redo att se ditt resultat?"
         option1="Nej, jag ångrar mitt sista val"
@@ -367,6 +378,7 @@ setPickedCards(prevArray => [...prevArray, id])
         onYes={goToResult}
         />
       }
+      */} 
       </div>
     </Slide>
   );
