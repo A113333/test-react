@@ -28,14 +28,16 @@ function ValueResults(obj) {
   const [slide, setSlide] = useState(false);
   const [value, setValue] = React.useState(2);
   const [hover, setHover] = React.useState(-1);
+  const [ShowValueInfo, setShowValueInfo] = React.useState(0);
 
   useEffect(() => {
+    postResult();
     setSlide(true);
   }, []);
 
   const location = useLocation();
   const valueArray = location.state;
-  console.log(valueArray);
+ 
   const results = valueArray.sort((a, b) => {
     return b.pts - a.pts;
   });
@@ -45,8 +47,14 @@ function ValueResults(obj) {
     state: 1.1,
   };
 
+const handleShowValueInfo = (index)=>{
+  console.log(index)
+  setShowValueInfo(index)
+
+}
+
   const postResult = () => {
-    fetch("http://localhost:8000/user", {
+    fetch("http://localhost:3000/user", {
       // berättar för servern att det är en post med JSON data
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -59,7 +67,7 @@ function ValueResults(obj) {
       // visa confomration att det sparats här?
     });
   };
-  postResult();
+  
 
   return (
     <Slide direction="left" in={slide} mountOnEnter unmountOnExit>
@@ -78,9 +86,10 @@ function ValueResults(obj) {
             </Typography>
 
             <div className="noStyleList">
-              {results.map(({ title, desc, pts }, id) => {
+              {results.map(({ title, desc, pts }, index) => {
                 return (
-                  <Box
+                  <Box onClick={()=>handleShowValueInfo(index)}
+                  className={ShowValueInfo === index ? "transform90" : "not active"}
                     sx={{
                       display: "table",
                       mx: "auto",
@@ -98,7 +107,7 @@ function ValueResults(obj) {
                       mb: "25px",
                     }}
                   >
-                    <li key={id}>
+                    <li key={index}>
                       <Typography
                         variant="h3"
                         sx={{
@@ -107,7 +116,7 @@ function ValueResults(obj) {
                           pt: "15px",
                         }}
                       >
-                        {id + 1 + ". " + title + " (" + pts + " Poäng)"}
+                        {index + 1 + ". " + title + " (" + pts + " Poäng)"}
                       </Typography>
                       <Divider></Divider>
                       <Typography variant="body1" sx={{ paddingTop: "5px" }}>

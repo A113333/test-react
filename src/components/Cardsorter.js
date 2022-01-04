@@ -170,18 +170,22 @@ function CardSorter({ valueArray: arryOfValues }) {
     // tar bort pts från kort när man backar
     const id = pickedCards[pickedCards.length - 1];
     pickedCards.pop();
+
+    if(isItDone){
     valueArray.map((item, index) => {
       if (id === item.id) {
         item.pts = item.pts - 1;
       }
     });
+    setisItDone(false)
+  return
+  }
 
-    // om vi är på sista kortet
-    if (startValue === valueArray.length) {
-      console.log("sista kortet");
-      setisItDone(false);
-      // return;
+  valueArray.map((item, index) => {
+    if (id === item.id) {
+      item.pts = item.pts - 1;
     }
+  });
 
     // om vi är på första kortet i bottenhögen, dvs om vi måste ändra showTop
     if (startValue === showBottom + 1) {
@@ -367,7 +371,7 @@ function CardSorter({ valueArray: arryOfValues }) {
               aria-label="Backa"
               endIcon={<ArrowForwardIosIcon />}
               onClick={goToResult}
-              sx={{ float: "right", mb: "15px", mt: "30px" }}
+              sx={{ float: "right", mb: "15px", mt: "15px" }}
             >
               Visa Resultat
             </Button>
