@@ -101,7 +101,11 @@ function ValueResults(obj) {
                     <li key={id}>
                       <Typography
                         variant="h3"
-                        sx={{ textAlign: "center", paddingBottom: "5px" }}
+                        sx={{
+                          textAlign: "center",
+                          paddingBottom: "5px",
+                          pt: "15px",
+                        }}
                       >
                         {id + 1 + ". " + title + " (" + pts + " Poäng)"}
                       </Typography>

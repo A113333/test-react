@@ -138,32 +138,31 @@
   "user": {
     "values": [
       {
-        "title": " Inre frid",
-        "desc": "Att ha lugn och ro.",
-        "categori": "Fritid",
-        "id": 12,
+        "id": 2,
+        "title": "Äventyrlig",
+        "desc": "villig att skapa eller sträva efter nya, spännande erfarenheter",
         "pts": 4
       },
       {
-        "id": 11,
+        "id": 5,
+        "title": "Omtänksam",
+        "desc": "att aktivt ta hand om mig själv, andra, miljön osv.",
+        "pts": 3
+      },
+      {
+        "id": 4,
         "title": "Autentisk",
         "desc": "att vara genuin, äkta och sann mot mig själv",
         "pts": 2
       },
       {
-        "id": 9,
-        "title": "Äventyrlig",
-        "desc": "villig att skapa eller sträva efter nya, spännande erfarenheter",
-        "pts": 1
-      },
-      {
-        "id": 10,
+        "id": 3,
         "title": "Självsäker",
         "desc": "att lugnt, rättvist och respektfullt stå upp för mina rättigheter och våga be om det jag vill ha",
         "pts": 1
       },
       {
-        "id": 8,
+        "id": 1,
         "title": "Accepterande",
         "desc": "öppen för, tillåtande av eller tillfreds med mig själv, andra, livet, mina känslor osv.",
         "pts": 0

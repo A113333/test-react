@@ -22,18 +22,14 @@ function CardSorter({ valueArray: arryOfValues }) {
   console.log(arryOfValues);
   const history = useHistory();
   const [valueArray, setvalueArray] = useState(arryOfValues);
-
   const [showTop, setShowTop] = useState(0);
   const [showBottom, setShowBottom] = useState(1);
   const [startValue, setstartValue] = useState(2);
-
   const [slide, setSlide] = useState(false);
   const [cardsSorted, setcardsSorted] = useState(0);
   const [totalClicks, settotalClicks] = useState(0);
   const [ShowItsDone, setShowItsDone] = useState(false);
-
   const [pickedCards, setPickedCards] = useState([]);
-
   const [isItDone, setisItDone] = useState(false);
 
   const goToResult = () => {
@@ -49,6 +45,8 @@ function CardSorter({ valueArray: arryOfValues }) {
 
   useEffect(() => {
     setSlide(true);
+    console.log("cardsSorted ");
+    console.log(cardsSorted);
     countTotalClicks();
   }, []); // Only re-run the effect if count changes
   // useEffect körs på varje render, här hämtas data från JSON server
@@ -86,25 +84,30 @@ function CardSorter({ valueArray: arryOfValues }) {
 
   // id kommer vara samma tills den startar om
   const clickTop = ({ index, id }) => {
-    //lägger idet på valde kortet sist i arrayn (för backa funktionen)
+    console.log("cardsSorted");
+    console.log(cardsSorted);
+
     setPickedCards((prevArray) => [...prevArray, id]);
+
+    if (cardsSorted !== totalClicks) {
+      console.log("setcardsSorted(cardsSorted + 1);");
+      setcardsSorted(cardsSorted + 1);
+    }
 
     if (isItDone) {
       setShowItsDone(true);
+      return;
     }
     //lägger till pts
-    !isItDone &&
-      valueArray.map((item, index) => {
-        if (id === item.id) {
-          item.pts = item.pts + 1;
-        }
-      });
+    valueArray.map((item, index) => {
+      if (id === item.id) {
+        item.pts = item.pts + 1;
+      }
+    });
     // !isItDone för att den inte ska ändra sig på click vid färdigt
-    !isItDone && setcardsSorted(cardsSorted + 1);
 
     if (startValue === valueArray.length) {
       // om övningen är klar
-
       console.log("done");
       console.log(valueArray);
       setisItDone(true);
@@ -129,55 +132,44 @@ function CardSorter({ valueArray: arryOfValues }) {
   const clickBottom = ({ index, id }) => {
     setPickedCards((prevArray) => [...prevArray, id]);
 
+    console.log("cardsSorted");
+    console.log(cardsSorted);
+    console.log("totalClicks");
+    console.log(totalClicks);
+    console.log(cardsSorted);
+    if (cardsSorted !== totalClicks) {
+      setcardsSorted(cardsSorted + 1);
+    }
+
+    //om övningen är klart
     if (isItDone) {
       setShowItsDone(true);
-    }
-    //om övningen är klart
-    //lägger till pts
-    !isItDone &&
-      valueArray.map((item, index) => {
-        if (id === item.id) {
-          item.pts = item.pts + 1;
-        }
-      });
-
-    // !isItDone för att den inte ska ändra sig på click vid färdigt
-    !isItDone && setcardsSorted(cardsSorted + 1);
-
-    if (startValue === valueArray.length) {
-      // om övningen är klar
-      console.log("done");
-      console.log(valueArray);
-      setisItDone(true);
-
       return;
     }
 
+    //lägger till pts
+    valueArray.map((item, index) => {
+      if (id === item.id) {
+        item.pts = item.pts + 1;
+      }
+    });
+
+    if (startValue === valueArray.length) {
+      setisItDone(true);
+      return;
+    }
     index + 1 === valueArray.length ? restartArr() : setShowBottom(index + 1);
   };
 
   const goBack = () => {
-    // om i början av övningen q
-    if (cardsSorted === 0) {
-      console.log("om i början av övningen q");
-      return;
-
-      // todo visa usern att hen inte kan backa mer
-    }
-
-    // för att rätt antal klick ska vara kvar
-
-    if (cardsSorted > 0) {
-      setcardsSorted(cardsSorted - 1);
-    }
-
-    console.log("cardsSorted ");
+    console.log("cardsSorted");
     console.log(cardsSorted);
+    // för att rätt antal klick ska vara kvar
+    setcardsSorted(cardsSorted - 1);
 
     // tar bort pts från kort när man backar
     const id = pickedCards[pickedCards.length - 1];
     pickedCards.pop();
-
     valueArray.map((item, index) => {
       if (id === item.id) {
         item.pts = item.pts - 1;
@@ -202,7 +194,7 @@ function CardSorter({ valueArray: arryOfValues }) {
       console.log("-------------");
       console.log(startValue);
       console.log(valueArray.length);
-    } else {
+    } else if (showBottom >= 0) {
       setShowBottom(showBottom - 1);
     }
 
@@ -213,7 +205,7 @@ function CardSorter({ valueArray: arryOfValues }) {
     <div>
       <LinearProgress
         variant="determinate"
-        value={(100 / totalClicks) * cardsSorted}
+        value={Math.round(100 / totalClicks) * cardsSorted}
         color="secondary"
         sx={{
           position: "fixed",
@@ -272,7 +264,7 @@ function CardSorter({ valueArray: arryOfValues }) {
                     padding: "15px",
                     borderRadius: "6px",
                     userSelect: "none",
-                    backgroundImage: "url(images/compass.jpg)",
+                    backgroundImage: "url(images/cardBackground.png)",
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat",
                     backgroundPosition: "right top",
@@ -280,14 +272,17 @@ function CardSorter({ valueArray: arryOfValues }) {
                 >
                   <Typography
                     variant="h3"
+                    color="white"
                     sx={{
                       textAlign: "center",
                       paddingBottom: "5px",
                       pt: "15px",
+                      mt: "15px",
                     }}
                   >
                     {title} {id}
                   </Typography>
+
                   <Divider></Divider>
                   <Typography
                     variant="body1"
@@ -329,6 +324,10 @@ function CardSorter({ valueArray: arryOfValues }) {
                     padding: "15px",
                     borderRadius: "6px",
                     userSelect: "none",
+                    backgroundImage: "url(images/BottomCard.png)",
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "right top",
                   }}
                 >
                   <Typography
@@ -337,11 +336,17 @@ function CardSorter({ valueArray: arryOfValues }) {
                       textAlign: "center",
                       paddingBottom: "5px",
                       pt: "15px",
+                      mt: "15px",
                     }}
                   >
                     {title} {"id:" + id}
                   </Typography>
-                  <Divider></Divider>
+
+                  <>
+                    {" "}
+                    <Divider></Divider>{" "}
+                  </>
+
                   <Typography
                     variant="body1"
                     sx={{ paddingTop: "5px", pt: "15px" }}

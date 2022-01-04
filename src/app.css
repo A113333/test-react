@@ -37,8 +37,8 @@ input[type="checkbox"] {
 
 .show {
   visibility: visible;
-  opacity: 1;
-  transition: visibility 0s linear 0s, opacity 300ms;
+  opacity: 100%;
+  transition: opacity 2s;
   text-align: left;
 }
 
@@ -53,7 +53,7 @@ input[type="checkbox"] {
   position: absolute;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s linear 300ms, opacity 3300ms;
+  transition: visibility 0s linear 0ms, opacity 0ms;
   margin-left: auto;
   margin-right: auto;
   top: 0;
@@ -153,4 +153,57 @@ html {
 }
 
 @media (min-width: 450px) {
+}
+
+.choosen {
+  animation: fadeIn linear 7s;
+  -webkit-animation: fadeIn linear 7s;
+  -moz-animation: fadeIn linear 7s;
+  -o-animation: fadeIn linear 7s;
+  -ms-animation: fadeIn linear 7s;
+}
+
+@keyframes fadeIn {
+  0% {
+    background-color: inherit;
+  }
+  100% {
+    background-color: green;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
