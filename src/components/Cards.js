@@ -7,16 +7,14 @@ import { Button, CardActionArea, CardActions } from "@mui/material";
 import { useHistory } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 
-
 export default function MultiActionAreaCard({
   text: text,
   rubrik: rubrik,
   linkTo: linkTo,
   state: state,
-  stateColor:stateColor
+  stateColor: stateColor,
 }) {
-console.log(stateColor)
-  
+  console.log(stateColor);
 
   const history = useHistory();
   const goTo = () => {

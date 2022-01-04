@@ -14,7 +14,7 @@ export default function ValueList({ text }) {
     data: values,
     isPending,
     error,
-  } = useFetch("http://localhost:3000/valueList");
+  } = useFetch("http://localhost:8000/valueList");
 
   const [slide, setSlide] = useState(false);
 
@@ -24,27 +24,31 @@ export default function ValueList({ text }) {
   // useEffect körs på varje render, här hämtas data från JSON server
 
   return (
-    <Slide direction="left" in={slide} mountOnEnter unmountOnExit>
-      <div>
-        <ExerciseAppbar header={"Värderinskompassen"} step={"2 av 3"} />
-        {isPending && <div> Laddar ....</div>}
-        {error && <div> {error} </div>}
-        <Container maxWidth="md">
+    <div>
+      <ExerciseAppbar header={"Värderinskompassen"} step={"2 av 3"} />
+
+      {isPending && <div> Laddar ....</div>}
+      {error && <div> {error} </div>}
+      <Slide direction="left" in={slide} mountOnEnter unmountOnExit>
+        <Container sx={{ backgroundColor: "white" }}>
           <Typography variant="h1"> Välj dina värderingsord </Typography>
+
           <Typography variant="body1">
             {text}
             {/* finns x antal ord läs igenom alla innan du går vidare 
                 när du är klar: säker att du vill gå vidare (har du läst alla?) */}
-            Välj alla värderingsord som känns viktiga för dig. Välj minst fem
-            och max 10. Har du svårt att välja, testa att ställa dig frågan: med
-            vilka ord hade jag velat att den som kännde mig bäst hade beskrivigt
-            mig med på min egna begravning?
+            Nedan finner du en lista med 36 värderingsord och en kort
+            förklaring. Läs igenom listan och välj de 10 orden som känns
+            viktigast för dig. Har du svårt att välja, testa att ställa dig
+            frågan: med vilka ord hade jag velat att den som kännde mig bäst
+            hade beskrivigt mig med på min egna begravning?
           </Typography>
           <br></br>
           {/* om values finns så körs ValuesComponet  */}
+
+          {values && <ValueLister values={values} />}
         </Container>
-        {values && <ValueLister values={values} />}
-      </div>
-    </Slide>
+      </Slide>
+    </div>
   );
 }

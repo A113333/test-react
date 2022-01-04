@@ -12,6 +12,7 @@
 .picked {
   border-bottom: 1px solid #afafaf36;
   padding: 15px;
+  padding-top: 15px;
   border-radius: 6px;
   border-top-left-radius: 0px;
   border-top-left-radius: 0px;
@@ -29,24 +30,36 @@ input.value-list-checkbox {
 }
 
 input[type="checkbox"] {
-  display: inline-block;
-  padding-top: 25px;
-  padding-top: 25px;
-  position: relative;
-  top: 15px;
-  right: 0px;
   float: right;
+  left: "50%";
+  transform: "translate(-50%)";
 }
 
 .show {
   visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear 0s, opacity 300ms;
   text-align: left;
-
 }
 
+.relative {
+  position: relative;
+  max-height: 200px;
+  max-width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+}
 .hidden {
-  visibility: hidden;
   position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 300ms, opacity 3300ms;
+  margin-left: auto;
+  margin-right: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
 }
 
 .topCardContainer {
@@ -114,22 +127,30 @@ input[type="checkbox"] {
 }
 
 .appBarPadder {
-  height: 65px;
+  height: 85px;
 }
 
 .padderTop {
   padding-top: 35px;
-
 }
 
 .appWrapper {
   height: 100vh;
   width: 100vw;
-  background-color: rgb(240, 240, 240);
 }
 
 html {
   height: 100vh;
   width: 100vw;
-  background-color: rgb(240, 240, 240);
+}
+
+.white {
+  background-color: white;
+}
+
+.css-xdmu94-MuiContainer-root {
+  background-color: white;
+}
+
+@media (min-width: 450px) {
 }

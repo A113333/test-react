@@ -3,9 +3,9 @@ import { useHistory } from "react-router-dom";
 import { Button, Typography } from "@mui/material";
 import List from "@mui/material/List";
 import ItsDoneComponent from "./ItsDoneComponent";
-import LinearProgress from '@mui/material/LinearProgress';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import LinearProgress from "@mui/material/LinearProgress";
+import BackButton from "./BackButton";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 //import FormGroup from "@mui/material/FormGroup";
 //import FormControlLabel from "@mui/material/FormControlLabel";
 //import Checkbox from "@mui/material/Checkbox";
@@ -17,53 +17,45 @@ export default function ValueLister({ values }) {
     new Array(values.length).fill(false)
   );
   const [nrsPicked, setnrsPicked] = useState(0);
-  const [picked, setPicked] = useState([]);
   const [itsDone, setitsDone] = useState(false);
   const [showItsDone, setshowItsDone] = useState(false);
 
-  const prevPage = () =>{
-    history.goBack()
-  }
   //  [checkedState]);  gör att enbart kör när checkedstate ändras
   useEffect(() => {
-    let nr = 0
+    let nr = 0;
     const updateNrsPicked = () => {
       checkedState.forEach((item, index) => {
-      if (item) {
-        nr= nr +1
-      }
-    });
-   
-    setnrsPicked(nr);
-  }
-  updateNrsPicked();
-  if(nr >= 5){
-    setitsDone(true)
-  } else {setitsDone(false)}
+        if (item) {
+          nr = nr + 1;
+        }
+      });
 
-  }, [checkedState]); 
+      setnrsPicked(nr);
+    };
+    updateNrsPicked();
+    if (nr >= 5) {
+      setitsDone(true);
+    } else {
+      setitsDone(false);
+    }
+  }, [checkedState]);
 
   const handleOnChange = ({ id, title }) => {
-
-
-     // sätter true / false för checkbox items
+    // sätter true / false för checkbox items
     const updatedCheckedState = checkedState.map((item, index) =>
-    index === id ? !item : item
-  );
-     
+      index === id ? !item : item
+    );
 
-      if(itsDone && checkedState[id] ) {
-        setCheckedState(updatedCheckedState) 
-        setshowItsDone(false);
-      } else if(itsDone) {
-         setshowItsDone(true);
-      } else {
-        setCheckedState(updatedCheckedState) 
-        setshowItsDone(false);
-      }
-       // setUserValues(updatedValues);
-    
-    
+    if (itsDone && checkedState[id]) {
+      setCheckedState(updatedCheckedState);
+      setshowItsDone(false);
+    } else if (itsDone) {
+      setshowItsDone(true);
+    } else {
+      setCheckedState(updatedCheckedState);
+      setshowItsDone(false);
+    }
+    // setUserValues(updatedValues);
   };
   const history = useHistory();
 
@@ -75,8 +67,7 @@ export default function ValueLister({ values }) {
   const nextPage = () => {
     const userValueArray = [];
 
-  
-    checkedState.map((item, index) => {
+    checkedState.forEach((item, index) => {
       if (item) {
         userValueArray.push(values[index]);
       }
@@ -89,11 +80,27 @@ export default function ValueLister({ values }) {
     });
   };
 
-
-
   return (
     <div>
-      <div >
+      <div>
+        <LinearProgress
+          variant="determinate"
+          value={(100 / 5) * nrsPicked}
+          color="secondary"
+          sx={{
+            position: "fixed",
+            top: "64px",
+            width: "100%",
+            maxWidth: "854px",
+            left: "50%",
+            transform: "translate(-50%, 0)",
+            padding: "0px",
+            zIndex: 100,
+            height: 10,
+            // borderRadius: 5,
+          }}
+        />
+
         <List
           sx={{
             width: "100%",
@@ -133,42 +140,44 @@ export default function ValueLister({ values }) {
         </List>
         <br></br>
         <br></br>
+
+        <BackButton />
+
+        {nrsPicked >= 5 && (
+          <Button
+            variant="contained"
+            color="primary"
+            aria-label="Backa"
+            endIcon={<ArrowForwardIosIcon />}
+            onClick={nextPage}
+            sx={{ float: "right", mb: "15px", mt: "15px" }}
+          >
+            Nästa
+          </Button>
+        )}
+
+        {nrsPicked < 5 && (
+          <Button
+            variant="contained"
+            disabled="true"
+            color="success"
+            aria-label="Backa"
+            endIcon={<ArrowForwardIosIcon />}
+            onClick={nextPage}
+            sx={{ float: "right", mb: "15px", mt: "15px" }}
+          >
+            Välj {5 - nrsPicked} till för att gå vidare
+          </Button>
+        )}
       </div>
 
-      {showItsDone && <ItsDoneComponent title= "Du har valt tio värderingar" 
-      text="Välj bort en värdering om du vill välja en ny"
-      option2= "Okej"/>
-     
-      }
-      <LinearProgress variant="determinate" value={((100/5 )* nrsPicked)
-} sx={{mb:"46px",}}/>
-
-<Button variant="contained" color='primary' aria-label="Nästa" startIcon={< ArrowBackIosIcon/>} onClick={prevPage}
-        sx={{ ml:"15px", }}>
-          Tillbaka 
-        </Button>
-
-
-      {nrsPicked >= 5 &&  (
-
-<Button variant="contained"  color='primary' aria-label="Backa" endIcon={<ArrowForwardIosIcon />} onClick={nextPage}
-sx={{float:"right", mr:"15px", mb:"15px", }}>
-  Nästa 
-</Button>
-
+      {showItsDone && (
+        <ItsDoneComponent
+          title="Du har valt tio värderingar"
+          text="Välj bort en värdering om du vill välja en ny"
+          option2="Okej"
+        />
       )}
-
-      {nrsPicked < 5 && (
-        <Button variant="contained"  disabled ="true" color='success' aria-label="Backa" endIcon={<ArrowForwardIosIcon />} onClick={nextPage}
-sx={{float:"right", mr:"15px", mb:"15px", }}>
-  Välj {5 -nrsPicked} till för att gå vidare
-</Button>
-      )}
-
-
-
- 
-
     </div>
   );
 }

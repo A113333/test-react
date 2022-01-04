@@ -1,0 +1,39 @@
+<Paper
+className="zindex"
+sx={{
+  mx: "auto",
+  margin: "auto",
+  marginTop: "20px",
+  mb: "25px",
+  boxShadow: 5,
+  border: "1px solid",
+  borderColor: "grey.500",
+  height: "120px",
+  width: "75%",
+  maxWidth: "500px",
+  position: "relative",
+  top: "-134px",
+  left: "5px",
+  borderRadius: "6px",
+}}
+></Paper>
+
+<Paper
+className="zindex"
+sx={{
+  mx: "auto",
+  margin: "auto",
+  marginTop: "20px",
+  mb: "25px",
+  boxShadow: 3,
+  border: "1px solid",
+  borderColor: "grey.500",
+  height: "120px",
+  width: "75%",
+  maxWidth: "500px",
+  position: "relative",
+  top: "-282px",
+  left: "3px",
+  borderRadius: "6px",
+}}
+></Paper>

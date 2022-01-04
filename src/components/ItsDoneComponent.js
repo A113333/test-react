@@ -1,34 +1,25 @@
-import React from 'react'
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Slide from '@mui/material/Slide';
+import React from "react";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import Slide from "@mui/material/Slide";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
-  });
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
+function ItsDoneComponent({ title, text, onYes, option1, option2 }) {
+  const [open, setOpen] = React.useState(true);
 
-function ItsDoneComponent({title, text, onYes, option1, option2}) {
+  const handleClose = () => {
+    setOpen(false);
+  };
 
-
-        const [open, setOpen] = React.useState(true);
-      
-        const handleClickOpen = () => {
-          setOpen(true);
-        };
-      
-        const handleClose = () => {
-          setOpen(false);
-        };
-
-    return (
-        <div>
-         
-   
+  return (
+    <div>
       <Dialog
         open={open}
         TransitionComponent={Transition}
@@ -39,17 +30,16 @@ function ItsDoneComponent({title, text, onYes, option1, option2}) {
         <DialogTitle>{title}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
-          {text}
+            {text}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>{option1}</Button>
-         <Button onClick={ onYes? onYes : handleClose}>{option2}</Button>
+          <Button onClick={onYes ? onYes : handleClose}>{option2}</Button>
         </DialogActions>
       </Dialog>
-
-        </div>
-    )
+    </div>
+  );
 }
 
-export default ItsDoneComponent
+export default ItsDoneComponent;
