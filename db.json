@@ -220,34 +220,34 @@
   "user": {
     "values": [
       {
-        "id": 17,
-        "title": "Förlåtande",
-        "desc": "Kunna släppa agg och bitterhet mot andra och mig själv.",
-        "pts": 4
-      },
-      {
-        "id": 11,
-        "title": "Uppmuntrande",
-        "desc": "Stödja, inspirera och belöna beteenden som jag ser som positiva.",
-        "pts": 3
-      },
-      {
-        "id": 4,
-        "title": "Autentisk",
-        "desc": "Vara genuin, äkta och sann mot mig själv.",
-        "pts": 2
-      },
-      {
         "id": 3,
         "title": "Självsäker",
         "desc": "Lugnt, rättvist och respektfullt stå upp för mina rättigheter och våga be om det jag vill ha.",
+        "pts": 3
+      },
+      {
+        "id": 6,
+        "title": "Medkänsla och självmedkänsla ",
+        "desc": "Vara vänlig mot mig själv och andra när livet är svårt.",
+        "pts": 3
+      },
+      {
+        "id": 9,
+        "title": "Kreativ",
+        "desc": "Vara fantasifull och uppfinningsrik.",
+        "pts": 2
+      },
+      {
+        "id": 12,
+        "title": "Uttrycksfull",
+        "desc": "Förmedla mina tankar och känslor genom det jag säger och gör.",
         "pts": 1
       },
       {
-        "id": 2,
-        "title": "Äventyrlig",
-        "desc": "Sträva efter och skapa nya, spännande erfarenheter.",
-        "pts": 0
+        "id": 36,
+        "title": "Förtroende",
+        "desc": "Tro på ärlighet, uppriktighet och förmågan hos andra.",
+        "pts": 1
       }
     ],
     "state": 1.1

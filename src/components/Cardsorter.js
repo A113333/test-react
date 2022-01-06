@@ -441,7 +441,7 @@ function CardSorter({ valueArray: arryOfValues }) {
                 color="success"
                 aria-label="Backa"
                 endIcon={<ArrowForwardIosIcon />}
-                sx={{ float: "right", mb: "15px", mt: "15px" }}
+                sx={{ float: "right", mb: "15px", mt: "45px", mr: "15px" }}
               >
                 {totalClicks - cardsSorted} kort kvar
               </Button>
