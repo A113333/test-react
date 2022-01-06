@@ -14,9 +14,10 @@
   padding: 15px;
   padding-top: 15px;
   border-radius: 6px;
-  border-top-left-radius: 0px;
-  border-top-left-radius: 0px;
-  background-color: #f1f1f15c;
+  background-color: #42a5f5;
+  color: white;
+ 
+  
 }
 .value-list-item label {
   width: 95%;
@@ -30,16 +31,20 @@ input.value-list-checkbox {
 }
 
 input[type="checkbox"] {
-  float: right;
-  left: "50%";
-  transform: "translate(-50%)";
+  position: absolute;
+  right: 0;
+  vertical-align: middle;
+  background-color: white;
+  color: #1976d2;
 }
 
 .show {
+
   visibility: visible;
   opacity: 100%;
-  transition: opacity 2s;
+  transition: opacity 1s, border 1s;
   text-align: left;
+ 
 }
 
 .relative {
@@ -53,13 +58,14 @@ input[type="checkbox"] {
   position: absolute;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s linear 0ms, opacity 0ms;
+ 
   margin-left: auto;
   margin-right: auto;
   top: 0;
   left: 0;
   right: 0;
   text-align: center;
+  border: 100px solid green;
 }
 
 .topCardContainer {
@@ -210,4 +216,22 @@ html {
 
 .transform90 {
   transform: rotateY(180deg);
+}
+
+.blueWhiteAvatar {
+  background-color: "primary.main";
+   color: "blue";
+}
+
+#white {
+background-color: white;
+}
+
+.MuiDivider-vertical-white {
+  background-color: white;
+}
+
+.hiddenCard {
+  display: none;
+  background-color: green;
 }

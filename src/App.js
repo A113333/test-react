@@ -26,10 +26,10 @@ container resultat
 const theme = createTheme({
   palette: {
     primary: {
-      main: blue[500],
+      main: blue[700],
     },
     secondary: {
-      main: "#f37f21",
+      main: blue[400],
     },
   },
 

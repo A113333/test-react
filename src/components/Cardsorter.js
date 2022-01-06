@@ -17,7 +17,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 function CardSorter({ valueArray: arryOfValues }) {
   //  console.log("arryOfValues ");
 
-  const matches = useMediaQuery("(min-width:425px)");
+  const smallScreen = useMediaQuery('(max-width:322px)');
 
   console.log(arryOfValues);
   const history = useHistory();
@@ -225,8 +225,13 @@ function CardSorter({ valueArray: arryOfValues }) {
       />
       <Slide direction="left" in={slide}>
         <Container>
-          <Typography variant="h2"> Sortera din lista </Typography>
-          <Typography variant="body1">
+
+        <Typography variant="h2" gutterBottom align="center" sx={{mt: "30px"}}>
+           Sortera din lista 
+          </Typography>
+          <Divider></Divider>
+
+          <Typography variant="body1" align="center" sx={{mb: "25px", mt: "25px" }}>
             {" "}
             Om du enbart kunde leva efter en av de två värderingarna, vilken
             hade du valt?
@@ -257,7 +262,6 @@ function CardSorter({ valueArray: arryOfValues }) {
                   sx={{
                     display: "table",
                     mx: "auto",
-                    transform: "scale(1)",
                     margin: "auto",
                     boxShadow: 2,
                     borderColor: "grey.500",
@@ -265,48 +269,75 @@ function CardSorter({ valueArray: arryOfValues }) {
                     height: "200px",
                     maxWidth: "450px",
                     backgroundColor: "white",
-                    padding: "15px",
                     borderRadius: "6px",
                     userSelect: "none",
-                    backgroundImage: "url(images/cardBackground.png)",
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "right top",
-                  }}
-                >
-                  <Typography
+                    bgcolor: 'primary.main',
+                    color: "white",
+                    '&:hover': {
+                      transform: "scale(1.05)",
+                    },
+                  }} >
+                
+                {isItDone&&  <Typography
                     variant="h3"
                     color="white"
                     sx={{
                       textAlign: "center",
                       paddingBottom: "5px",
-                      pt: "15px",
-                      mt: "15px",
+                      pt: "25px",
+                      pb: "10px",
+                      mt: "5px",
+                      color: "white",
+                      padding: "10px",
+                      mt: "45px",
+                    }}
+                  > Du är nu färdig med övningen! Tryck på "Visa resultat" knappen för att se ditt resultat.</Typography>        
+                }
+                <Box className={isItDone&& "hiddenCard"}>
+
+          
+                  <Typography
+                    variant="h2"
+                    color="white"
+                    sx={{
+                      textAlign: "center",
+                      paddingBottom: "5px",
+                      pt: "25px",
+                      pb: "10px",
+                      mt: "5px",
+                      color: "white",
                     }}
                   >
-                    {title} {id}
+                   
+           {title}
                   </Typography>
 
-                  <Divider></Divider>
+                  <>
+                <Divider className="white" sx = {{width: "85%", mx: "auto"}}></Divider>
+                  </>
+
                   <Typography
                     variant="body1"
-                    sx={{ padding: "5px", pt: "15px" }}
+                    align="center"
+                    sx={{ p: "15px",  fontSize: "1.1rem", }}
                   >
                     {desc}
                   </Typography>
+                  </Box>
                 </Box>
               );
             })}
           </div>
-
-          <Divider sx={{ mt: "30px", mb: "30px" }}>
+          <Box className={isItDone&& "hiddenCard"}> 
+          <Divider sx={{ width: "50%", mt: "30px", mb: "30px", mx: "auto", }}>
             {" "}
-            <Typography variant="h3" margin={"auto"} gutterBottom>
+            <Typography variant="h3" margin={"auto"}  gutterBottom>
               Eller..
             </Typography>
           </Divider>
 
           <div className="relative">
+          
             {" "}
             {valueArray.map(({ title, desc, id }, index) => {
               return (
@@ -325,47 +356,58 @@ function CardSorter({ valueArray: arryOfValues }) {
                     height: "200px",
                     maxWidth: "450px",
                     backgroundColor: "white",
-                    padding: "15px",
                     borderRadius: "6px",
                     userSelect: "none",
-                    backgroundImage: "url(images/BottomCard.png)",
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "right top",
+                    bgcolor: 'primary.main',
+                    color: "white",
+                    '&:hover': {
+                      transform: "scale(1.05)",
+                    },
                   }}
                 >
+
+
                   <Typography
-                    variant="h3"
+                    variant="h2"
                     sx={{
                       textAlign: "center",
                       paddingBottom: "5px",
-                      pt: "15px",
-                      mt: "15px",
+                      pt: "25px",
+                      pb: "10px",
+                      mt: "5px",
+                      color: "white",
                     }}
                   >
-                    {title} {"id:" + id}
+                    {title} 
                   </Typography>
 
                   <>
-                    {" "}
-                    <Divider></Divider>{" "}
+                <Divider className="white" sx = {{width: "85%", mx: "auto"}}></Divider>
                   </>
 
                   <Typography
                     variant="body1"
-                    sx={{ paddingTop: "5px", pt: "15px" }}
+                    align="center"
+                    sx={{ p: "15px",  fontSize: "1.1rem", }}
                   >
                     {desc}
                   </Typography>
+              
                 </Box>
               );
             })}
+           
           </div>
-
-          <BackButton />
+          </Box>
+<Box sx={{
+  transform: smallScreen?  "scale(0.9)" : null, width: "100%",
+}}
+>
+          <BackButton  />
 
           {isItDone && (
             <Button
+         
               variant="contained"
               color="primary"
               aria-label="Backa"
@@ -379,6 +421,7 @@ function CardSorter({ valueArray: arryOfValues }) {
 
           {!isItDone && (
             <Button
+        
               variant="contained"
               disabled="true"
               color="success"
@@ -389,6 +432,8 @@ function CardSorter({ valueArray: arryOfValues }) {
               {totalClicks - cardsSorted} kort kvar
             </Button>
           )}
+
+</Box>
         </Container>
       </Slide>
       {ShowItsDone && (

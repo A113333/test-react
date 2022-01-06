@@ -8,11 +8,13 @@ import { useHistory } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 
 export default function MultiActionAreaCard({
-  text: text,
-  rubrik: rubrik,
-  linkTo: linkTo,
-  state: state,
-  stateColor: stateColor,
+text,
+  rubrik,
+  linkTo,
+ state,
+  stateColor,
+  isActive,
+  img
 }) {
   console.log(stateColor);
 
@@ -35,12 +37,12 @@ export default function MultiActionAreaCard({
         <CardMedia
           component="img"
           height="100"
-          image="/images/compass.jpg"
+          image={img}
           alt="Kompass"
         />
 
         <CardContent sx={{ padding: "8px" }}>
-          <Typography gutterBottom variant="h3" component="div">
+          <Typography gutterBottom variant="body1" component="div" sx={{ fontWeight: "bold", fontSize: "1,4rem", }}>
             {rubrik}
           </Typography>
           <Typography variant="body1" color="text.secondary">
@@ -54,8 +56,9 @@ export default function MultiActionAreaCard({
           onClick={goTo}
           variant="contained"
           color={stateColor}
+          disabled={!isActive}
         >
-          STARTA ÖVNINGEN
+         { isActive? "STARTA ÖVNINGEN": "kommer snart"}
         </Button>
       </CardActions>
     </Card>

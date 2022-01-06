@@ -31,10 +31,14 @@ export default function ExerciseAppbar({ header, step }) {
             maxWidth: "853px",
             left: "50%",
             transform: "translate(-50%)",
+            bgcolor: 'primary.main',
           }}
         >
-          <Toolbar>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Toolbar
+             sx={{
+              bgcolor: 'primary.main',
+            }}>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1, userSelect: "none",}}>
               {header}
             </Typography>
 

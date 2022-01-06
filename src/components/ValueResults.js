@@ -9,6 +9,7 @@ import Box from "@mui/material/Box";
 import StarIcon from "@mui/icons-material/Star";
 import BackToHomeButton from "./BackToHomeButton";
 import Typography from "@mui/material/Typography";
+import Avatar from '@mui/material/Avatar';
 
 const labels = {
   0: "Inte alls",
@@ -75,11 +76,15 @@ const handleShowValueInfo = (index)=>{
         <ExerciseAppbar header={"Värderinskompassen"} step={"3 av 3"} />
         <Container maxWidth="md">
           <div>
-            <Typography variant="h2" gutterBottom>
-              Dina fem viktigaste värderingar
-            </Typography>
 
-            <Typography variant="body1" gutterBottom>
+          <Typography variant="h2" gutterBottom align="center" sx={{mt: "30px"}}>
+          Dina fem viktigaste värderingar
+          </Typography>
+          <Divider></Divider>
+          
+       
+
+            <Typography variant="body1" gutterBottom align="center" sx={{mb: "25px", mt: "25px" }}>
               Bra jobbat, ta ett djupt andetag och tacka dig själv, du har
               precis gjort något viktigt och meningsfullt för din egna skull. Ta
               nu en noggran titt på dina värderingar.
@@ -87,8 +92,11 @@ const handleShowValueInfo = (index)=>{
 
             <div className="noStyleList">
               {results.map(({ title, desc, pts }, index) => {
+                
                 return (
+                 
                   <Box onClick={()=>handleShowValueInfo(index)}
+                  key={index}
                   className={ShowValueInfo === index ? "transform90" : "not active"}
                     sx={{
                       display: "table",
@@ -101,34 +109,45 @@ const handleShowValueInfo = (index)=>{
                       width: "95%",
                       height: "200px",
                       maxWidth: "450px",
-                      backgroundColor: "white",
-                      padding: "15px",
+                      bgcolor: 'primary.main',
+                      color: "white",
+                     
                       borderRadius: "6px",
                       mb: "25px",
+                      '&:hover': {
+                        transform: "scale(1.1)",
+                      },
                     }}
                   >
+                 <Avatar sx={{ bgcolor: "white", color: "primary.main", float: "left", width: 30, height: 30, mt: "15px", ml:"15px", fontWeight:"bold",  }}> 
+                 <Typography variant="body1" sx={{ fontWeight: "bold", userSelect: "none",}}>  {index + 1 }</Typography> </Avatar>  
                     <li key={index}>
                       <Typography
-                        variant="h3"
+                        variant="h2"
                         sx={{
                           textAlign: "center",
                           paddingBottom: "5px",
-                          pt: "15px",
+                          pt: "25px",
+                          pb: "10px",
+                          mt: "5px",
+                          mr: "45px",
+                          color: "white",
+                          userSelect: "none",
                         }}
                       >
-                        {index + 1 + ". " + title + " (" + pts + " Poäng)"}
+                        { title }
                       </Typography>
-                      <Divider></Divider>
-                      <Typography variant="body1" sx={{ paddingTop: "5px" }}>
+                      <Divider className="white" sx = {{width: "85%", mx: "auto"}}></Divider>
+                      <Typography variant="body1" sx={{ p: "15px",  fontSize: "1.1rem", userSelect: "none", }}>
                         {" Jag vill vara " + desc}
                       </Typography>
 
-                      <Typography variant="h4" gutterBottom>
-                        Hur bra lever du värderingen {" " + title + " "} idag?
-                      </Typography>
+                      
                     </li>
                   </Box>
+           
                 );
+                
               })}
             </div>
             <br></br>

@@ -9,6 +9,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import ExploreIcon from '@mui/icons-material/Explore';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 // Grid är 12 columer
@@ -80,36 +81,13 @@ export default function Home() {
       <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" centered>
-          <Tab icon={<FavoriteIcon />} iconPosition="start"  label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+          <Tab icon={<ExploreIcon />} iconPosition="start"  label="Värderingar" {...a11yProps(0)} />
+          <Tab label="Mål" {...a11yProps(1)} />
+          <Tab label="Logga" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        Item One
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-      <Cards
-                text={
-                  "Få hjälp att hitta din kurs, hur vill du vara som människa? Vad är viktigt för dig på riktigt?"
-                }
-                rubrik={"Värderingskompassen, Steg 1"}
-                linkTo={"/values1"}
-                stateColor={"success"}
-              />
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
-      </TabPanel>
-      </Box>
-
-  
-  
-  
-
-      <div className="padderTop">
-        <Container>
-          <Grid
+      <Grid
             container
             spacing={{ xs: 2, md: 3 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
@@ -119,30 +97,97 @@ export default function Home() {
                 text={
                   "Få hjälp att hitta din kurs, hur vill du vara som människa? Vad är viktigt för dig på riktigt?"
                 }
-                rubrik={"Värderingskompassen, Steg 1"}
+                rubrik={"Övning 1: Värdekompassen"}
                 linkTo={"/values1"}
-                stateColor={"success"}
+                isActive={true}
+                img={"/images/compass.jpg"}
+               
               />
             </Grid>
             <Grid item xs={12} sm={4} md={4}>
               <Cards
                 text={
-                  "Fördjupa dig i dina värderingar: vilka livsområden är särskilt viktiga för dig? "
+                  "Fortsätt fördjupa dig i värderingar, denna gång utifrån livsområden. Lägger du din tid och energi på rätt ställen?"
                 }
-                rubrik={"Värderingskompassen, Steg 2."}
-                linkTo={"/varderingskompassenSteg2"}
+                rubrik={"Dina livsområden"}
+           
+                img={"/images/map.jpg"}
               />
             </Grid>{" "}
             <Grid item xs={12} sm={4} md={4}>
               <Cards
                 text={
-                  "Fördjupa dig i dina värderingar: vilka livsområden är särskilt viktiga för dig? "
+                  "Här presenteras några verktyg för att hjälpa  dig att leva mer efter dina värderingar"
                 }
-                rubrik={"Värderingskompassen, Steg 3."}
-                linkTo={"/varderingskompassenSteg3"}
+                rubrik={"Lev som du önskar"}
+                img={"/images/water.jpg"}
+                
+           
+                
               />
             </Grid>
           </Grid>
+
+
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+ 
+
+
+      <Grid
+            container
+            spacing={{ xs: 2, md: 3 }}
+            columns={{ xs: 4, sm: 8, md: 12 }}
+          >
+            <Grid item xs={12} sm={4} md={4}>
+              <Cards
+                text={
+                  "Vi jobbar hårt för att få detta färdigt"
+                }
+                rubrik={"Inte färdigt"}
+                img={"/images/darkSky.jpg"}
+              />
+   
+   </Grid>
+          </Grid>
+
+
+
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+       
+      <Grid
+            container
+            spacing={{ xs: 2, md: 3 }}
+            columns={{ xs: 4, sm: 8, md: 12 }}
+          >
+            <Grid item xs={12} sm={4} md={4}>
+              <Cards
+                text={
+                  "Kommer snart"
+                }
+                rubrik={"Vi har inte kommit så här långt ännu!"}
+                linkTo={"/values1"}
+                img={"/images/darkSky.jpg"}
+                
+               
+              />
+            </Grid>
+      
+          </Grid>
+
+
+
+      </TabPanel>
+      </Box>
+
+  
+  
+  
+
+      <div className="padderTop">
+        <Container>
+       
         </Container>
       </div>
     </div>
