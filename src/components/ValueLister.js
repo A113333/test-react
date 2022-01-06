@@ -9,6 +9,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Box from "@mui/material/Box";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Checkbox from "@mui/material/Checkbox";
+import { pink } from "@mui/material/colors";
 //import FormGroup from "@mui/material/FormGroup";
 //import FormControlLabel from "@mui/material/FormControlLabel";
 //import Checkbox from "@mui/material/Checkbox";
@@ -123,19 +124,19 @@ export default function ValueLister({ values }) {
                   className={checkedState[id] ? "picked" : "value-list-item"}
                 >
                   <Checkbox
-                    defaultChecked
-                    sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
-                  />
-
-                  <input
-                    className="value-list-checkbox"
-                    type="checkbox"
-                    /*${id} låter mig sätta ett dynamiskt värde i html    */
+                    color="default"
+                    sx={{
+                      "& .MuiSvgIcon-root": { fontSize: 30 },
+                      position: "absolute",
+                      right: "36px",
+                      verticalAlign: "middle",
+                    }}
                     id={`custom-checkbox-${id}`}
                     title={title}
                     checked={checkedState[id]}
                     onChange={() => handleOnChange({ id: id, title: title })}
                   />
+
                   <Box
                     sx={{
                       mt: "15px",

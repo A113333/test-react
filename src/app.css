@@ -4,27 +4,25 @@
 .value-list-item {
   border-bottom: 1px solid #afafaf36;
   border-radius: 6px;
-  border-top-left-radius: 0px;
-  border-top-left-radius: 0px;
-  padding: 15px;
   width: 95%;
   margin: auto;
+  padding: 15px;
+  margin-top: 15px;
 }
 
 .picked {
   border-bottom: 1px solid #afafaf36;
-  padding: 15px;
-  padding-top: 15px;
   border-radius: 6px;
   background-color: #42a5f5;
   color: white;
   width: 95%;
   margin: auto;
+  padding: 15px;
+  margin-top: 15px;
 }
 
 .value-list-item label {
   width: 95%;
-
   display: inline-block;
 }
 input.value-list-checkbox {

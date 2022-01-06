@@ -3,7 +3,7 @@ import ValuePicker from "./components/ValuePicker";
 import "./app.css";
 import Navbar from "./components/navbar";
 import Home from "./components/Home";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import ValueDetalis from "./components/ValueDetails";
 import CreateValue from "./components/CreateValue";
 import NotFound from "./components/NotFound";
@@ -89,7 +89,7 @@ function App() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <div className="appWrapper">
           <div className="app">
             <ThemeProvider theme={theme}>

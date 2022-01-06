@@ -216,11 +216,12 @@ function CardSorter({ valueArray: arryOfValues }) {
           position: "fixed",
           top: "64px",
           width: "100%",
-          maxWidth: "853px",
-          mx: "auto",
+          maxWidth: "854px",
+          left: "50%",
+          transform: "translate(-50%, 0)",
           padding: "0px",
           zIndex: 100,
-          height: 10,
+          height: 15,
           // borderRadius: 5,
         }}
       />
@@ -440,7 +441,7 @@ function CardSorter({ valueArray: arryOfValues }) {
                 color="success"
                 aria-label="Backa"
                 endIcon={<ArrowForwardIosIcon />}
-                sx={{ float: "right", mb: "15px", mt: "45px", mr: "15px" }}
+                sx={{ float: "right", mb: "15px", mt: "15px" }}
               >
                 {totalClicks - cardsSorted} kort kvar
               </Button>
