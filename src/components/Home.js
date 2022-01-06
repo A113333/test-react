@@ -11,6 +11,9 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import ExploreIcon from '@mui/icons-material/Explore';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import useMediaQuery from "@mui/material/useMediaQuery";
+import MapIcon from '@mui/icons-material/Map';
+import BookIcon from '@mui/icons-material/Book';
 
 // Grid är 12 columer
 /*
@@ -23,6 +26,7 @@ xl, extra-large: 1536px
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
+  const smallScreen = useMediaQuery('(max-width:322px)');
 
   return (
     <div
@@ -81,9 +85,9 @@ export default function Home() {
       <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" centered>
-          <Tab icon={<ExploreIcon />} iconPosition="start"  label="Värderingar" {...a11yProps(0)} />
-          <Tab label="Mål" {...a11yProps(1)} />
-          <Tab label="Logga" {...a11yProps(2)} />
+          <Tab icon={<ExploreIcon />}  label="Värderingar" {...a11yProps(0)} />
+          <Tab icon={<MapIcon/>}label="Mål" {...a11yProps(1)} />
+          <Tab icon={<BookIcon/>} label="Loggbok" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>

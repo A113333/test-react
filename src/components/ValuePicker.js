@@ -37,9 +37,9 @@ export default function ValueList({ text }) {
             {text}
             {/* finns x antal ord läs igenom alla innan du går vidare 
                 när du är klar: säker att du vill gå vidare (har du läst alla?) */}
-            Nedan finner du en lista med 36 värderingsord och en kort
-            förklaring. Läs igenom listan och välj de 10 orden som känns
-            viktigast för dig. Har du svårt att välja, testa att ställa dig
+            Nedan finner du en lista med 36 värderingsord med en kort
+            förklaring. Läs igenom listan och välj de 10 värderingar som känns
+            viktigast för dig. Har du svårt att välja? Testa att ställa dig
             frågan: med vilka ord hade jag velat att den som kännde mig bäst
             hade beskrivigt mig med på min egna begravning?
           </Typography>

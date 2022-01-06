@@ -185,7 +185,7 @@ export default function ValueLister({ values }) {
             onClick={nextPage}
             sx={{ float: "right", mb: "15px", mt: "15px" }}
           >
-            Välj {5 - nrsPicked} till för att gå vidare
+            Välj {5 - nrsPicked} till 
           </Button>
         )}
         </Box>

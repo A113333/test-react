@@ -223,31 +223,31 @@
         "id": 33,
         "title": "Skicklig",
         "desc": "Göra saker på ett bra sätt, använda min kunskap, erfarenhet och träning optimalt.",
-        "pts": 4
-      },
-      {
-        "id": 29,
-        "title": "Lekfull",
-        "desc": "Ha roligt, leva med ett sinne för humor och kunna vara lättsam.",
         "pts": 3
       },
       {
-        "id": 31,
-        "title": "Respektfull",
-        "desc": "Behandla mig själv och andra med omsorg och hänsyn.",
+        "id": 36,
+        "title": "Förtroende",
+        "desc": "Tro på ärlighet, uppriktighet och förmågan hos andra.",
+        "pts": 3
+      },
+      {
+        "id": 32,
+        "title": "Ansvarsfull",
+        "desc": "Vara trovärdig, pålitlig och ta ansvar för mina handlingar.",
         "pts": 2
+      },
+      {
+        "id": 34,
+        "title": "Stödjande",
+        "desc": "Vara hjälpsam, uppmuntrande och tillgänglig för mig själv och andra.",
+        "pts": 1
       },
       {
         "id": 35,
         "title": "Pålitlig",
         "desc": "Vara lojal, ärlig, trogen, uppriktig och ansvarsfull.",
         "pts": 1
-      },
-      {
-        "id": 34,
-        "title": "Stödjande",
-        "desc": "Vara hjälpsam, uppmuntrande och tillgänglig för mig själv och andra.",
-        "pts": 0
       }
     ],
     "state": 1.1

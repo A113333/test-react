@@ -291,7 +291,7 @@ function CardSorter({ valueArray: arryOfValues }) {
                       padding: "10px",
                       mt: "45px",
                     }}
-                  > Du är nu färdig med övningen! Tryck på "Visa resultat" knappen för att se ditt resultat.</Typography>        
+                  > Du är nu färdig med övningen! Tryck på "Se resultat" knappen för att se ditt resultat.</Typography>        
                 }
                 <Box className={isItDone&& "hiddenCard"}>
 
@@ -415,7 +415,7 @@ function CardSorter({ valueArray: arryOfValues }) {
               onClick={goToResult}
               sx={{ float: "right", mb: "15px", mt: "15px" }}
             >
-              Visa Resultat
+              Se Resultat
             </Button>
           )}
 
@@ -439,7 +439,7 @@ function CardSorter({ valueArray: arryOfValues }) {
       {ShowItsDone && (
         <ItsDoneComponent
           title="Bra jobbat!"
-          text="Du är nu klar med värderingskompassen, tryck på knappen VISA RESULTAT för att se ditt resultat"
+          text="Du är nu klar med värderingskompassen, tryck på knappen SE RESULTAT för att se ditt resultat"
           option2="Okej!"
         />
       )}

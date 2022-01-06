@@ -12,17 +12,17 @@ import Typography from "@mui/material/Typography";
 import Avatar from '@mui/material/Avatar';
 
 const labels = {
-  0: "Inte alls",
+  0: "Väldigt Dåligt",
 
-  1: "Ganska lite",
+  1: "Ganska Dåligt",
 
-  2: "Lite",
+  2: "Rätt bra",
 
-  3: "En del",
+  3: "Bra",
 
-  4: "Mycket",
+  4: "Mycket Bra",
 
-  5: "Väldigt mycket",
+  5: "Väldigt Bra",
 };
 
 function ValueResults(obj) {
@@ -115,7 +115,7 @@ const handleShowValueInfo = (index)=>{
                       borderRadius: "6px",
                       mb: "25px",
                       '&:hover': {
-                        transform: "scale(1.1)",
+                        transform: "scale(1.05)",
                       },
                     }}
                   >
@@ -152,10 +152,11 @@ const handleShowValueInfo = (index)=>{
             </div>
             <br></br>
             <Typography variant="h3" gutterBottom>
-              En fråga här?
+              Hur bra tycker du att du lever efter dina värderingar idag?
             </Typography>
             <Box
               sx={{
+                mx:"auto",
                 width: 200,
                 display: "flex",
                 alignItems: "center",
@@ -180,13 +181,30 @@ const handleShowValueInfo = (index)=>{
                 <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>
               )}
             </Box>
-            <Typography variant="body1" gutterBottom>
-              I nästa övning kommer vi fortsätta fördjupa oss i värderingar, då
-              kommer vi kolla på hur dina värderingar ser ut i olika livsområden
-            </Typography>
-          </div>
 
-          <BackToHomeButton />
+            <Typography
+                        variant="h3"
+                        sx={{
+                          textAlign: "center",
+                          paddingBottom: "5px",
+                          pt: "25px",
+                          pb: "10px",
+                          mt: "5px",
+                          mr: "45px",
+                          userSelect: "none",
+                        }}
+                      >
+                      Första övningen klar!
+                      </Typography>
+                      <Divider></Divider>'
+            <Typography variant="body1" gutterBottom>
+              I nästa övning kommer vi fortsätta fördjupa oss i värderingar. då
+              kommer vi kolla på hur dina värderingar ser ut i olika livsområden och hur du värderar de olika delarna av livet.
+            </Typography>
+            
+          </div>
+<Box textAlign='center' >  <BackToHomeButton  /> </Box>
+
         </Container>
       </div>
     </Slide>

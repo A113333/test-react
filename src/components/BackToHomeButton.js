@@ -16,7 +16,7 @@ function BackToHomeButton() {
  
   return (
     <div>
-      <Button variant="contained" onClick={toStart} sx={{ mb: "15px" }} >
+      <Button variant="contained" onClick={toStart} sx={{ mb: "25px", mt:"25px",}} >
         Tillbaka till startsidan
       </Button>
     </div>
