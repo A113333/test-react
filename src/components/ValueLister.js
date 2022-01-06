@@ -7,12 +7,13 @@ import LinearProgress from "@mui/material/LinearProgress";
 import BackButton from "./BackButton";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Box from "@mui/material/Box";
-import useMediaQuery from '@mui/material/useMediaQuery';
+import useMediaQuery from "@mui/material/useMediaQuery";
+import Checkbox from "@mui/material/Checkbox";
 //import FormGroup from "@mui/material/FormGroup";
 //import FormControlLabel from "@mui/material/FormControlLabel";
 //import Checkbox from "@mui/material/Checkbox";
 
-// fixa hoover 
+// fixa hoover
 
 export default function ValueLister({ values }) {
   const [checkedState, setCheckedState] = useState(
@@ -22,8 +23,7 @@ export default function ValueLister({ values }) {
   const [itsDone, setitsDone] = useState(false);
   const [showItsDone, setshowItsDone] = useState(false);
 
-
-  const smallScreen = useMediaQuery('(max-width:322px)');
+  const smallScreen = useMediaQuery("(max-width:322px)");
   //  [checkedState]);  gör att enbart kör när checkedstate ändras
   useEffect(() => {
     let nr = 0;
@@ -85,7 +85,7 @@ export default function ValueLister({ values }) {
   };
 
   return (
-    <div>
+    <Box sx={{ overflow: "hidden" }}>
       <div>
         <LinearProgress
           variant="determinate"
@@ -118,20 +118,15 @@ export default function ValueLister({ values }) {
         >
           {values.map(({ title, desc }, id) => {
             return (
-              <Box sx={{ 
-                mt: "15px",
-                
-                '&:hover': {
-                  transform: "scale(1.02)",
-                 
-                },
-              }}>
-
               <li key={id}>
                 <div
                   className={checkedState[id] ? "picked" : "value-list-item"}
                 >
-               
+                  <Checkbox
+                    defaultChecked
+                    sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
+                  />
+
                   <input
                     className="value-list-checkbox"
                     type="checkbox"
@@ -141,53 +136,59 @@ export default function ValueLister({ values }) {
                     checked={checkedState[id]}
                     onChange={() => handleOnChange({ id: id, title: title })}
                   />
-                  
-                  <label htmlFor={`custom-checkbox-${id}`}>
-                    <Typography variant="h3">
-                      {id + 1 + ". " + title + " "}
-                    </Typography>
-                    <Typography variant="body1">{desc}</Typography>
-                  </label>
+                  <Box
+                    sx={{
+                      mt: "15px",
+                      "&:hover": {
+                        transform: "scale(1.01)",
+                      },
+                    }}
+                  >
+                    <label htmlFor={`custom-checkbox-${id}`}>
+                      <Typography variant="h3">
+                        {id + 1 + ". " + title + " "}
+                      </Typography>
+                      <Typography variant="body1">{desc}</Typography>
+                    </label>
+                  </Box>
                 </div>
               </li>
-              </Box>
             );
           })}
         </List>
-       <br></br>
-       <br></br>
-       <Box sx={{transform: smallScreen?  "scale(0.9)" : null, width: "100%",
-}}> 
-        <BackButton />
+        <br></br>
+        <br></br>
+        <Box
+          sx={{ transform: smallScreen ? "scale(0.9)" : null, width: "100%" }}
+        >
+          <BackButton />
 
-        {nrsPicked >= 5 && (
-          <Button
-         
-            variant="contained"
-            color="primary"
-            aria-label="Backa"
-            endIcon={<ArrowForwardIosIcon />}
-            onClick={nextPage}
-            sx={{ float: "right", mb: "15px", mt: "15px" }}
-          >
-            Nästa
-          </Button>
-        )}
+          {itsDone && (
+            <Button
+              variant="contained"
+              color="primary"
+              aria-label="Backa"
+              endIcon={<ArrowForwardIosIcon />}
+              onClick={nextPage}
+              sx={{ float: "right", mb: "15px", mt: "45px", mr: "15px" }}
+            >
+              Nästa
+            </Button>
+          )}
 
-        {nrsPicked < 5 && (
-          <Button
-         
-            variant="contained"
-            disabled="true"
-            color="success"
-            aria-label="Backa"
-            endIcon={<ArrowForwardIosIcon />}
-            onClick={nextPage}
-            sx={{ float: "right", mb: "15px", mt: "15px" }}
-          >
-            Välj {5 - nrsPicked} till 
-          </Button>
-        )}
+          {nrsPicked < 5 && (
+            <Button
+              variant="contained"
+              disabled="true"
+              color="success"
+              aria-label="Backa"
+              endIcon={<ArrowForwardIosIcon />}
+              onClick={nextPage}
+              sx={{ float: "right", mb: "15px", mt: "45px", mr: "15px" }}
+            >
+              Välj {5 - nrsPicked} till
+            </Button>
+          )}
         </Box>
       </div>
 
@@ -198,7 +199,6 @@ export default function ValueLister({ values }) {
           option2="Okej"
         />
       )}
-      
-    </div>
+    </Box>
   );
 }

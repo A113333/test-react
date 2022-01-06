@@ -13,14 +13,12 @@ import BackButton from "./BackButton";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import AddIcon from '@mui/icons-material/Add';
-
-
+import AddIcon from "@mui/icons-material/Add";
 
 function CardSorter({ valueArray: arryOfValues }) {
   //  console.log("arryOfValues ");
 
-  const smallScreen = useMediaQuery('(max-width:322px)');
+  const smallScreen = useMediaQuery("(max-width:322px)");
 
   console.log(arryOfValues);
   const history = useHistory();
@@ -174,21 +172,21 @@ function CardSorter({ valueArray: arryOfValues }) {
     const id = pickedCards[pickedCards.length - 1];
     pickedCards.pop();
 
-    if(isItDone){
+    if (isItDone) {
+      valueArray.map((item, index) => {
+        if (id === item.id) {
+          item.pts = item.pts - 1;
+        }
+      });
+      setisItDone(false);
+      return;
+    }
+
     valueArray.map((item, index) => {
       if (id === item.id) {
         item.pts = item.pts - 1;
       }
     });
-    setisItDone(false)
-  return
-  }
-
-  valueArray.map((item, index) => {
-    if (id === item.id) {
-      item.pts = item.pts - 1;
-    }
-  });
 
     // om vi är på första kortet i bottenhögen, dvs om vi måste ändra showTop
     if (startValue === showBottom + 1) {
@@ -228,13 +226,21 @@ function CardSorter({ valueArray: arryOfValues }) {
       />
       <Slide direction="left" in={slide}>
         <Container>
-
-        <Typography variant="h2" gutterBottom align="center" sx={{mt: "30px"}}>
-           Sortera din lista 
+          <Typography
+            variant="h2"
+            gutterBottom
+            align="center"
+            sx={{ mt: "30px" }}
+          >
+            Sortera din lista
           </Typography>
           <Divider></Divider>
 
-          <Typography variant="body1" align="center" sx={{mb: "25px", mt: "25px" }}>
+          <Typography
+            variant="body1"
+            align="center"
+            sx={{ mb: "25px", mt: "25px" }}
+          >
             {" "}
             Om du enbart kunde leva efter en av de två värderingarna, vilken
             hade du valt?
@@ -254,191 +260,192 @@ function CardSorter({ valueArray: arryOfValues }) {
               Ångra val
             </Button>
           </Box>
-      
+
           <div className="relative">
             <Box>
-
-            {valueArray.map(({ title, desc, id }, index) => {
-              return (
-                <Box
-                  key={"top" + id}
-                  className={index === showTop ? "show" : "hidden"}
-                  onClick={() => clickTop({ index: index, id: id })}
-                  sx={{
-                    display: "table",
-                    mx: "auto",
-                    margin: "auto",
-                    boxShadow: 2,
-                    width: "100%",
-                    height: "200px",
-                    maxWidth: "450px",
-                    backgroundColor: "white",
-                    borderRadius: "6px",
-                    userSelect: "none",
-                    bgcolor: 'primary.main',
-                    color: "white",
-                    '&:hover': {
-                      transform: "scale(1.02)",
-                    },
-                  }} >
-                
-                {isItDone&&  <Typography
-                    variant="h3"
-                    color="white"
+              {valueArray.map(({ title, desc, id }, index) => {
+                return (
+                  <Box
+                    key={"top" + id}
+                    className={index === showTop ? "show" : "hidden"}
+                    onClick={() => clickTop({ index: index, id: id })}
                     sx={{
-                      textAlign: "center",
-                      paddingBottom: "5px",
-                      pt: "25px",
-                      pb: "10px",
-                      mt: "5px",
+                      display: "table",
+                      mx: "auto",
+                      margin: "auto",
+                      boxShadow: 2,
+                      width: "100%",
+                      height: "200px",
+                      maxWidth: "450px",
+                      backgroundColor: "white",
+                      borderRadius: "6px",
+                      userSelect: "none",
+                      bgcolor: "primary.main",
                       color: "white",
-                      padding: "10px",
-                      mt: "45px",
-                    }}
-                  > Du är nu färdig med övningen! Tryck på "Se resultat" knappen för att se ditt resultat.</Typography>        
-                }
-                <Box className={isItDone&& "hiddenCard"}>
-
-          
-                  <Typography
-                    variant="h2"
-                    color="white"
-                    sx={{
-                      textAlign: "center",
-                      paddingBottom: "5px",
-                      pt: "25px",
-                      pb: "10px",
-                      mt: "5px",
-                      color: "white",
+                      "&:hover": {
+                        transform: "scale(1.02)",
+                      },
                     }}
                   >
-                   
-           {title}
-                  </Typography>
+                    {isItDone && (
+                      <Typography
+                        variant="h3"
+                        color="white"
+                        sx={{
+                          textAlign: "center",
+                          paddingBottom: "5px",
+                          p: "25px",
+                          pb: "10px",
+                          color: "white",
+                          padding: "10px",
+                          mt: "45px",
+                        }}
+                      >
+                        {" "}
+                        Du är nu färdig med övningen! Tryck på "Se resultat"
+                        knappen för att se ditt resultat.
+                      </Typography>
+                    )}
 
-                  <>
-                <Divider className="white" sx = {{width: "85%", mx: "auto"}}></Divider>
-                  </>
+                    <Box className={isItDone && "hiddenCard"}>
+                      <Typography
+                        variant="h2"
+                        color="white"
+                        sx={{
+                          textAlign: "center",
+                          paddingBottom: "5px",
+                          pt: "25px",
+                          pb: "10px",
+                          mt: "5px",
+                          color: "white",
+                        }}
+                      >
+                        {title}
+                      </Typography>
 
-                  <Typography
-                    variant="body1"
-                    align="center"
-                    sx={{ p: "15px",  fontSize: "1.1rem", }}
-                  >
-                    {desc}
-                  </Typography>
+                      <>
+                        <Divider
+                          className="white"
+                          sx={{ width: "85%", mx: "auto" }}
+                        ></Divider>
+                      </>
+
+                      <Typography
+                        variant="body1"
+                        align="center"
+                        sx={{ p: "30px", pt: "15px", fontSize: "1.1rem" }}
+                      >
+                        {desc}
+                      </Typography>
+                    </Box>
                   </Box>
-                </Box>
-              );
-            })}
+                );
+              })}
             </Box>
           </div>
-          <Box className={isItDone&& "hiddenCard"}> 
-          <Divider sx={{ width: "50%", mt: "30px", mb: "30px", mx: "auto", }}>
-            {" "}
-            <Typography variant="h3" margin={"auto"}  gutterBottom>
-              Eller..
-            </Typography>
-          </Divider>
+          <Box className={isItDone && "hiddenCard"}>
+            <Divider sx={{ width: "50%", mt: "30px", mb: "30px", mx: "auto" }}>
+              {" "}
+              <Typography variant="h3" margin={"auto"} gutterBottom>
+                Eller..
+              </Typography>
+            </Divider>
 
-          <div className="relative">
-          
-            {" "}
-            {valueArray.map(({ title, desc, id }, index) => {
-              return (
-                <Box
-                  key={"bottom" + id}
-                  className={showBottom === index ? "show" : "hidden"}
-                  onClick={() => clickBottom({ index: index, id: id })}
-                  sx={{
-                    display: "table",
-                    mx: "auto",
-                    transform: "scale(1)",
-                    margin: "auto",
-                    boxShadow: 2,
-                    borderColor: "grey.500",
-                    width: "95%",
-                    height: "200px",
-                    maxWidth: "450px",
-                    backgroundColor: "white",
-                    borderRadius: "6px",
-                    userSelect: "none",
-                    bgcolor: 'primary.main',
-                    color: "white",
-                    '&:hover': {
-                      transform: "scale(1.02)",
-                    },
-                  }}
-                >
-
-
-                  <Typography
-                    variant="h2"
+            <div className="relative">
+              {" "}
+              {valueArray.map(({ title, desc, id }, index) => {
+                return (
+                  <Box
+                    key={"bottom" + id}
+                    className={showBottom === index ? "show" : "hidden"}
+                    onClick={() => clickBottom({ index: index, id: id })}
                     sx={{
-                      textAlign: "center",
-                      paddingBottom: "5px",
-                      pt: "25px",
-                      pb: "10px",
-                      mt: "5px",
+                      display: "table",
+                      mx: "auto",
+                      transform: "scale(1)",
+                      margin: "auto",
+                      boxShadow: 2,
+                      borderColor: "grey.500",
+                      width: "95%",
+                      height: "200px",
+                      maxWidth: "450px",
+                      backgroundColor: "white",
+                      borderRadius: "6px",
+                      userSelect: "none",
+                      bgcolor: "primary.main",
                       color: "white",
+                      "&:hover": {
+                        transform: "scale(1.02)",
+                      },
                     }}
                   >
-                    {title} 
-                  </Typography>
+                    <Typography
+                      variant="h2"
+                      sx={{
+                        textAlign: "center",
+                        paddingBottom: "5px",
+                        pt: "25px",
+                        pb: "10px",
+                        mt: "5px",
+                        color: "white",
+                      }}
+                    >
+                      {title}
+                    </Typography>
 
-                  <>
-                <Divider className="white" sx = {{width: "85%", mx: "auto"}}></Divider>
-                  </>
+                    <>
+                      <Divider
+                        className="white"
+                        sx={{ width: "85%", mx: "auto" }}
+                      ></Divider>
+                    </>
 
-                  <Typography
-                    variant="body1"
-                    align="center"
-                    sx={{ p: "15px",  fontSize: "1.1rem", }}
-                  >
-                    {desc}
-                  </Typography>
-              
-                </Box>
-              );
-            })}
-           
-          </div>
+                    <Typography
+                      variant="body1"
+                      align="center"
+                      sx={{ p: "30px", pt: "15px", fontSize: "1.1rem" }}
+                    >
+                      {desc}
+                    </Typography>
+                  </Box>
+                );
+              })}
+            </div>
           </Box>
-<Box sx={{
-  transform: smallScreen?  "scale(0.9)" : null, width: "100%",
-}}
->
-          <BackButton  />
+          <Box
+            sx={{
+              transform: smallScreen ? "scale(0.9)" : null,
+              width: "100%",
+            }}
+          >
+            <BackButton />
 
-          {isItDone && (
-            <Button
-         
-              variant="contained"
-              color="primary"
-              aria-label="Backa"
-              endIcon={<ArrowForwardIosIcon />}
-              onClick={goToResult}
-              sx={{ float: "right", mb: "15px", mt: "15px" }}
-            >
-              Se Resultat
-            </Button>
-          )}
+            {isItDone && (
+              <Button
+                variant="contained"
+                color="primary"
+                aria-label="Backa"
+                endIcon={<ArrowForwardIosIcon />}
+                onClick={goToResult}
+                sx={{ float: "right", mb: "15px", mt: "45px", mr: "15px" }}
+              >
+                Se Resultat
+              </Button>
+            )}
 
-          {!isItDone && (
-            <Button
-        
-              variant="contained"
-              disabled="true"
-              color="success"
-              aria-label="Backa"
-              endIcon={<ArrowForwardIosIcon />}
-              sx={{ float: "right", mb: "15px", mt: "15px" }}
-            >
-              {totalClicks - cardsSorted} kort kvar
-            </Button>
-          )}
-
-</Box>
+            {!isItDone && (
+              <Button
+                variant="contained"
+                disabled="true"
+                color="success"
+                aria-label="Backa"
+                endIcon={<ArrowForwardIosIcon />}
+                sx={{ float: "right", mb: "15px", mt: "45px", mr: "15px" }}
+              >
+                {totalClicks - cardsSorted} kort kvar
+              </Button>
+            )}
+          </Box>
         </Container>
       </Slide>
       {ShowItsDone && (

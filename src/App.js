@@ -13,7 +13,7 @@ import ValueCompassStep1 from "./components/ValueCompassStep1";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "material-icons/iconfont/material-icons.css";
 import CssBaseline from "@mui/material/CssBaseline";
-import { blue } from '@mui/material/colors';
+import { blue } from "@mui/material/colors";
 
 /* hur många ord i listan?
 mer mellanrum mellan korten
@@ -34,8 +34,7 @@ const theme = createTheme({
   },
 
   typography: {
-
-    fontFamily: 'Montserrat',
+    fontFamily: "Montserrat",
     fontWeightRegular: 500,
     fontWeightMedium: 600,
     fontWeightBold: 800,
@@ -55,9 +54,33 @@ const theme = createTheme({
       fontSize: "1rem",
       fontWeight: "bold",
     },
-   
+
     button: {
       fontWeight: "800",
+    },
+  },
+
+  components: {
+    MuiButton: {
+      variants: [
+        {
+          props: { variant: "bottomRight" },
+          style: {
+            backgroundColor: "primary",
+            color: "white",
+            float: "right",
+            mb: "15px",
+            mt: "45px",
+            mr: "15px",
+          },
+        },
+        {
+          props: { variant: "dashed", color: "secondary" },
+          style: {
+            border: `4px dashed `,
+          },
+        },
+      ],
     },
   },
 });
@@ -67,45 +90,45 @@ function App() {
     <React.Fragment>
       <CssBaseline />
       <Router>
-      <div className="appWrapper">
-        <div className="app">
-          <ThemeProvider theme={theme}>
-            {/* Switch = endast en kommer visas, route ger en path; i den path
+        <div className="appWrapper">
+          <div className="app">
+            <ThemeProvider theme={theme}>
+              {/* Switch = endast en kommer visas, route ger en path; i den path
            visa det i som finns i route elementet, om inte exact path så matchar /creat /*/}
-            <Switch>
-              <Route exact path="/">
-                <Home />
-              </Route>
+              <Switch>
+                <Route exact path="/">
+                  <Home />
+                </Route>
 
-              <Route exact path="/values1">
-                <ValueCompassStep1 />
-              </Route>
+                <Route exact path="/values1">
+                  <ValueCompassStep1 />
+                </Route>
 
-              <Route exact path="/valueList">
-                <ValuePicker text={" "} />
-              </Route>
-              <Route exact path="/valueSorter">
-                <ValueSorter />
-              </Route>
-              <Route exact path="/valueResults">
-                <ValueResults />
-              </Route>
+                <Route exact path="/valueList">
+                  <ValuePicker text={" "} />
+                </Route>
+                <Route exact path="/valueSorter">
+                  <ValueSorter />
+                </Route>
+                <Route exact path="/valueResults">
+                  <ValueResults />
+                </Route>
 
-              <Route path="/createValue">
-                <CreateValue />
-              </Route>
-              {/*  /:id för att dynamiskt kunna visa resultat uifrån route parmeter /*/}
-              <Route path="/values/:id">
-                <ValueDetalis />
-              </Route>
+                <Route path="/createValue">
+                  <CreateValue />
+                </Route>
+                {/*  /:id för att dynamiskt kunna visa resultat uifrån route parmeter /*/}
+                <Route path="/values/:id">
+                  <ValueDetalis />
+                </Route>
 
-              {/*  * fångar alla routes, måste vara i botten 404*/}
-              <Route path="*">
-                <NotFound />
-              </Route>
-            </Switch>
-          </ThemeProvider>
-        </div>
+                {/*  * fångar alla routes, måste vara i botten 404*/}
+                <Route path="*">
+                  <NotFound />
+                </Route>
+              </Switch>
+            </ThemeProvider>
+          </div>
         </div>
       </Router>
     </React.Fragment>

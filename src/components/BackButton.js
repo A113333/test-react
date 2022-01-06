@@ -18,7 +18,7 @@ function BackButton() {
         aria-label="Nästa"
         startIcon={<ArrowBackIosIcon />}
         onClick={prevPage}
-        sx={{ mb: "15px", mt: "15px" }}
+        sx={{ float: "left", mb: "15px", mt: "45px", mr: "15px" }}
       >
         Tillbaka
       </Button>

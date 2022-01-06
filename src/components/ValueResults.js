@@ -9,7 +9,10 @@ import Box from "@mui/material/Box";
 import StarIcon from "@mui/icons-material/Star";
 import BackToHomeButton from "./BackToHomeButton";
 import Typography from "@mui/material/Typography";
-import Avatar from '@mui/material/Avatar';
+import Avatar from "@mui/material/Avatar";
+import Slider from "@mui/material/Slider";
+import VolumeDown from "@mui/icons-material/VolumeDown";
+import VolumeUp from "@mui/icons-material/VolumeUp";
 
 const labels = {
   0: "Väldigt Dåligt",
@@ -27,9 +30,10 @@ const labels = {
 
 function ValueResults(obj) {
   const [slide, setSlide] = useState(false);
-  const [value, setValue] = React.useState(2);
+  const [value, setValue] = React.useState(3);
   const [hover, setHover] = React.useState(-1);
   const [ShowValueInfo, setShowValueInfo] = React.useState(0);
+  const [slideValue, setSlideValue] = React.useState(30);
 
   useEffect(() => {
     postResult();
@@ -38,7 +42,7 @@ function ValueResults(obj) {
 
   const location = useLocation();
   const valueArray = location.state;
- 
+
   const results = valueArray.sort((a, b) => {
     return b.pts - a.pts;
   });
@@ -48,11 +52,10 @@ function ValueResults(obj) {
     state: 1.1,
   };
 
-const handleShowValueInfo = (index)=>{
-  console.log(index)
-  setShowValueInfo(index)
-
-}
+  const handleShowValueInfo = (index) => {
+    console.log(index);
+    setShowValueInfo(index);
+  };
 
   const postResult = () => {
     fetch("http://localhost:3000/user", {
@@ -68,7 +71,6 @@ const handleShowValueInfo = (index)=>{
       // visa confomration att det sparats här?
     });
   };
-  
 
   return (
     <Slide direction="left" in={slide} mountOnEnter unmountOnExit>
@@ -76,28 +78,34 @@ const handleShowValueInfo = (index)=>{
         <ExerciseAppbar header={"Värderinskompassen"} step={"3 av 3"} />
         <Container maxWidth="md">
           <div>
-
-          <Typography variant="h2" gutterBottom align="center" sx={{mt: "30px"}}>
-          Dina fem viktigaste värderingar
-          </Typography>
-          <Divider></Divider>
-          
-       
-
-            <Typography variant="body1" gutterBottom align="center" sx={{mb: "25px", mt: "25px" }}>
+            <Typography
+              variant="h2"
+              gutterBottom
+              align="center"
+              sx={{ mt: "30px" }}
+            >
+              Dina fem viktigaste värderingar
+            </Typography>
+            <Divider></Divider>
+            <Typography
+              variant="body1"
+              gutterBottom
+              align="center"
+              sx={{ mb: "25px", mt: "25px" }}
+            >
               Bra jobbat, ta ett djupt andetag och tacka dig själv, du har
               precis gjort något viktigt och meningsfullt för din egna skull. Ta
               nu en noggran titt på dina värderingar.
             </Typography>
-
             <div className="noStyleList">
               {results.map(({ title, desc, pts }, index) => {
-                
                 return (
-                 
-                  <Box onClick={()=>handleShowValueInfo(index)}
-                  key={index}
-                  className={ShowValueInfo === index ? "transform90" : "not active"}
+                  <Box
+                    onClick={() => handleShowValueInfo(index)}
+                    key={index}
+                    className={
+                      ShowValueInfo === index ? "transform90" : "not active"
+                    }
                     sx={{
                       display: "table",
                       mx: "auto",
@@ -109,18 +117,38 @@ const handleShowValueInfo = (index)=>{
                       width: "95%",
                       height: "200px",
                       maxWidth: "450px",
-                      bgcolor: 'primary.main',
+                      bgcolor: "primary.main",
                       color: "white",
-                     
+
                       borderRadius: "6px",
                       mb: "25px",
-                      '&:hover': {
+                      "&:hover": {
                         transform: "scale(1.05)",
                       },
                     }}
                   >
-                 <Avatar sx={{ bgcolor: "white", color: "primary.main", float: "left", width: 30, height: 30, mt: "15px", ml:"15px", fontWeight:"bold",  }}> 
-                 <Typography variant="body1" sx={{ fontWeight: "bold", userSelect: "none",}}>  {index + 1 }</Typography> </Avatar>  
+                    <Avatar
+                      sx={{
+                        position: "absolute",
+                        bgcolor: "white",
+                        color: "primary.main",
+                        float: "left",
+                        width: 30,
+                        height: 30,
+                        mt: "15px",
+                        ml: "15px",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      <Typography
+                        variant="body1"
+                        sx={{ fontWeight: "bold", userSelect: "none" }}
+                      >
+                        {" "}
+                        {index + 1}
+                      </Typography>{" "}
+                    </Avatar>
+
                     <li key={index}>
                       <Typography
                         variant="h2"
@@ -128,36 +156,52 @@ const handleShowValueInfo = (index)=>{
                           textAlign: "center",
                           paddingBottom: "5px",
                           pt: "25px",
-                          pb: "10px",
+                          ml: "30px",
+                          mr: "30px",
+                          pb: "5px",
                           mt: "5px",
-                          mr: "45px",
+
                           color: "white",
                           userSelect: "none",
                         }}
                       >
-                        { title }
+                        {title}
                       </Typography>
-                      <Divider className="white" sx = {{width: "85%", mx: "auto"}}></Divider>
-                      <Typography variant="body1" sx={{ p: "15px",  fontSize: "1.1rem", userSelect: "none", }}>
+                      <Divider
+                        className="white"
+                        sx={{ width: "65%", mx: "auto" }}
+                      ></Divider>
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          p: "15px",
+                          fontSize: "1.1rem",
+                          userSelect: "none",
+                          ml: "25px",
+                          mr: "25px",
+                        }}
+                      >
                         {" Jag vill vara " + desc}
                       </Typography>
-
-                      
                     </li>
                   </Box>
-           
                 );
-                
               })}
             </div>
             <br></br>
-            <Typography variant="h3" text="center"  sx={{
-                          textAlign: "center", }} gutterBottom>
+            <Typography
+              variant="h3"
+              text="center"
+              sx={{
+                textAlign: "center",
+              }}
+              gutterBottom
+            >
               Hur bra tycker du att du lever efter dessa fem värderingar idag?
             </Typography>
             <Box
               sx={{
-                mx:"auto",
+                mx: "auto",
                 width: 200,
                 display: "flex",
                 alignItems: "center",
@@ -182,30 +226,31 @@ const handleShowValueInfo = (index)=>{
                 <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>
               )}
             </Box>
-
             <Typography
-                        variant="h3"
-                        sx={{
-                          textAlign: "center",
-                          paddingBottom: "5px",
-                          pt: "25px",
-                          pb: "10px",
-                          mt: "5px",
-                          mr: "45px",
-                          userSelect: "none",
-                        }}
-                      >
-                      Första övningen klar!
-                      </Typography>
-                      <Divider></Divider>'
+              variant="h3"
+              sx={{
+                textAlign: "center",
+                paddingBottom: "5px",
+                pt: "25px",
+                pb: "10px",
+                mt: "5px",
+                mr: "45px",
+                userSelect: "none",
+              }}
+            >
+              Första övningen klar!
+            </Typography>
+            <Divider></Divider>
             <Typography variant="body1" gutterBottom>
               I nästa övning kommer vi fortsätta fördjupa oss i värderingar. då
-              kommer vi kolla på hur dina värderingar ser ut i olika livsområden och hur du värderar de olika delarna av livet.
+              kommer vi kolla på hur dina värderingar ser ut i olika livsområden
+              och hur du värderar de olika delarna av livet.
             </Typography>
-            
           </div>
-<Box textAlign='center' >  <BackToHomeButton  /> </Box>
-
+          <Box textAlign="center">
+            {" "}
+            <BackToHomeButton />{" "}
+          </Box>
         </Container>
       </div>
     </Slide>
