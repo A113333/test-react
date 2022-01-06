@@ -241,8 +241,6 @@ export default function ValueList({ text }) {
     <div>
       <ExerciseAppbar header={"Värderinskompassen"} step={"2 av 3"} />
 
-      {isPending && <div> Laddar ....</div>}
-      {error && <div> {error} </div>}
       <Slide direction="left" in={slide} mountOnEnter unmountOnExit>
         <Container sx={{ backgroundColor: "white" }}>
           <Typography variant="h1"> Välj dina värderingsord </Typography>

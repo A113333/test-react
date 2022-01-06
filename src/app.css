@@ -42,7 +42,7 @@ input[type="checkbox"] {
 .show {
   visibility: visible;
   opacity: 100%;
-  transition: opacity 1s, border 1s;
+  transition: opacity 1s;
   text-align: left;
 }
 
