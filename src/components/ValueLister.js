@@ -9,6 +9,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Box from "@mui/material/Box";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Checkbox from "@mui/material/Checkbox";
+
 import { pink } from "@mui/material/colors";
 //import FormGroup from "@mui/material/FormGroup";
 //import FormControlLabel from "@mui/material/FormControlLabel";
@@ -23,15 +24,10 @@ export default function ValueLister({ values }) {
   const [nrsPicked, setnrsPicked] = useState(0);
   const [itsDone, setitsDone] = useState(false);
   const [showItsDone, setshowItsDone] = useState(false);
-  const [isItFirstLoad, setIsItFirstLoad] = useState(true);
 
   const smallScreen = useMediaQuery("(max-width:322px)");
   //  [checkedState]);  gör att enbart kör när checkedstate ändras
   useEffect(() => {
-    if (isItFirstLoad) {
-      window.scrollTo({ top: 0 });
-      setsetIsItFirstLoad(false);
-    }
     let nr = 0;
     const updateNrsPicked = () => {
       checkedState.forEach((item, index) => {
