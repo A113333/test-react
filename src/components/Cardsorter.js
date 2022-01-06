@@ -13,6 +13,9 @@ import BackButton from "./BackButton";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import AddIcon from '@mui/icons-material/Add';
+
+
 
 function CardSorter({ valueArray: arryOfValues }) {
   //  console.log("arryOfValues ");
@@ -251,8 +254,10 @@ function CardSorter({ valueArray: arryOfValues }) {
               Ångra val
             </Button>
           </Box>
-
+      
           <div className="relative">
+            <Box>
+
             {valueArray.map(({ title, desc, id }, index) => {
               return (
                 <Box
@@ -264,8 +269,7 @@ function CardSorter({ valueArray: arryOfValues }) {
                     mx: "auto",
                     margin: "auto",
                     boxShadow: 2,
-                    borderColor: "grey.500",
-                    width: "95%",
+                    width: "100%",
                     height: "200px",
                     maxWidth: "450px",
                     backgroundColor: "white",
@@ -274,7 +278,7 @@ function CardSorter({ valueArray: arryOfValues }) {
                     bgcolor: 'primary.main',
                     color: "white",
                     '&:hover': {
-                      transform: "scale(1.05)",
+                      transform: "scale(1.02)",
                     },
                   }} >
                 
@@ -327,6 +331,7 @@ function CardSorter({ valueArray: arryOfValues }) {
                 </Box>
               );
             })}
+            </Box>
           </div>
           <Box className={isItDone&& "hiddenCard"}> 
           <Divider sx={{ width: "50%", mt: "30px", mb: "30px", mx: "auto", }}>
@@ -361,7 +366,7 @@ function CardSorter({ valueArray: arryOfValues }) {
                     bgcolor: 'primary.main',
                     color: "white",
                     '&:hover': {
-                      transform: "scale(1.05)",
+                      transform: "scale(1.02)",
                     },
                   }}
                 >

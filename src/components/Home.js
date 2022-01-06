@@ -111,7 +111,7 @@ export default function Home() {
             <Grid item xs={12} sm={4} md={4}>
               <Cards
                 text={
-                  "Fortsätt fördjupa dig i värderingar, denna gång utifrån livsområden. Lägger du din tid och energi på rätt ställen?"
+                  "Fortsätt fördjupa dig i värderingar, nu utifrån livsområden. Lägger du din tid och energi på rätt saker?"
                 }
                 rubrik={"Dina livsområden"}
            

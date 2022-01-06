@@ -151,8 +151,9 @@ const handleShowValueInfo = (index)=>{
               })}
             </div>
             <br></br>
-            <Typography variant="h3" gutterBottom>
-              Hur bra tycker du att du lever efter dina värderingar idag?
+            <Typography variant="h3" text="center"  sx={{
+                          textAlign: "center", }} gutterBottom>
+              Hur bra tycker du att du lever efter dessa fem värderingar idag?
             </Typography>
             <Box
               sx={{

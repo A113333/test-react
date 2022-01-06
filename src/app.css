@@ -7,6 +7,8 @@
   border-top-left-radius: 0px;
   border-top-left-radius: 0px;
   padding: 15px;
+  width: 97%;
+  margin: auto;
 }
 
 .picked {
@@ -16,9 +18,10 @@
   border-radius: 6px;
   background-color: #42a5f5;
   color: white;
- 
-  
+  width: 97%;
+  margin: auto;
 }
+ 
 .value-list-item label {
   width: 95%;
 
@@ -32,7 +35,7 @@ input.value-list-checkbox {
 
 input[type="checkbox"] {
   position: absolute;
-  right: 0;
+  right: 15px;
   vertical-align: middle;
   background-color: white;
   color: #1976d2;
@@ -58,7 +61,6 @@ input[type="checkbox"] {
   position: absolute;
   visibility: hidden;
   opacity: 0;
- 
   margin-left: auto;
   margin-right: auto;
   top: 0;

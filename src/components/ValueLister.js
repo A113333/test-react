@@ -120,9 +120,9 @@ export default function ValueLister({ values }) {
             return (
               <Box sx={{ 
                 mt: "15px",
+                
                 '&:hover': {
-                  bgcolor: 'white',
-                  color: "primary.main",
+                  transform: "scale(1.02)",
                  
                 },
               }}>

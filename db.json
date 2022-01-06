@@ -220,28 +220,28 @@
   "user": {
     "values": [
       {
+        "id": 2,
+        "title": "Äventyrlig",
+        "desc": "Sträva efter och skapa nya, spännande erfarenheter.",
+        "pts": 3
+      },
+      {
+        "id": 1,
+        "title": "Accepterande",
+        "desc": "Vara öppen, tillåtande och tillfreds med mig själv, andra, livet och mina känslor.",
+        "pts": 2
+      },
+      {
         "id": 33,
         "title": "Skicklig",
         "desc": "Göra saker på ett bra sätt, använda min kunskap, erfarenhet och träning optimalt.",
-        "pts": 3
-      },
-      {
-        "id": 36,
-        "title": "Förtroende",
-        "desc": "Tro på ärlighet, uppriktighet och förmågan hos andra.",
-        "pts": 3
-      },
-      {
-        "id": 32,
-        "title": "Ansvarsfull",
-        "desc": "Vara trovärdig, pålitlig och ta ansvar för mina handlingar.",
         "pts": 2
       },
       {
         "id": 34,
         "title": "Stödjande",
         "desc": "Vara hjälpsam, uppmuntrande och tillgänglig för mig själv och andra.",
-        "pts": 1
+        "pts": 2
       },
       {
         "id": 35,
