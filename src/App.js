@@ -65,7 +65,6 @@ const theme = createTheme({
 function App() {
   return (
     <React.Fragment>
-      <ScrollToTop />
       <CssBaseline />
       <Router basename={process.env.PUBLIC_URL}>
         <div className="appWrapper">
