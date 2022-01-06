@@ -14,6 +14,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "material-icons/iconfont/material-icons.css";
 import CssBaseline from "@mui/material/CssBaseline";
 import { blue } from "@mui/material/colors";
+import ScrollToTop from "./ScrollToTop";
 
 /* hur många ord i listan?
 mer mellanrum mellan korten
@@ -59,35 +60,12 @@ const theme = createTheme({
       fontWeight: "800",
     },
   },
-
-  components: {
-    MuiButton: {
-      variants: [
-        {
-          props: { variant: "bottomRight" },
-          style: {
-            backgroundColor: "primary",
-            color: "white",
-            float: "right",
-            mb: "15px",
-            mt: "45px",
-            mr: "15px",
-          },
-        },
-        {
-          props: { variant: "dashed", color: "secondary" },
-          style: {
-            border: `4px dashed `,
-          },
-        },
-      ],
-    },
-  },
 });
 
 function App() {
   return (
     <React.Fragment>
+      <ScrollToTop />
       <CssBaseline />
       <Router basename={process.env.PUBLIC_URL}>
         <div className="appWrapper">

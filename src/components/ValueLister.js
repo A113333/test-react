@@ -23,10 +23,15 @@ export default function ValueLister({ values }) {
   const [nrsPicked, setnrsPicked] = useState(0);
   const [itsDone, setitsDone] = useState(false);
   const [showItsDone, setshowItsDone] = useState(false);
+  const [isItFirstLoad, setIsItFirstLoad] = useState(true);
 
   const smallScreen = useMediaQuery("(max-width:322px)");
   //  [checkedState]);  gör att enbart kör när checkedstate ändras
   useEffect(() => {
+    if (isItFirstLoad) {
+      window.scrollTo({ top: 0 });
+      setsetIsItFirstLoad(false);
+    }
     let nr = 0;
     const updateNrsPicked = () => {
       checkedState.forEach((item, index) => {
@@ -38,12 +43,14 @@ export default function ValueLister({ values }) {
       setnrsPicked(nr);
     };
     updateNrsPicked();
-    if (nr >= 5) {
+    if (nr >= 10) {
       setitsDone(true);
     } else {
       setitsDone(false);
     }
   }, [checkedState]);
+
+  window.scrollTo({ top: 0 });
 
   const handleOnChange = ({ id, title }) => {
     // sätter true / false för checkbox items
@@ -90,7 +97,7 @@ export default function ValueLister({ values }) {
       <div>
         <LinearProgress
           variant="determinate"
-          value={(100 / 5) * nrsPicked}
+          value={(100 / 10) * nrsPicked}
           color="secondary"
           sx={{
             position: "fixed",
@@ -101,7 +108,7 @@ export default function ValueLister({ values }) {
             transform: "translate(-50%, 0)",
             padding: "0px",
             zIndex: 100,
-            height: 10,
+            height: 15,
             // borderRadius: 5,
           }}
         />
@@ -177,7 +184,7 @@ export default function ValueLister({ values }) {
             </Button>
           )}
 
-          {nrsPicked < 5 && (
+          {nrsPicked < 10 && (
             <Button
               variant="contained"
               disabled="true"
@@ -187,7 +194,7 @@ export default function ValueLister({ values }) {
               onClick={nextPage}
               sx={{ float: "right", mb: "15px", mt: "45px", mr: "15px" }}
             >
-              Välj {5 - nrsPicked} till
+              Välj {10 - nrsPicked} till
             </Button>
           )}
         </Box>
