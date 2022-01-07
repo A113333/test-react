@@ -67,6 +67,7 @@ function App() {
     <React.Fragment>
       <CssBaseline />
       <Router basename={process.env.PUBLIC_URL}>
+      <ScrollToTop />
         <div className="appWrapper">
           <div className="app">
             <ThemeProvider theme={theme}>

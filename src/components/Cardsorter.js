@@ -267,7 +267,7 @@ function CardSorter({ valueArray: arryOfValues }) {
               {valueArray.map(({ title, desc, id }, index) => {
                 return (
                   <Box
-                    key={"top" + id}
+                    key={"topCard" + id.toString()}
                     className={index === showTop ? "show" : "hidden"}
                     onClick={() => clickTop({ index: index, id: id })}
                     sx={{
@@ -357,7 +357,7 @@ function CardSorter({ valueArray: arryOfValues }) {
               {valueArray.map(({ title, desc, id }, index) => {
                 return (
                   <Box
-                    key={"bottom" + id}
+                    key={"bottomCard" + id.toString()}
                     className={showBottom === index ? "show" : "hidden"}
                     onClick={() => clickBottom({ index: index, id: id })}
                     sx={{

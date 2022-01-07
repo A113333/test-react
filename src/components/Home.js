@@ -99,12 +99,12 @@ export default function Home() {
             <Grid item xs={12} sm={4} md={4}>
               <Cards
                 text={
-                  "Få hjälp att hitta din kurs, hur vill du vara som människa? Vad är viktigt för dig på riktigt?"
+                  "Få hjälp att hitta din kurs; hur vill du vara som människa? Vad viktigt för dig?"
                 }
                 rubrik={"Övning 1: Värdekompassen"}
                 linkTo={"/values1"}
                 isActive={true}
-                img={"/images/compass.jpg"}
+                img={"public/images/compass.jpg"}
                
               />
             </Grid>

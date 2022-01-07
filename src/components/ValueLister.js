@@ -24,7 +24,7 @@ export default function ValueLister({ values }) {
   const [nrsPicked, setnrsPicked] = useState(0);
   const [itsDone, setitsDone] = useState(false);
   const [showItsDone, setshowItsDone] = useState(false);
-
+  const [firstRender, setfirstRender] = useState(true);
   const smallScreen = useMediaQuery("(max-width:322px)");
   //  [checkedState]);  gör att enbart kör när checkedstate ändras
   useEffect(() => {
@@ -33,6 +33,10 @@ export default function ValueLister({ values }) {
       checkedState.forEach((item, index) => {
         if (item) {
           nr = nr + 1;
+        }
+        if(firstRender){
+          window.scrollTo({ top: 0 });
+          setfirstRender(false)
         }
       });
 
@@ -46,7 +50,7 @@ export default function ValueLister({ values }) {
     }
   }, [checkedState]);
 
-  window.scrollTo({ top: 0 });
+
 
   const handleOnChange = ({ id, title }) => {
     // sätter true / false för checkbox items
