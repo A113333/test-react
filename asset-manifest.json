@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/test-react/static/css/main.77482a3b.chunk.css",
-    "main.js": "/test-react/static/js/main.dea08df2.chunk.js",
-    "main.js.map": "/test-react/static/js/main.dea08df2.chunk.js.map",
-    "runtime-main.js": "/test-react/static/js/runtime-main.c69482cb.js",
-    "runtime-main.js.map": "/test-react/static/js/runtime-main.c69482cb.js.map",
+    "main.css": "/test-react/static/css/main.f7288f34.chunk.css",
+    "main.js": "/test-react/static/js/main.45c9f9d8.chunk.js",
+    "main.js.map": "/test-react/static/js/main.45c9f9d8.chunk.js.map",
+    "runtime-main.js": "/test-react/static/js/runtime-main.7ecf2453.js",
+    "runtime-main.js.map": "/test-react/static/js/runtime-main.7ecf2453.js.map",
     "static/css/2.87d231a2.chunk.css": "/test-react/static/css/2.87d231a2.chunk.css",
-    "static/js/2.ffdfe2df.chunk.js": "/test-react/static/js/2.ffdfe2df.chunk.js",
-    "static/js/2.ffdfe2df.chunk.js.map": "/test-react/static/js/2.ffdfe2df.chunk.js.map",
-    "static/js/3.6e89c38b.chunk.js": "/test-react/static/js/3.6e89c38b.chunk.js",
-    "static/js/3.6e89c38b.chunk.js.map": "/test-react/static/js/3.6e89c38b.chunk.js.map",
+    "static/js/2.2aa7347a.chunk.js": "/test-react/static/js/2.2aa7347a.chunk.js",
+    "static/js/2.2aa7347a.chunk.js.map": "/test-react/static/js/2.2aa7347a.chunk.js.map",
+    "static/js/3.eec361b1.chunk.js": "/test-react/static/js/3.eec361b1.chunk.js",
+    "static/js/3.eec361b1.chunk.js.map": "/test-react/static/js/3.eec361b1.chunk.js.map",
     "index.html": "/test-react/index.html",
     "static/css/2.87d231a2.chunk.css.map": "/test-react/static/css/2.87d231a2.chunk.css.map",
-    "static/css/main.77482a3b.chunk.css.map": "/test-react/static/css/main.77482a3b.chunk.css.map",
-    "static/js/2.ffdfe2df.chunk.js.LICENSE.txt": "/test-react/static/js/2.ffdfe2df.chunk.js.LICENSE.txt",
+    "static/css/main.f7288f34.chunk.css.map": "/test-react/static/css/main.f7288f34.chunk.css.map",
+    "static/js/2.2aa7347a.chunk.js.LICENSE.txt": "/test-react/static/js/2.2aa7347a.chunk.js.LICENSE.txt",
     "static/media/material-icons.css": "/test-react/static/media/material-icons.6c307c85.woff2"
   },
   "entrypoints": [
-    "static/js/runtime-main.c69482cb.js",
+    "static/js/runtime-main.7ecf2453.js",
     "static/css/2.87d231a2.chunk.css",
-    "static/js/2.ffdfe2df.chunk.js",
-    "static/css/main.77482a3b.chunk.css",
-    "static/js/main.dea08df2.chunk.js"
+    "static/js/2.2aa7347a.chunk.js",
+    "static/css/main.f7288f34.chunk.css",
+    "static/js/main.45c9f9d8.chunk.js"
   ]
 }
