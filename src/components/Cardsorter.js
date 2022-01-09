@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import Paper from "@mui/material/Paper";
 import { Button, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import { Divider } from "@mui/material";
@@ -10,19 +9,17 @@ import UndoRoundedIcon from "@mui/icons-material/UndoRounded";
 import LinearProgress from "@mui/material/LinearProgress";
 import ItsDoneComponent from "./ItsDoneComponent";
 import BackButton from "./BackButton";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import AddIcon from "@mui/icons-material/Add";
+import Fade from '@mui/material/Fade';
+import Headline from "./Headline";
+
 
 function CardSorter({ valueArray: arryOfValues }) {
   //  console.log("arryOfValues ");
-
-  const smallScreen = useMediaQuery("(max-width:322px)");
-
   console.log(arryOfValues);
   const history = useHistory();
-  const [valueArray, setvalueArray] = useState(arryOfValues);
+  const [valueArray] = useState(arryOfValues);
   const [showTop, setShowTop] = useState(0);
   const [showBottom, setShowBottom] = useState(1);
   const [startValue, setstartValue] = useState(2);
@@ -32,6 +29,7 @@ function CardSorter({ valueArray: arryOfValues }) {
   const [ShowItsDone, setShowItsDone] = useState(false);
   const [pickedCards, setPickedCards] = useState([]);
   const [isItDone, setisItDone] = useState(false);
+  const smallScreen = useMediaQuery("(max-width:322px)");
 
   const goToResult = () => {
     history.push({
@@ -40,36 +38,30 @@ function CardSorter({ valueArray: arryOfValues }) {
     });
   };
 
-  const prevPage = () => {
-    history.goBack();
-  };
-
   useEffect(() => {
     setSlide(true);
-    console.log("cardsSorted ");
-    console.log(cardsSorted);
+    
     countTotalClicks();
-  }, []); // Only re-run the effect if count changes
-  // useEffect körs på varje render, här hämtas data från JSON server
+  }, []); 
 
-  const handleChange = () => {
-    setSlide((prev) => !prev);
-  };
-
+// Används för att updater totalClicks
   const countTotalClicks = () => {
     let clicks = 0;
-    arryOfValues.map((item, index) => {
+    arryOfValues.forEach((item, index) => {
       clicks = clicks + index;
     });
     console.log("clicks :" + clicks);
     settotalClicks(clicks);
   };
 
-  const scroll = () => {
-    window.scrollTo({ top: 0 });
-    console.log("scroll körs");
-  };
-  // scroll();
+  const addPts = (id) =>{
+    valueArray.forEach((item, index) => {
+      if (id === item.id) {
+        item.pts = item.pts + 1;
+      }
+    });
+
+  }
 
   // körs vid sista kortet för att ta bort första kortet ur displayn
   const restartArr = () => {
@@ -100,11 +92,7 @@ function CardSorter({ valueArray: arryOfValues }) {
       return;
     }
     //lägger till pts
-    valueArray.map((item, index) => {
-      if (id === item.id) {
-        item.pts = item.pts + 1;
-      }
-    });
+  addPts(id);
     // !isItDone för att den inte ska ändra sig på click vid färdigt
 
     if (startValue === valueArray.length) {
@@ -149,11 +137,7 @@ function CardSorter({ valueArray: arryOfValues }) {
     }
 
     //lägger till pts
-    valueArray.map((item, index) => {
-      if (id === item.id) {
-        item.pts = item.pts + 1;
-      }
-    });
+    addPts(id)
 
     if (startValue === valueArray.length) {
       setisItDone(true);
@@ -173,16 +157,12 @@ function CardSorter({ valueArray: arryOfValues }) {
     pickedCards.pop();
 
     if (isItDone) {
-      valueArray.map((item, index) => {
-        if (id === item.id) {
-          item.pts = item.pts - 1;
-        }
-      });
+      addPts(id)
       setisItDone(false);
       return;
     }
 
-    valueArray.map((item, index) => {
+    valueArray.forEach((item, index) => {
       if (id === item.id) {
         item.pts = item.pts - 1;
       }
@@ -227,15 +207,9 @@ function CardSorter({ valueArray: arryOfValues }) {
       />
       <Slide direction="left" in={slide}>
         <Container>
-          <Typography
-            variant="h2"
-            gutterBottom
-            align="center"
-            sx={{ mt: "30px" }}
-          >
-            Sortera din lista
-          </Typography>
-          <Divider></Divider>
+        
+        <Headline text="Prioritera din värdering"/>
+       
 
           <Typography
             variant="body1"
@@ -266,6 +240,8 @@ function CardSorter({ valueArray: arryOfValues }) {
             <Box>
               {valueArray.map(({ title, desc, id }, index) => {
                 return (
+                  <Fade timeout={700} in={showTop === index}> 
+                
                   <Box
                     key={"topCard" + id.toString()}
                     className={index === showTop ? "show" : "hidden"}
@@ -340,6 +316,8 @@ function CardSorter({ valueArray: arryOfValues }) {
                       </Typography>
                     </Box>
                   </Box>
+                  </Fade>
+         
                 );
               })}
             </Box>
@@ -356,6 +334,7 @@ function CardSorter({ valueArray: arryOfValues }) {
               {" "}
               {valueArray.map(({ title, desc, id }, index) => {
                 return (
+                  <Fade timeout={500} in={showBottom === index}>
                   <Box
                     key={"bottomCard" + id.toString()}
                     className={showBottom === index ? "show" : "hidden"}
@@ -409,6 +388,7 @@ function CardSorter({ valueArray: arryOfValues }) {
                       {desc}
                     </Typography>
                   </Box>
+                  </Fade>
                 );
               })}
             </div>
@@ -419,7 +399,7 @@ function CardSorter({ valueArray: arryOfValues }) {
               width: "100%",
             }}
           >
-            <BackButton />
+            <BackButton/>
 
             {isItDone && (
               <Button

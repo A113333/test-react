@@ -1,11 +1,20 @@
-import { Link } from "react-router-dom";
+import React from 'react'
+import Headline from "./Headline";
+import BackToHomeButton from "./BackToHomeButton";
+import Navbar from './navbar';
+import { Box } from '@mui/system';
+import { Typography } from '@mui/material';
 
-export default function NotFound() {
-  return (
-    <div>
-      <h2> Oj, något har blivit fel!</h2>
-      <p> Sidan kan inte hittas</p>
-      <Link to="/"> Tillbaka till startsidan </Link>
-    </div>
-  );
+function NotFound() {
+    return (
+        <div>
+          <Navbar/>
+            <Headline text="Oj, något som verkat gått fel"/> 
+            <Box textAlign="center"> 
+            <Typography> Vi ber om ursäkt, men sidan är ny och vi håller på att reda ut alla buggar. </Typography>
+           <BackToHomeButton/> </Box>
+        </div>
+    )
 }
+
+export default NotFound

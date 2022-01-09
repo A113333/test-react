@@ -2,7 +2,7 @@ import React from "react";
 import Cards from "./Cards";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import Navbar from "./navbar";
+import Navbar from "./Navbar";
 import useFetch from "../useFetch";
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
@@ -10,10 +10,10 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import ExploreIcon from '@mui/icons-material/Explore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import useMediaQuery from "@mui/material/useMediaQuery";
 import MapIcon from '@mui/icons-material/Map';
 import BookIcon from '@mui/icons-material/Book';
+import compassImg from "./compass.jpg"
+import commingSoonImg from "./darkSky.jpg"
 
 // Grid är 12 columer
 /*
@@ -26,7 +26,6 @@ xl, extra-large: 1536px
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-  const smallScreen = useMediaQuery('(max-width:322px)');
 
   return (
     <div
@@ -62,8 +61,6 @@ function a11yProps(index) {
 export default function Home() {
   const {
     data: user,
-    isPending,
-    error,
   } = useFetch("http://localhost:8000/user");
 
   console.log(user);
@@ -99,12 +96,12 @@ export default function Home() {
             <Grid item xs={12} sm={4} md={4}>
               <Cards
                 text={
-                  "Få hjälp att hitta din kurs; hur vill du vara som människa? Vad viktigt för dig?"
+                  "Ett verktyg för att hitta dina värderingar. Hitta svar på frågor som: hur vill du vara som människa? Vad viktigt för dig?"
                 }
                 rubrik={"Övning 1: Värdekompassen"}
-                linkTo={"/values1"}
+                linkTo={"/varderingar-information"}
                 isActive={true}
-                img={"public/images/compass.jpg"}
+                img={compassImg}
                
               />
             </Grid>
@@ -115,7 +112,8 @@ export default function Home() {
                 }
                 rubrik={"Dina livsområden"}
            
-                img={"/images/map.jpg"}
+                img={commingSoonImg}
+
               />
             </Grid>{" "}
             <Grid item xs={12} sm={4} md={4}>
@@ -124,7 +122,7 @@ export default function Home() {
                   "Här presenteras några verktyg för att hjälpa  dig att leva mer efter dina värderingar"
                 }
                 rubrik={"Lev som du önskar"}
-                img={"/images/water.jpg"}
+                img={commingSoonImg}
                 
            
                 
@@ -149,7 +147,7 @@ export default function Home() {
                   "Vi jobbar hårt för att få detta färdigt"
                 }
                 rubrik={"Inte färdigt"}
-                img={"/images/darkSky.jpg"}
+                img={commingSoonImg}
               />
    
    </Grid>
@@ -172,7 +170,7 @@ export default function Home() {
                 }
                 rubrik={"Vi har inte kommit så här långt ännu!"}
                 linkTo={"/values1"}
-                img={"/images/darkSky.jpg"}
+                img={commingSoonImg}
                 
                
               />

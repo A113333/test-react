@@ -14,7 +14,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 function CloseIt({ title, text, donotQuite }) {
   const history = useHistory();
-  const [open, setOpen] = React.useState(true);
+  const [open] = React.useState(true);
 
   const closeExercise = () => {
     history.push({

@@ -1,7 +1,7 @@
 import React from "react";
-import ValuePicker from "./components/ValuePicker";
+import Pick10Values from "./components/Pick10Values";
+import Pick5Values from "./components/Pick5Values";
 import "./app.css";
-import Navbar from "./components/navbar";
 import Home from "./components/Home";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import ValueDetalis from "./components/ValueDetails";
@@ -9,12 +9,13 @@ import CreateValue from "./components/CreateValue";
 import NotFound from "./components/NotFound";
 import ValueSorter from "./components/ValueSorter";
 import ValueResults from "./components/ValueResults";
-import ValueCompassStep1 from "./components/ValueCompassStep1";
+import ValueInformation from "./components/ValueInformation";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "material-icons/iconfont/material-icons.css";
 import CssBaseline from "@mui/material/CssBaseline";
 import { blue } from "@mui/material/colors";
 import ScrollToTop from "./components/ScrollToTop";
+
 
 /* hur många ord i listan?
 mer mellanrum mellan korten
@@ -27,10 +28,10 @@ container resultat
 const theme = createTheme({
   palette: {
     primary: {
-      main: blue[700],
+      main: blue[800],
     },
     secondary: {
-      main: blue[400],
+      main: blue[200],
     },
   },
 
@@ -63,6 +64,7 @@ const theme = createTheme({
 });
 
 function App() {
+  document.title = "Bli Fri";
   return (
     <React.Fragment>
       <CssBaseline />
@@ -78,13 +80,18 @@ function App() {
                   <Home />
                 </Route>
 
-                <Route exact path="/values1">
-                  <ValueCompassStep1 />
+                <Route exact path="/varderingar-information">
+                  <ValueInformation />
                 </Route>
 
-                <Route exact path="/valueList">
-                  <ValuePicker text={" "} />
+                <Route exact path="/valj10varder">
+                  <Pick10Values/>
                 </Route>
+
+                <Route exact path="/valj5">
+                  <Pick5Values/>
+                </Route>
+
                 <Route exact path="/valueSorter">
                   <ValueSorter />
                 </Route>

@@ -3,11 +3,11 @@
 
 .value-list-item {
   border-bottom: 1px solid #afafaf36;
-  border-radius: 6px;
+  border-radius: 6px; 
   width: 95%;
   margin: auto;
-  padding: 15px;
-  margin-top: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .picked {
@@ -17,8 +17,8 @@
   color: white;
   width: 95%;
   margin: auto;
-  padding: 15px;
-  margin-top: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .value-list-item label {
@@ -31,18 +31,12 @@ input.value-list-checkbox {
   padding: 10px;
 }
 
-input[type="checkbox"] {
-  position: absolute;
-  right: 36px;
-  vertical-align: middle;
-  background-color: white;
-  color: #1976d2;
-}
+
 
 .show {
   visibility: visible;
-  opacity: 100%;
-  transition: opacity 1s;
+
+  
   text-align: left;
 }
 
@@ -56,14 +50,13 @@ input[type="checkbox"] {
 .hidden {
   position: absolute;
   visibility: hidden;
-
   margin-left: auto;
   margin-right: auto;
   top: 0;
   left: 0;
   right: 0;
   text-align: center;
-  border: 100px solid green;
+
 }
 
 .topCardContainer {

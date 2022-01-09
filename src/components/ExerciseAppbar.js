@@ -5,9 +5,11 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import CloseIcon from "@mui/icons-material/Close";
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import Tooltip from "@mui/material/Tooltip";
 import CloseConfirmation from "./CloseConfirmation";
+import ExploreIcon from '@mui/icons-material/Explore';
+
 
 export default function ExerciseAppbar({ header, step }) {
   const [showCloseDialog, setshowCloseDialog] = useState(false);
@@ -23,6 +25,7 @@ export default function ExerciseAppbar({ header, step }) {
 
   return (
     <div className="appBarPadder">
+     
       <Box sx={{ flexGrow: 1 }}>
         <AppBar
           sx={{
@@ -38,21 +41,24 @@ export default function ExerciseAppbar({ header, step }) {
              sx={{
               bgcolor: 'primary.main',
             }}>
+              <ExploreIcon sx={{mr:"15px", fontSize: 35}}/>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1, userSelect: "none",}}>
               {header}
             </Typography>
 
-            <Button color="inherit"> Steg {step}</Button>
+        
+
+           { step && <Button color="inherit"> {step}</Button>}
 
             <Tooltip title="Avsluta övningen">
               <IconButton
                 onClick={() => pressClose()}
-                size="medium"
+             
                 edge="end"
                 color="inherit"
                 aria-label="close"
               >
-                <CloseIcon />
+                <HomeOutlinedIcon sx={{ fontSize: 35}} />
               </IconButton>
             </Tooltip>
           </Toolbar>

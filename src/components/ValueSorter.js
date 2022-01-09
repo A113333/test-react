@@ -1,6 +1,10 @@
 import CardSorter from "./Cardsorter";
 import { useLocation } from "react-router-dom";
 import ExerciseAppbar from "./ExerciseAppbar";
+import Typography from '@mui/material/Typography';
+
+import ErrorPage from "./ErrorPage";
+
 
 export default function ValueSorter(obj) {
   const location = useLocation();
@@ -14,9 +18,9 @@ export default function ValueSorter(obj) {
 
   return (
     <div>
-      <ExerciseAppbar step="2 av 3" header="Rangordnare" />
+      <ExerciseAppbar step="Steg 3 av 3" header="Rangordnare" />
 
-      {valueArray && <CardSorter valueArray={valueArray} />}
+      {valueArray? <CardSorter valueArray={valueArray} /> : <ErrorPage/> }
     </div>
   );
 }

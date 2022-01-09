@@ -10,9 +10,8 @@ import StarIcon from "@mui/icons-material/Star";
 import BackToHomeButton from "./BackToHomeButton";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
-import Slider from "@mui/material/Slider";
-import VolumeDown from "@mui/icons-material/VolumeDown";
-import VolumeUp from "@mui/icons-material/VolumeUp";
+
+
 
 const labels = {
   0: "Väldigt Dåligt",
@@ -33,7 +32,7 @@ function ValueResults(obj) {
   const [value, setValue] = React.useState(3);
   const [hover, setHover] = React.useState(-1);
   const [ShowValueInfo, setShowValueInfo] = React.useState(0);
-  const [slideValue, setSlideValue] = React.useState(30);
+
 
   useEffect(() => {
     postResult();
@@ -46,6 +45,7 @@ function ValueResults(obj) {
   const results = valueArray.sort((a, b) => {
     return b.pts - a.pts;
   });
+
 
   const user = {
     values: results,
@@ -241,7 +241,7 @@ function ValueResults(obj) {
               Första övningen klar!
             </Typography>
             <Divider></Divider>
-            <Typography variant="body1" gutterBottom>
+            <Typography variant="body1" gutterBottom sx={{pt:"10px"}}>
               I nästa övning kommer vi fortsätta fördjupa oss i värderingar. då
               kommer vi kolla på hur dina värderingar ser ut i olika livsområden
               och hur du värderar de olika delarna av livet.

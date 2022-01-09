@@ -15,8 +15,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import ExploreIcon from '@mui/icons-material/Explore';
 import Box from "@mui/material/Box";
+import Headline from './Headline';
 
 
 function ValueCompassStep1() {
@@ -29,7 +29,7 @@ function ValueCompassStep1() {
   const history = useHistory();
   const nextPage = () => {
     history.push({
-      pathname: "/valueList",
+      pathname: "/valj10varder",
     });
   };
 
@@ -43,23 +43,18 @@ console.log(smallScreen)
   return (
     <Slide direction="left" in={slide} mountOnEnter unmountOnExit>
       <div>
-        <ExerciseAppbar header={"VärdeKompassen"} step={"1 av 3"} />
+        <ExerciseAppbar header={"Värdekompassen"}  />
         <Container maxWidth="md">
-
-        <Typography variant="h2" gutterBottom align="center" sx={{mt: "30px", }}>
-        Vad är en värdering?
-          </Typography>
-          <Divider sx={{width: "75%", mx: "auto"}}></Divider>
- 
-
+         
+        <Headline text="Vad är en värdering?"/>
           <Typography variant="body1" sx={{fontWeight: "bold", lineHeight: 1.7, mt:"25px" ,}} gutterBottom>
-          Värderingar är vårt hjärtas innersta önskan och är beskriver hur du vill agerade i världen. 
+          Värderingar representerar det du innersta inne önskar. Dom står för och är beskriver hur du vill agerade i världen. 
           Värderingar handlar inte om vad du vill uppnå, ha eller prestera, utan representerar kvaliteter 
           som du önskade att du kunde införliva i dina handlingar. Vad vill jag att mitt liv ska handla om? Hur vill jag behandla mig 
           själv och andra människor? Vilken typ av människa vill jag vara?
           <br></br> </Typography>
 
-          <Paper elevation={3}     
+          <Paper elevation={0}     
            sx={{
           display: 'flex',
           flexWrap: 'wrap',
@@ -70,14 +65,18 @@ console.log(smallScreen)
           width: smallScreen ? "90%" : "45%",
           float: smallScreen ? null : "right",
           bgcolor: 'primary.main',
-          color: "white",    
+          color: "white",   
       }}>
-            <Typography sx={{fontWeight: "bold",}}>Att leva efter sina värderingar kan: </Typography>
-            <Typography variant="body1" > minska
-            nedstämdhet, skapa mening och motivation, hjälpa dig ta dig igenom
-            svåra situationer och underlättar svåra val.
-            nedstämdhet, skapa mening och motivation, hjälpa dig ta dig igenom
-            svåra situationer och underlättar svåra val.
+            <Typography textAlign="center" sx={{fontWeight: "bold",}}>
+              Att ha insikt i och leva efter sina värderingar hjälper dig att: </Typography>
+            <Divider sx={{bgcolor: "white", width:"90%", mx:"auto", mt: "5px", }}> </Divider>
+            <Typography variant="body1" > 
+            <ul> 
+            <li>Minska nedstämdhet </li>
+            <li> Skapa mening och motivation</li>
+            <li> Ta dig igenom svåra situationer </li>
+            <li>Underlättar svåra val </li> 
+            </ul>
           
            
             </Typography> 
@@ -105,7 +104,7 @@ console.log(smallScreen)
           <Divider></Divider>   
 
     <Typography variant="body1" sx={{lineHeight: 1.7, mt:"10px"}} gutterBottom>
-    Värdekompassen är uppbyggd i tre steg.
+        Värdekompassen är uppbyggd i tre steg.
         I det första steget kommer du välja ut tio värderingsord ur vår värderingslista.
         I det andra steget ska du välja mellan dina värderingar för att hitta de fem värderingar som är absolut viktigast för dig.
         När du har gjort detta kommer du få se ditt resultat och få möjlighet att läsa mer om dina valda värderingar.
@@ -119,7 +118,6 @@ console.log(smallScreen)
           flexWrap: 'wrap',
           mt: smallScreen ? "50px" : "110px",
           mb: smallScreen ? "50px" : "110px",
-        
           width: smallScreen ? "90%" : "45%",
           float: smallScreen ? null : "left",
           
@@ -154,7 +152,7 @@ console.log(smallScreen)
       </ListItem>
 
     </List>
-    <Box sx={{ width: "49%", float: "right", width: smallScreen ? "90%" : "45%",
+    <Box sx={{width: smallScreen ? "90%" : "45%",
           float: smallScreen ? null : "left",   padding: "15px",
           mt: "25px", mb: "25px",}}>
     <Typography variant="h3" sx={{}} gutterBottom >
@@ -165,9 +163,9 @@ console.log(smallScreen)
        
 
 Tänka på att dina värderingar ska vara dina egna. Värderingar tappar sitt värde om dom är baserad på 
-vad hur du tror att andra vill att du ska vara. Det finns inget rätt och fel, inga bra eller dåliga värden. 
-Dina värderingar är dina, för att dom ska kunna fungera vägvisande i livet och för att dem ska bli meningsfulla för 
-dig är det viktigt att dom är Dina. Du behöver aldrig kunna förklara varför en värdering är viktig för dig; precis som
+ hur du tror att andra vill att du ska vara. Det finns inte rätt och fel, bra eller dåliga värderingar. 
+Dina värderingar ska vara dina egna, för att dom ska kunna fungera vägvisande i livet och för att dem ska bli meningsfulla för 
+dig är det viktigt att dom kommer från dig. Du behöver aldrig kunna förklara varför en värdering är viktig för dig; precis som
  att du aldrig behöver ha ett argument för varför blått är din favoritfärg, det är ditt tycke och din smak.
 
          
@@ -175,12 +173,12 @@ dig är det viktigt att dom är Dina. Du behöver aldrig kunna förklara varför
           </Box>
        
 
-          <Button variant="contained" color='primary' aria-label="Nästa" startIcon={< ArrowBackIosIcon/>} onClick={prevPage}
+          <Button variant="contained" color='primary' aria-label="Tillbaka" startIcon={< ArrowBackIosIcon/>} onClick={prevPage}
         sx={{ ml:"15px", mb:"15px", }}>
           Tillbaka 
         </Button>
 
-        <Button variant="contained" color='primary' aria-label="Backa" endIcon={<ArrowForwardIosIcon />} onClick={nextPage}
+        <Button variant="contained" color='primary' aria-label="Nästa" endIcon={<ArrowForwardIosIcon />} onClick={nextPage}
         sx={{float:"right", mr:"15px", mb:"15px", }}>
           Nästa 
         </Button>
