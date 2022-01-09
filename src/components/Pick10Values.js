@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import {  Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import ExerciseAppbar from "./ExerciseAppbar";
 import ValuePicker from "./ValuePicker";
@@ -6,6 +6,7 @@ import Slide from "@mui/material/Slide";
 import Container from "@mui/material/Container";
 import Headline from "./Headline";
 import values from  "./values"
+import StepperExercise from "./StepperExcercise"
 
 
 export default function ValueList() {
@@ -21,8 +22,8 @@ console.log(values)
 
   return (
     <div>
-      <ExerciseAppbar header={"Värderinskompassen"} step={"1 av 3"} />
-
+      <ExerciseAppbar header={"Värdekompassen"} step={"Steg 1 av 3"} />
+<StepperExercise activeStep={0}/>
       <Slide direction="up" in={slide} mountOnEnter unmountOnExit>
         <Container sx={{ backgroundColor: "white" }}>
           <Headline text="Välj dina värderingsord"/>
@@ -40,7 +41,7 @@ console.log(values)
           <br></br>
           {/* om values finns så körs ValuesComponet  */}
 
-          {values && <ValuePicker values={values} nrsToPick={5} next={"/valj5"}/>}
+          {values && <ValuePicker values={values} nrsToPick={10} next={"/valj5"}/>}
         </Container>
       </Slide>
     </div>

@@ -138,7 +138,7 @@ console.log(smallScreen)
            2
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Rangordna din värderingar" secondary="Ställ ord mot ord för att rangordna din lista." />
+        <ListItemText primary="Välj de fem viktigaste" secondary=" Prioritera din list för att komma närmare din viktigast värderingar" />
       </ListItem>
 
       <ListItem>
@@ -147,8 +147,7 @@ console.log(smallScreen)
           3
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Se ditt resultat" secondary="Titta nog igenom din topp fem lista och 
-        fundera över dina värderingar" />
+        <ListItemText primary="Se ditt resultat" secondary="Ställ ord mot ord för att rangordna din lista." />
       </ListItem>
 
     </List>

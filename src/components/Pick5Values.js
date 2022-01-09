@@ -7,6 +7,7 @@ import Container from "@mui/material/Container";
 import Headline from "./Headline";
 import values from  "./values"
 import { useLocation } from 'react-router-dom';
+import StepperExercise from "./StepperExcercise"
 
 
 export default function ValueList() {
@@ -24,8 +25,8 @@ export default function ValueList() {
 
   return (
     <div>
-      <ExerciseAppbar header={"Värderinskompassen"} step={"2 av 3"} />
-
+      <ExerciseAppbar header={"Värdekompassen"} step={"Steg 2 av 3"} />
+      <StepperExercise activeStep={1}/>
       <Slide direction="up" in={slide} mountOnEnter unmountOnExit>
         <Container sx={{ backgroundColor: "white" }}>
           <Headline text="Välj dina värderingsord"/>

@@ -10,6 +10,7 @@ import StarIcon from "@mui/icons-material/Star";
 import BackToHomeButton from "./BackToHomeButton";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
+import StepperExercise from "./StepperExcercise"
 
 
 
@@ -76,6 +77,7 @@ function ValueResults(obj) {
     <Slide direction="left" in={slide} mountOnEnter unmountOnExit>
       <div>
         <ExerciseAppbar header={"Värderinskompassen"} step={"3 av 3"} />
+        <StepperExercise activeStep={3}/>
         <Container maxWidth="md">
           <div>
             <Typography

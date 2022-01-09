@@ -2,6 +2,7 @@ import CardSorter from "./Cardsorter";
 import { useLocation } from "react-router-dom";
 import ExerciseAppbar from "./ExerciseAppbar";
 import Typography from '@mui/material/Typography';
+import StepperExercise from "./StepperExcercise"
 
 import ErrorPage from "./ErrorPage";
 
@@ -19,7 +20,7 @@ export default function ValueSorter(obj) {
   return (
     <div>
       <ExerciseAppbar step="Steg 3 av 3" header="Rangordnare" />
-
+      <StepperExercise activeStep={2}/>
       {valueArray? <CardSorter valueArray={valueArray} /> : <ErrorPage/> }
     </div>
   );
