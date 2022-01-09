@@ -3,11 +3,21 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import Button from "@mui/material/Button";
 import { useHistory } from "react-router-dom";
 
-function BackButton() {
+function BackButton(props) {
   const history = useHistory();
-
+  console.log("data");
+  console.log(props.data);
   const prevPage = () => {
-    history.goBack();
+    console.log("data");
+    console.log(props.data);
+    props.data
+      ? history.push({
+          pathname: props.goTo,
+          state: props.data,
+        })
+      : history.push({
+          pathname: props.goTo,
+        });
   };
 
   return (

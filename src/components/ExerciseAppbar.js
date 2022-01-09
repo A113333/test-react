@@ -5,11 +5,11 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import Tooltip from "@mui/material/Tooltip";
 import CloseConfirmation from "./CloseConfirmation";
-import ExploreIcon from '@mui/icons-material/Explore';
-
+import ExploreIcon from "@mui/icons-material/Explore";
+import StepperExercise from "./StepperExcercise";
 
 export default function ExerciseAppbar({ header, step }) {
   const [showCloseDialog, setshowCloseDialog] = useState(false);
@@ -25,7 +25,6 @@ export default function ExerciseAppbar({ header, step }) {
 
   return (
     <div className="appBarPadder">
-     
       <Box sx={{ flexGrow: 1 }}>
         <AppBar
           sx={{
@@ -34,31 +33,33 @@ export default function ExerciseAppbar({ header, step }) {
             maxWidth: "853px",
             left: "50%",
             transform: "translate(-50%)",
-            bgcolor: 'primary.main',
+            bgcolor: "primary.main",
           }}
         >
           <Toolbar
-             sx={{
-              bgcolor: 'primary.main',
-            }}>
-              <ExploreIcon sx={{mr:"15px", fontSize: 35}}/>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1, userSelect: "none",}}>
+            sx={{
+              bgcolor: "primary.main",
+            }}
+          >
+            <ExploreIcon sx={{ mr: "15px", fontSize: 35 }} />
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1, userSelect: "none" }}
+            >
               {header}
             </Typography>
 
-        
-
-           { step && <Button color="inherit"> {step}</Button>}
+            <StepperExercise activeStep={1} />
 
             <Tooltip title="Avsluta övningen">
               <IconButton
                 onClick={() => pressClose()}
-             
                 edge="end"
                 color="inherit"
                 aria-label="close"
               >
-                <HomeOutlinedIcon sx={{ fontSize: 35}} />
+                <HomeOutlinedIcon sx={{ fontSize: 35 }} />
               </IconButton>
             </Tooltip>
           </Toolbar>

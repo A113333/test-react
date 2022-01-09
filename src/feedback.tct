@@ -1,0 +1,24 @@
+större button (50px)
+ska inte kunna välja värden när man är färdig
+inga poäng resultat
+
+
+Guide om knappar
+https://smartdevpreneur.com/the-complete-guide-to-mui-button-color/
+
+
+
+ position: "fixed",
+                    top: "400px",
+                    left: "50%",
+                    transform: "translate(-50%, 0)",
+
+
+                          position: "fixed",
+                    left: "50%",
+                    transform: "translate(-50%, 0)",
+
+
+                      const [whatIf, setwhatIf] = useState("");
+
+                        setwhatIf("slideOut");

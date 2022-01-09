@@ -10,14 +10,18 @@ import Box from "@mui/material/Box";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Checkbox from "@mui/material/Checkbox";
 
-
 //import FormGroup from "@mui/material/FormGroup";
 //import FormControlLabel from "@mui/material/FormControlLabel";
 //import Checkbox from "@mui/material/Checkbox";
 
 // fixa hoover
 
-export default function ValueLister({ values, nrsToPick: nrsToPick, next }) {
+export default function ValueLister({
+  values,
+  nrsToPick: nrsToPick,
+  next,
+  back,
+}) {
   const [checkedState, setCheckedState] = useState(
     new Array(values.length).fill(false)
   );
@@ -62,7 +66,6 @@ export default function ValueLister({ values, nrsToPick: nrsToPick, next }) {
     // setUserValues(updatedValues);
   };
   const history = useHistory();
-
 
   //handler för nästa knappen
   const nextPage = () => {
@@ -122,9 +125,7 @@ export default function ValueLister({ values, nrsToPick: nrsToPick, next }) {
                     sx={{
                       "& .MuiSvgIcon-root": { fontSize: 30 },
                       position: "absolute",
-                      right: "15px"
-                     
-                     
+                      right: "15px",
                     }}
                     id={`custom-checkbox-${id}`}
                     title={title}
@@ -140,12 +141,15 @@ export default function ValueLister({ values, nrsToPick: nrsToPick, next }) {
                     }}
                   >
                     <label htmlFor={`custom-checkbox-${id}`}>
-                      <Typography variant="h3" sx={{padding:"15px",}}>
+                      <Typography variant="h3" sx={{ padding: "15px" }}>
                         {id + 1 + ". " + title + " "}
                       </Typography>
-                      <Typography variant="body1" sx={{padding:"15px", pt: "0px"}}>
+                      <Typography
+                        variant="body1"
+                        sx={{ padding: "15px", pt: "0px" }}
+                      >
                         {desc}
-                        </Typography>
+                      </Typography>
                     </label>
                   </Box>
                 </div>
@@ -158,7 +162,7 @@ export default function ValueLister({ values, nrsToPick: nrsToPick, next }) {
         <Box
           sx={{ transform: smallScreen ? "scale(0.9)" : null, width: "100%" }}
         >
-          <BackButton />
+          <BackButton goTo={back} />
 
           {itsDone && (
             <Button
@@ -176,7 +180,7 @@ export default function ValueLister({ values, nrsToPick: nrsToPick, next }) {
           {nrsPicked < nrsToPick && (
             <Button
               variant="contained"
-              disabled="true"
+              disabled
               color="success"
               aria-label="Backa"
               endIcon={<ArrowForwardIosIcon />}

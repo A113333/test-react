@@ -5,17 +5,16 @@ import ValuePicker from "./ValuePicker";
 import Slide from "@mui/material/Slide";
 import Container from "@mui/material/Container";
 import Headline from "./Headline";
-import values from  "./values"
-import { useLocation } from 'react-router-dom';
-import StepperExercise from "./StepperExcercise"
-
+import values from "./values";
+import { useLocation } from "react-router-dom";
+import StepperExercise from "./StepperExcercise";
 
 export default function ValueList() {
   // deconstruct return obj {data:values} döper om data till values
   const location = useLocation();
   const valueArray = location.state;
-  console.log(valueArray)
-  
+  console.log(valueArray);
+
   const [slide, setSlide] = useState(false);
 
   useEffect(() => {
@@ -26,21 +25,28 @@ export default function ValueList() {
   return (
     <div>
       <ExerciseAppbar header={"Värdekompassen"} step={"Steg 2 av 3"} />
-      <StepperExercise activeStep={1}/>
+      <StepperExercise activeStep={1} />
       <Slide direction="up" in={slide} mountOnEnter unmountOnExit>
         <Container sx={{ backgroundColor: "white" }}>
-          <Headline text="Välj dina värderingsord"/>
+          <Headline text="Välj dina värderingsord" />
 
           <Typography variant="body1">
-   
             {/* finns x antal ord läs igenom alla innan du går vidare 
                 när du är klar: säker att du vill gå vidare (har du läst alla?) */}
-            Välj nu ut de fem absolut viktigaste värderingarna av de tio du valde tidigare.
+            Välj nu ut de fem absolut viktigaste värderingarna av de tio du
+            valde tidigare.
           </Typography>
           <br></br>
           {/* om values finns så körs ValuesComponet  */}
 
-          {values && <ValuePicker values={valueArray} nrsToPick={5} next="/valueSorter" />}
+          {values && (
+            <ValuePicker
+              values={valueArray}
+              nrsToPick={5}
+              next="/valueSorter"
+              back="/valj10varder"
+            />
+          )}
         </Container>
       </Slide>
     </div>

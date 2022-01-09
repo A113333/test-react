@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, createBrowserHistory } from "react-router-dom";
 import { Button, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import { Divider } from "@mui/material";
@@ -11,9 +11,8 @@ import ItsDoneComponent from "./ItsDoneComponent";
 import BackButton from "./BackButton";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import Fade from '@mui/material/Fade';
+import Fade from "@mui/material/Fade";
 import Headline from "./Headline";
-
 
 function CardSorter({ valueArray: arryOfValues }) {
   //  console.log("arryOfValues ");
@@ -40,11 +39,11 @@ function CardSorter({ valueArray: arryOfValues }) {
 
   useEffect(() => {
     setSlide(true);
-    
-    countTotalClicks();
-  }, []); 
 
-// Används för att updater totalClicks
+    countTotalClicks();
+  }, []);
+
+  // Används för att updater totalClicks
   const countTotalClicks = () => {
     let clicks = 0;
     arryOfValues.forEach((item, index) => {
@@ -54,14 +53,13 @@ function CardSorter({ valueArray: arryOfValues }) {
     settotalClicks(clicks);
   };
 
-  const addPts = (id) =>{
+  const addPts = (id) => {
     valueArray.forEach((item, index) => {
       if (id === item.id) {
         item.pts = item.pts + 1;
       }
     });
-
-  }
+  };
 
   // körs vid sista kortet för att ta bort första kortet ur displayn
   const restartArr = () => {
@@ -92,7 +90,7 @@ function CardSorter({ valueArray: arryOfValues }) {
       return;
     }
     //lägger till pts
-  addPts(id);
+    addPts(id);
     // !isItDone för att den inte ska ändra sig på click vid färdigt
 
     if (startValue === valueArray.length) {
@@ -137,7 +135,7 @@ function CardSorter({ valueArray: arryOfValues }) {
     }
 
     //lägger till pts
-    addPts(id)
+    addPts(id);
 
     if (startValue === valueArray.length) {
       setisItDone(true);
@@ -157,7 +155,7 @@ function CardSorter({ valueArray: arryOfValues }) {
     pickedCards.pop();
 
     if (isItDone) {
-      addPts(id)
+      addPts(id);
       setisItDone(false);
       return;
     }
@@ -207,9 +205,7 @@ function CardSorter({ valueArray: arryOfValues }) {
       />
       <Slide direction="left" in={slide}>
         <Container>
-        
-        <Headline text="Prioritera din värdering"/>
-       
+          <Headline text="Prioritera din värdering" />
 
           <Typography
             variant="body1"
@@ -240,54 +236,125 @@ function CardSorter({ valueArray: arryOfValues }) {
             <Box>
               {valueArray.map(({ title, desc, id }, index) => {
                 return (
-                  <Fade timeout={700} in={showTop === index}> 
-                
-                  <Box
-                    key={"topCard" + id.toString()}
-                    className={index === showTop ? "show" : "hidden"}
-                    onClick={() => clickTop({ index: index, id: id })}
-                    sx={{
-                      display: "table",
-                      mx: "auto",
-                      margin: "auto",
-                      boxShadow: 2,
-                      width: "100%",
-                      height: "200px",
-                      maxWidth: "450px",
-                      backgroundColor: "white",
-                      borderRadius: "6px",
-                      userSelect: "none",
-                      bgcolor: "primary.main",
-                      color: "white",
-                      "&:hover": {
-                        transform: "scale(1.02)",
-                      },
-                    }}
-                  >
-                    {isItDone && (
-                      <Typography
-                        variant="h3"
-                        color="white"
-                        sx={{
-                          textAlign: "center",
-                          paddingBottom: "5px",
-                          p: "25px",
-                          pb: "10px",
-                          color: "white",
-                          padding: "10px",
-                          mt: "45px",
-                        }}
-                      >
-                        {" "}
-                        Du är nu färdig med övningen! Tryck på "Se resultat"
-                        knappen för att se ditt resultat.
-                      </Typography>
-                    )}
+                  <Fade timeout={700} in={showTop === index}>
+                    <Box
+                      key={"topCard" + id.toString()}
+                      className={index === showTop ? "show" : "hidden"}
+                      onClick={() => clickTop({ index: index, id: id })}
+                      sx={{
+                        display: "table",
+                        mx: "auto",
+                        margin: "auto",
+                        boxShadow: 2,
+                        width: "100%",
+                        height: "200px",
+                        maxWidth: "450px",
+                        backgroundColor: "white",
+                        borderRadius: "6px",
+                        userSelect: "none",
+                        bgcolor: "primary.main",
+                        color: "white",
+                        "&:hover": {
+                          transform: "scale(1.02)",
+                        },
+                      }}
+                    >
+                      {isItDone && (
+                        <Typography
+                          variant="h3"
+                          color="white"
+                          sx={{
+                            textAlign: "center",
+                            paddingBottom: "5px",
+                            p: "25px",
+                            pb: "10px",
+                            color: "white",
+                            padding: "10px",
+                            mt: "45px",
+                          }}
+                        >
+                          {" "}
+                          Du är nu färdig med övningen! Tryck på "Se resultat"
+                          knappen för att se ditt resultat.
+                        </Typography>
+                      )}
 
-                    <Box className={isItDone && "hiddenCard"}>
+                      <Box className={isItDone && "hiddenCard"}>
+                        <Typography
+                          variant="h2"
+                          color="white"
+                          sx={{
+                            textAlign: "center",
+                            paddingBottom: "5px",
+                            pt: "25px",
+                            pb: "10px",
+                            mt: "5px",
+                            color: "white",
+                          }}
+                        >
+                          {title}
+                        </Typography>
+
+                        <>
+                          <Divider
+                            className="white"
+                            sx={{ width: "85%", mx: "auto" }}
+                          ></Divider>
+                        </>
+
+                        <Typography
+                          variant="body1"
+                          align="center"
+                          sx={{ p: "30px", pt: "15px", fontSize: "1.1rem" }}
+                        >
+                          {desc}
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </Fade>
+                );
+              })}
+            </Box>
+          </div>
+          <Box className={isItDone && "hiddenCard"}>
+            <Divider sx={{ width: "50%", mt: "30px", mb: "30px", mx: "auto" }}>
+              {" "}
+              <Typography variant="h3" margin={"auto"} gutterBottom>
+                Eller..
+              </Typography>
+            </Divider>
+
+            <div className="relative">
+              {" "}
+              {valueArray.map(({ title, desc, id }, index) => {
+                return (
+                  <Fade timeout={500} in={showBottom === index}>
+                    <Box
+                      key={"bottomCard" + id.toString()}
+                      className={showBottom === index ? "show" : "hidden"}
+                      onClick={() => clickBottom({ index: index, id: id })}
+                      sx={{
+                        display: "table",
+                        mx: "auto",
+                        transform: "scale(1)",
+                        margin: "auto",
+                        boxShadow: 2,
+                        borderColor: "grey.500",
+                        width: "95%",
+                        height: "200px",
+                        maxWidth: "450px",
+                        backgroundColor: "white",
+                        borderRadius: "6px",
+                        userSelect: "none",
+                        bgcolor: "primary.main",
+                        color: "white",
+                        "&:hover": {
+                          transform: "scale(1.02)",
+                        },
+                      }}
+                    >
                       <Typography
                         variant="h2"
-                        color="white"
                         sx={{
                           textAlign: "center",
                           paddingBottom: "5px",
@@ -315,79 +382,6 @@ function CardSorter({ valueArray: arryOfValues }) {
                         {desc}
                       </Typography>
                     </Box>
-                  </Box>
-                  </Fade>
-         
-                );
-              })}
-            </Box>
-          </div>
-          <Box className={isItDone && "hiddenCard"}>
-            <Divider sx={{ width: "50%", mt: "30px", mb: "30px", mx: "auto" }}>
-              {" "}
-              <Typography variant="h3" margin={"auto"} gutterBottom>
-                Eller..
-              </Typography>
-            </Divider>
-
-            <div className="relative">
-              {" "}
-              {valueArray.map(({ title, desc, id }, index) => {
-                return (
-                  <Fade timeout={500} in={showBottom === index}>
-                  <Box
-                    key={"bottomCard" + id.toString()}
-                    className={showBottom === index ? "show" : "hidden"}
-                    onClick={() => clickBottom({ index: index, id: id })}
-                    sx={{
-                      display: "table",
-                      mx: "auto",
-                      transform: "scale(1)",
-                      margin: "auto",
-                      boxShadow: 2,
-                      borderColor: "grey.500",
-                      width: "95%",
-                      height: "200px",
-                      maxWidth: "450px",
-                      backgroundColor: "white",
-                      borderRadius: "6px",
-                      userSelect: "none",
-                      bgcolor: "primary.main",
-                      color: "white",
-                      "&:hover": {
-                        transform: "scale(1.02)",
-                      },
-                    }}
-                  >
-                    <Typography
-                      variant="h2"
-                      sx={{
-                        textAlign: "center",
-                        paddingBottom: "5px",
-                        pt: "25px",
-                        pb: "10px",
-                        mt: "5px",
-                        color: "white",
-                      }}
-                    >
-                      {title}
-                    </Typography>
-
-                    <>
-                      <Divider
-                        className="white"
-                        sx={{ width: "85%", mx: "auto" }}
-                      ></Divider>
-                    </>
-
-                    <Typography
-                      variant="body1"
-                      align="center"
-                      sx={{ p: "30px", pt: "15px", fontSize: "1.1rem" }}
-                    >
-                      {desc}
-                    </Typography>
-                  </Box>
                   </Fade>
                 );
               })}
@@ -399,13 +393,13 @@ function CardSorter({ valueArray: arryOfValues }) {
               width: "100%",
             }}
           >
-            <BackButton/>
+            <BackButton data={valueArray} goTo="/valj5" />
 
             {isItDone && (
               <Button
                 variant="contained"
                 color="primary"
-                aria-label="Backa"
+                aria-label="Gå till resultat"
                 endIcon={<ArrowForwardIosIcon />}
                 onClick={goToResult}
                 sx={{ float: "right", mb: "15px", mt: "45px", mr: "15px" }}
@@ -419,7 +413,7 @@ function CardSorter({ valueArray: arryOfValues }) {
                 variant="contained"
                 disabled="true"
                 color="success"
-                aria-label="Backa"
+                aria-label="Gör färdigt övningen för att kunna gå vidare till resultat"
                 endIcon={<ArrowForwardIosIcon />}
                 sx={{ float: "right", mb: "15px", mt: "45px", mr: "15px" }}
               >

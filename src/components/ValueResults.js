@@ -10,9 +10,7 @@ import StarIcon from "@mui/icons-material/Star";
 import BackToHomeButton from "./BackToHomeButton";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
-import StepperExercise from "./StepperExcercise"
-
-
+import StepperExercise from "./StepperExcercise";
 
 const labels = {
   0: "Väldigt Dåligt",
@@ -34,7 +32,6 @@ function ValueResults(obj) {
   const [hover, setHover] = React.useState(-1);
   const [ShowValueInfo, setShowValueInfo] = React.useState(0);
 
-
   useEffect(() => {
     postResult();
     setSlide(true);
@@ -46,7 +43,6 @@ function ValueResults(obj) {
   const results = valueArray.sort((a, b) => {
     return b.pts - a.pts;
   });
-
 
   const user = {
     values: results,
@@ -77,7 +73,7 @@ function ValueResults(obj) {
     <Slide direction="left" in={slide} mountOnEnter unmountOnExit>
       <div>
         <ExerciseAppbar header={"Värderinskompassen"} step={"3 av 3"} />
-        <StepperExercise activeStep={3}/>
+        <StepperExercise activeStep={3} />
         <Container maxWidth="md">
           <div>
             <Typography
@@ -243,7 +239,7 @@ function ValueResults(obj) {
               Första övningen klar!
             </Typography>
             <Divider></Divider>
-            <Typography variant="body1" gutterBottom sx={{pt:"10px"}}>
+            <Typography variant="body1" gutterBottom sx={{ pt: "10px" }}>
               I nästa övning kommer vi fortsätta fördjupa oss i värderingar. då
               kommer vi kolla på hur dina värderingar ser ut i olika livsområden
               och hur du värderar de olika delarna av livet.
