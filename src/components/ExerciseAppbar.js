@@ -50,8 +50,6 @@ export default function ExerciseAppbar({ header, step }) {
               {header}
             </Typography>
 
-            <StepperExercise activeStep={1} />
-
             <Tooltip title="Avsluta övningen">
               <IconButton
                 onClick={() => pressClose()}

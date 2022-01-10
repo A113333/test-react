@@ -4,16 +4,16 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Navbar from "./Navbar";
 import useFetch from "../useFetch";
-import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import ExploreIcon from '@mui/icons-material/Explore';
-import MapIcon from '@mui/icons-material/Map';
-import BookIcon from '@mui/icons-material/Book';
-import compassImg from "./compass.jpg"
-import commingSoonImg from "./darkSky.jpg"
+import PropTypes from "prop-types";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import ExploreIcon from "@mui/icons-material/Explore";
+import MapIcon from "@mui/icons-material/Map";
+import BookIcon from "@mui/icons-material/Book";
+import compassImg from "./compass.jpg";
+import commingSoonImg from "./darkSky.jpg";
 
 // Grid är 12 columer
 /*
@@ -53,42 +53,46 @@ TabPanel.propTypes = {
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
   };
 }
 
-
 export default function Home() {
-  const {
-    data: user,
-  } = useFetch("http://localhost:8000/user");
+  const { data: user } = useFetch("http://localhost:8000/user");
 
   console.log(user);
   //  { ...user.values && user.values  }
 
+  const [value, setValue] = React.useState(0);
 
-    const [value, setValue] = React.useState(0);
-  
-    const handleChange = (event, newValue) => {
-      setValue(newValue);
-    };
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   return (
     <div className="">
       <Navbar />
 
-
-
-      <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" centered>
-          <Tab icon={<ExploreIcon />}  label="Värderingar" {...a11yProps(0)} />
-          <Tab icon={<MapIcon/>}label="Mål" {...a11yProps(1)} />
-          <Tab icon={<BookIcon/>} label="Loggbok" {...a11yProps(2)} />
-        </Tabs>
-      </Box>
-      <TabPanel value={value} index={0}>
-      <Grid
+      <Box sx={{ width: "100%" }}>
+        <Box
+          sx={{
+            borderBottom: 1,
+            borderColor: "divider",
+          }}
+        >
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            aria-label="basic tabs example"
+            centered
+          >
+            <Tab icon={<ExploreIcon />} label="Värderingar" {...a11yProps(0)} />
+            <Tab icon={<MapIcon />} label="Mål" {...a11yProps(1)} />
+            <Tab icon={<BookIcon />} label="Loggbok" {...a11yProps(2)} />
+          </Tabs>
+        </Box>
+        <TabPanel value={value} index={0}>
+          <Grid
             container
             spacing={{ xs: 2, md: 3 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
@@ -102,7 +106,7 @@ export default function Home() {
                 linkTo={"/varderingar-information"}
                 isActive={true}
                 img={compassImg}
-               
+                backgroundcolor={"valueCompass.main"}
               />
             </Grid>
             <Grid item xs={12} sm={4} md={4}>
@@ -111,9 +115,10 @@ export default function Home() {
                   "Fortsätt fördjupa dig i värderingar, nu utifrån livsområden. Lägger du din tid och energi på rätt saker?"
                 }
                 rubrik={"Dina livsområden"}
-           
                 img={commingSoonImg}
-
+                backgroundcolor={"lifeAreas.main"}
+                isActive={"warning"}
+                stateColor={"success"}
               />
             </Grid>{" "}
             <Grid item xs={12} sm={4} md={4}>
@@ -123,74 +128,46 @@ export default function Home() {
                 }
                 rubrik={"Lev som du önskar"}
                 img={commingSoonImg}
-                
-           
-                
+                backgroundcolor={"liveByValues.main"}
               />
             </Grid>
           </Grid>
-
-
-      </TabPanel>
-      <TabPanel value={value} index={1}>
- 
-
-
-      <Grid
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          <Grid
             container
             spacing={{ xs: 2, md: 3 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
             <Grid item xs={12} sm={4} md={4}>
               <Cards
-                text={
-                  "Vi jobbar hårt för att få detta färdigt"
-                }
+                text={"Vi jobbar hårt för att få detta färdigt"}
                 rubrik={"Inte färdigt"}
                 img={commingSoonImg}
               />
-   
-   </Grid>
+            </Grid>
           </Grid>
-
-
-
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-       
-      <Grid
+        </TabPanel>
+        <TabPanel value={value} index={2}>
+          <Grid
             container
             spacing={{ xs: 2, md: 3 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
             <Grid item xs={12} sm={4} md={4}>
               <Cards
-                text={
-                  "Kommer snart"
-                }
+                text={"Kommer snart"}
                 rubrik={"Vi har inte kommit så här långt ännu!"}
                 linkTo={"/values1"}
                 img={commingSoonImg}
-                
-               
               />
             </Grid>
-      
           </Grid>
-
-
-
-      </TabPanel>
+        </TabPanel>
       </Box>
 
-  
-  
-  
-
       <div className="padderTop">
-        <Container>
-       
-        </Container>
+        <Container></Container>
       </div>
     </div>
   );

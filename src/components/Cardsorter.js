@@ -252,7 +252,7 @@ function CardSorter({ valueArray: arryOfValues }) {
                         backgroundColor: "white",
                         borderRadius: "6px",
                         userSelect: "none",
-                        bgcolor: "primary.main",
+                        bgcolor: "primary.light",
                         color: "white",
                         "&:hover": {
                           transform: "scale(1.02)",
@@ -346,7 +346,7 @@ function CardSorter({ valueArray: arryOfValues }) {
                         backgroundColor: "white",
                         borderRadius: "6px",
                         userSelect: "none",
-                        bgcolor: "primary.main",
+                        bgcolor: "primary.light",
                         color: "white",
                         "&:hover": {
                           transform: "scale(1.02)",

@@ -97,6 +97,8 @@ function ValueResults(obj) {
             </Typography>
             <div className="noStyleList">
               {results.map(({ title, desc, pts }, index) => {
+                console.log(desc);
+
                 return (
                   <Box
                     onClick={() => handleShowValueInfo(index)}
@@ -115,7 +117,7 @@ function ValueResults(obj) {
                       width: "95%",
                       height: "200px",
                       maxWidth: "450px",
-                      bgcolor: "primary.main",
+                      bgcolor: "primary.light",
                       color: "white",
 
                       borderRadius: "6px",
@@ -129,7 +131,7 @@ function ValueResults(obj) {
                       sx={{
                         position: "absolute",
                         bgcolor: "white",
-                        color: "primary.main",
+                        color: "primary.dark",
                         float: "left",
                         width: 30,
                         height: 30,
@@ -179,7 +181,7 @@ function ValueResults(obj) {
                           mr: "25px",
                         }}
                       >
-                        {" Jag vill vara " + desc}
+                        {" Jag vill " + desc.toLocaleLowerCase()}
                       </Typography>
                     </li>
                   </Box>

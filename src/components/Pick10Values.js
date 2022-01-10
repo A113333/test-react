@@ -23,7 +23,7 @@ export default function ValueList() {
     <div>
       <ExerciseAppbar header={"Värdekompassen"} step={"Steg 1 av 3"} />
       <StepperExercise activeStep={0} />
-      <Slide direction="up" in={slide} mountOnEnter unmountOnExit>
+      <Slide direction="left" in={slide} mountOnEnter unmountOnExit>
         <Container sx={{ backgroundColor: "white" }}>
           <Headline text="Välj dina värderingsord" />
 

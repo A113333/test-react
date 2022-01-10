@@ -6,15 +6,15 @@ import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import { useHistory } from "react-router-dom";
 
-
 export default function MultiActionAreaCard({
-text,
+  text,
   rubrik,
   linkTo,
- state,
+  state,
   stateColor,
+  backgroundcolor,
   isActive,
-  img
+  img,
 }) {
   console.log(stateColor);
 
@@ -24,41 +24,47 @@ text,
       pathname: linkTo,
     });
   };
+  console.log(backgroundcolor);
   return (
     <Card
       sx={{
-        bgcolor: "background.paper",
-        boxShadow: 5,
+        backgroundColor: backgroundcolor,
+        boxShadow: 3,
         mx: "auto",
         transform: "scale(1)",
       }}
     >
       <CardActionArea onClick={goTo}>
-        <CardMedia
-          component="img"
-          height="100"
-          image={img}
-          alt="Kompass"
-        />
+        <CardMedia component="img" height="100" image={img} alt="Kompass" />
 
-        <CardContent sx={{ padding: "8px" }}>
-          <Typography gutterBottom variant="body1" component="div" sx={{ fontWeight: "bold", fontSize: "1,4rem", }}>
+        <CardContent
+          sx={{ padding: "8px", minHeight: "160px", verticalAlign: "center" }}
+        >
+          <Typography
+            gutterBottom
+            variant="body1"
+            component="div"
+            sx={{ fontWeight: "bold", fontSize: "1,4rem" }}
+          >
             {rubrik}
           </Typography>
-          <Typography variant="body1" color="text.secondary">
-            {text}
-          </Typography>
+          <Typography variant="body1">{text}</Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
+      <CardActions sx={{ padding: "0px" }}>
         <Button
           fullWidth={true}
           onClick={goTo}
           variant="contained"
           color={stateColor}
           disabled={!isActive}
+          sx={{
+            pl: "0px",
+            pr: "0px",
+            borderRadius: 0,
+          }}
         >
-         { isActive? "STARTA ÖVNINGEN": "kommer snart"}
+          {isActive ? "STARTA ÖVNINGEN" : "kommer snart"}
         </Button>
       </CardActions>
     </Card>

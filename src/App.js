@@ -13,9 +13,8 @@ import ValueInformation from "./components/ValueInformation";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "material-icons/iconfont/material-icons.css";
 import CssBaseline from "@mui/material/CssBaseline";
-import { blue } from "@mui/material/colors";
+import { blue, green } from "@mui/material/colors";
 import ScrollToTop from "./components/ScrollToTop";
-
 
 /* hur många ord i listan?
 mer mellanrum mellan korten
@@ -28,10 +27,22 @@ container resultat
 const theme = createTheme({
   palette: {
     primary: {
-      main: blue[800],
+      main: "#0E0F19",
     },
     secondary: {
-      main: blue[200],
+      main: "#7A7978",
+    },
+    valueCompass: {
+      main: "#B5B6B3",
+      contrastText: "#fff",
+    },
+    lifeAreas: {
+      main: "#F0F3ED",
+      contrastText: "#fff",
+    },
+    liveByValues: {
+      main: "#EEEFEC",
+      contrastText: "#fff",
     },
   },
 
@@ -69,7 +80,7 @@ function App() {
     <React.Fragment>
       <CssBaseline />
       <Router basename={process.env.PUBLIC_URL}>
-      <ScrollToTop />
+        <ScrollToTop />
         <div className="appWrapper">
           <div className="app">
             <ThemeProvider theme={theme}>
@@ -85,11 +96,11 @@ function App() {
                 </Route>
 
                 <Route exact path="/valj10varder">
-                  <Pick10Values/>
+                  <Pick10Values />
                 </Route>
 
                 <Route exact path="/valj5">
-                  <Pick5Values/>
+                  <Pick5Values />
                 </Route>
 
                 <Route exact path="/valueSorter">
