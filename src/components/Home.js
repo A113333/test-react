@@ -12,8 +12,9 @@ import Box from "@mui/material/Box";
 import ExploreIcon from "@mui/icons-material/Explore";
 import MapIcon from "@mui/icons-material/Map";
 import BookIcon from "@mui/icons-material/Book";
-import compassImg from "./compass.jpg";
-import commingSoonImg from "./darkSky.jpg";
+import compassImg from "./img/compass.jpg";
+import commingSoonImg from "./img/darkSky.jpg";
+import roadImg from "./img/road.jpg";
 
 // Grid är 12 columer
 /*
@@ -76,6 +77,8 @@ export default function Home() {
       <Box sx={{ width: "100%" }}>
         <Box
           sx={{
+            bordeRadius: "0px 0px 6px 6px",
+            backgroundColor: "valueCompass.main",
             borderBottom: 1,
             borderColor: "divider",
           }}
@@ -97,6 +100,11 @@ export default function Home() {
             spacing={{ xs: 2, md: 3 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
+            <Grid item xs={12}>
+              <Typography variant="h1" align="center">
+                Värderingar
+              </Typography>
+            </Grid>
             <Grid item xs={12} sm={4} md={4}>
               <Cards
                 text={
@@ -115,10 +123,8 @@ export default function Home() {
                   "Fortsätt fördjupa dig i värderingar, nu utifrån livsområden. Lägger du din tid och energi på rätt saker?"
                 }
                 rubrik={"Dina livsområden"}
-                img={commingSoonImg}
+                img={roadImg}
                 backgroundcolor={"lifeAreas.main"}
-                isActive={"warning"}
-                stateColor={"success"}
               />
             </Grid>{" "}
             <Grid item xs={12} sm={4} md={4}>

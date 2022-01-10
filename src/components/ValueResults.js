@@ -62,9 +62,6 @@ function ValueResults(obj) {
       //datan som ska skickas
       body: JSON.stringify(user),
     }).then(() => {
-      console.log(results);
-      console.log("resultat sparat");
-
       // visa confomration att det sparats här?
     });
   };
@@ -97,8 +94,6 @@ function ValueResults(obj) {
             </Typography>
             <div className="noStyleList">
               {results.map(({ title, desc, pts }, index) => {
-                console.log(desc);
-
                 return (
                   <Box
                     onClick={() => handleShowValueInfo(index)}
@@ -242,7 +237,7 @@ function ValueResults(obj) {
             </Typography>
             <Divider></Divider>
             <Typography variant="body1" gutterBottom sx={{ pt: "10px" }}>
-              I nästa övning kommer vi fortsätta fördjupa oss i värderingar. då
+              I nästa övning kommer vi fortsätta fördjupa oss i värderingar. Där
               kommer vi kolla på hur dina värderingar ser ut i olika livsområden
               och hur du värderar de olika delarna av livet.
             </Typography>

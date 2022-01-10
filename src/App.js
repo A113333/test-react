@@ -33,11 +33,11 @@ const theme = createTheme({
       main: "#7A7978",
     },
     valueCompass: {
-      main: "#B5B6B3",
+      main: "#EEEFEC",
       contrastText: "#fff",
     },
     lifeAreas: {
-      main: "#F0F3ED",
+      main: "#EEEFEC",
       contrastText: "#fff",
     },
     liveByValues: {
