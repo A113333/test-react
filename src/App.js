@@ -15,6 +15,7 @@ import "material-icons/iconfont/material-icons.css";
 import CssBaseline from "@mui/material/CssBaseline";
 import { blue, green, blueGrey } from "@mui/material/colors";
 import ScrollToTop from "./components/ScrollToTop";
+import PHQ9 from "./components/Skattningar/PHQ9";
 
 /* hur många ord i listan?
 mer mellanrum mellan korten
@@ -116,6 +117,10 @@ function App() {
                 {/*  /:id för att dynamiskt kunna visa resultat uifrån route parmeter /*/}
                 <Route path="/values/:id">
                   <ValueDetalis />
+                </Route>
+
+                <Route path="/phq9">
+                  <PHQ9/>
                 </Route>
 
                 {/*  * fångar alla routes, måste vara i botten 404*/}

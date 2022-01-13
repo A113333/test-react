@@ -125,7 +125,7 @@ export default function ValueLister({
                     sx={{
                       "& .MuiSvgIcon-root": { fontSize: 30 },
                       position: "absolute",
-                      right: "15px",
+                      right: "30px",
                     }}
                     id={`custom-checkbox-${id}`}
                     title={title}
@@ -134,19 +134,19 @@ export default function ValueLister({
                   />
                   <Box
                     sx={{
-                      mt: "15px",
+                    
                       "&:hover": {
                         transform: "scale(1.01)",
                       },
                     }}
                   >
                     <label htmlFor={`custom-checkbox-${id}`}>
-                      <Typography variant="h3" sx={{ padding: "15px" }}>
+                      <Typography variant="h3" sx={{ padding: "10px", pb:"0px" }}>
                         {id + 1 + ". " + title + " "}
                       </Typography>
                       <Typography
                         variant="body1"
-                        sx={{ padding: "15px", pt: "0px" }}
+                        sx={{ padding: "10px", pt: "0px" }}
                       >
                         {desc}
                       </Typography>

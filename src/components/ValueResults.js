@@ -95,6 +95,7 @@ function ValueResults(obj) {
             <div className="noStyleList">
               {results.map(({ title, desc, pts }, index) => {
                 return (
+                  <Slide direction="up" in={true} timeout={index }mountOnEnter unmountOnExit> 
                   <Box
                     onClick={() => handleShowValueInfo(index)}
                     key={index}
@@ -180,6 +181,7 @@ function ValueResults(obj) {
                       </Typography>
                     </li>
                   </Box>
+                  </Slide>
                 );
               })}
             </div>

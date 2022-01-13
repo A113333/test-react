@@ -15,6 +15,7 @@ import BookIcon from "@mui/icons-material/Book";
 import compassImg from "./img/compass.jpg";
 import commingSoonImg from "./img/darkSky.jpg";
 import roadImg from "./img/road.jpg";
+import waterImg from "./img/water.jpg";
 
 // Grid är 12 columer
 /*
@@ -133,7 +134,7 @@ export default function Home() {
                   "Här presenteras några verktyg för att hjälpa  dig att leva mer efter dina värderingar"
                 }
                 rubrik={"Lev som du önskar"}
-                img={commingSoonImg}
+                img={waterImg}
                 backgroundcolor={"liveByValues.main"}
               />
             </Grid>
