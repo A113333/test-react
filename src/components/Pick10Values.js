@@ -42,7 +42,7 @@ export default function ValueList() {
           {values && (
             <ValuePicker
               values={values}
-              nrsToPick={5}
+              nrsToPick={10}
               next={"/valj5"}
               back="/varderingar-information"
             />

@@ -13,7 +13,7 @@ import ValueInformation from "./components/ValueInformation";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "material-icons/iconfont/material-icons.css";
 import CssBaseline from "@mui/material/CssBaseline";
-import { blue, green } from "@mui/material/colors";
+import { blue, green, blueGrey } from "@mui/material/colors";
 import ScrollToTop from "./components/ScrollToTop";
 
 /* hur många ord i listan?
@@ -23,11 +23,11 @@ container resultat
 */
 
 // json-server --watch db.json --port8000
-
+ 
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#0E0F19",
+      main: "#455a64",
     },
     secondary: {
       main: "#7A7978",
