@@ -35,6 +35,7 @@ export default function ExerciseAppbar({ header, step }) {
             transform: "translate(-50%)",
             bgcolor: "primary.main",
             boxShadow: 1,
+            zIndex: 900,
           }}
         >
           <Toolbar

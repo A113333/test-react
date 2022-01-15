@@ -27,7 +27,7 @@ export default function HorizontalLinearStepper(props) {
     <Box
       sx={{
         width: "75%",
-        pt: "15px",
+        pt: "25px",
         mx: "auto",
       }}
     >

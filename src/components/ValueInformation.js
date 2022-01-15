@@ -66,7 +66,7 @@ function ValueCompassStep1() {
               display: "flex",
               flexWrap: "wrap",
               m: "25px",
-              mt: "10px",
+              mt: "40px",
               mx: "auto",
               p: "15px",
               width: smallScreen ? "90%" : "45%",

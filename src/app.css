@@ -241,3 +241,11 @@ html {
 body {
   background-color: #f1faee;
 }
+
+.primary {
+  background-color: #7A7978;
+}
+
+.success {
+  background-color: #388e3c;
+}

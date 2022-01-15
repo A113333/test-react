@@ -103,6 +103,29 @@ export default function ValueLister({
             // borderRadius: 5,
           }}
         />
+        <Box 
+           className={itsDone? "success" : "primary"}
+           sx={{ position: "fixed",
+            top: "45px",
+            maxWidth: "854px",
+            left: "50%",
+            transform: "translate(-50%, 0)",
+            zIndex: "1000",
+           minWidth: "52px",
+           textAlign: "center",
+            color: "white",
+            fontWeight: "bold",
+            fontSize: "0.9rem",
+            padding: "5px",
+            pb: "12px",
+            pt: "12px",
+            border: "2px solid white",
+            borderRadius: '50%' }}
+            > 
+            
+            {nrsPicked} / {nrsToPick } 
+           
+            </Box>
         <List
           sx={{
             width: "100%",
