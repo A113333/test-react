@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/test-react/static/css/main.e2a334fb.chunk.css",
-    "main.js": "/test-react/static/js/main.bee5368c.chunk.js",
-    "main.js.map": "/test-react/static/js/main.bee5368c.chunk.js.map",
-    "runtime-main.js": "/test-react/static/js/runtime-main.adce8bfa.js",
-    "runtime-main.js.map": "/test-react/static/js/runtime-main.adce8bfa.js.map",
+    "main.css": "/test-react/static/css/main.cb46bb6c.chunk.css",
+    "main.js": "/test-react/static/js/main.f55a8d4e.chunk.js",
+    "main.js.map": "/test-react/static/js/main.f55a8d4e.chunk.js.map",
+    "runtime-main.js": "/test-react/static/js/runtime-main.925f556a.js",
+    "runtime-main.js.map": "/test-react/static/js/runtime-main.925f556a.js.map",
     "static/css/2.87d231a2.chunk.css": "/test-react/static/css/2.87d231a2.chunk.css",
-    "static/js/2.e62503bb.chunk.js": "/test-react/static/js/2.e62503bb.chunk.js",
-    "static/js/2.e62503bb.chunk.js.map": "/test-react/static/js/2.e62503bb.chunk.js.map",
-    "static/js/3.d143c227.chunk.js": "/test-react/static/js/3.d143c227.chunk.js",
-    "static/js/3.d143c227.chunk.js.map": "/test-react/static/js/3.d143c227.chunk.js.map",
+    "static/js/2.aadb961d.chunk.js": "/test-react/static/js/2.aadb961d.chunk.js",
+    "static/js/2.aadb961d.chunk.js.map": "/test-react/static/js/2.aadb961d.chunk.js.map",
+    "static/js/3.d7dc9a84.chunk.js": "/test-react/static/js/3.d7dc9a84.chunk.js",
+    "static/js/3.d7dc9a84.chunk.js.map": "/test-react/static/js/3.d7dc9a84.chunk.js.map",
     "index.html": "/test-react/index.html",
     "static/css/2.87d231a2.chunk.css.map": "/test-react/static/css/2.87d231a2.chunk.css.map",
-    "static/css/main.e2a334fb.chunk.css.map": "/test-react/static/css/main.e2a334fb.chunk.css.map",
-    "static/js/2.e62503bb.chunk.js.LICENSE.txt": "/test-react/static/js/2.e62503bb.chunk.js.LICENSE.txt",
+    "static/css/main.cb46bb6c.chunk.css.map": "/test-react/static/css/main.cb46bb6c.chunk.css.map",
+    "static/js/2.aadb961d.chunk.js.LICENSE.txt": "/test-react/static/js/2.aadb961d.chunk.js.LICENSE.txt",
     "static/media/compass.b14c0499.jpg": "/test-react/static/media/compass.b14c0499.jpg",
     "static/media/darkSky.54492b3c.jpg": "/test-react/static/media/darkSky.54492b3c.jpg",
     "static/media/material-icons.css": "/test-react/static/media/material-icons.6c307c85.woff2",
@@ -21,10 +21,10 @@
     "static/media/water.191acb59.jpg": "/test-react/static/media/water.191acb59.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.adce8bfa.js",
+    "static/js/runtime-main.925f556a.js",
     "static/css/2.87d231a2.chunk.css",
-    "static/js/2.e62503bb.chunk.js",
-    "static/css/main.e2a334fb.chunk.css",
-    "static/js/main.bee5368c.chunk.js"
+    "static/js/2.aadb961d.chunk.js",
+    "static/css/main.cb46bb6c.chunk.css",
+    "static/js/main.f55a8d4e.chunk.js"
   ]
 }
