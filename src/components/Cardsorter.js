@@ -236,7 +236,7 @@ function CardSorter({ valueArray: arryOfValues }) {
             <Box>
               {valueArray.map(({ title, desc, id }, index) => {
                 return (
-                  <Fade timeout={700} in={showTop === index}>
+                  <Fade timeout={{enter: 1200, exit: 1200,}} in={showTop === index}>
                     <Box
                       key={"topCard" + id.toString()}
                       className={index === showTop ? "show" : "hidden"}
@@ -328,7 +328,7 @@ function CardSorter({ valueArray: arryOfValues }) {
               {" "}
               {valueArray.map(({ title, desc, id }, index) => {
                 return (
-                  <Fade timeout={500} in={showBottom === index}>
+                  <Fade timeout={{enter: 1200, exit: 1200,}} in={showBottom === index}>
                     <Box
                       key={"bottomCard" + id.toString()}
                       className={showBottom === index ? "show" : "hidden"}

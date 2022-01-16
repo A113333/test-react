@@ -239,9 +239,9 @@ function ValueResults(obj) {
             </Typography>
             <Divider></Divider>
             <Typography variant="body1" gutterBottom sx={{ pt: "10px" }}>
-              I nästa övning kommer vi fortsätta fördjupa oss i värderingar. Där
-              kommer vi kolla på hur dina värderingar ser ut i olika livsområden
-              och hur du värderar de olika delarna av livet.
+              I nästa övning, "Dina livsområden" kommer vi fortsätta fördjupa oss i värderingar. Där
+              kommer vi utforska hur dina värderingar ser ut i olika livsområden
+              och hur du värderar olika delarna av livet.
             </Typography>
           </div>
           <Box textAlign="center">

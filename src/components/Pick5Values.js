@@ -34,7 +34,9 @@ export default function ValueList() {
             {/* finns x antal ord läs igenom alla innan du går vidare 
                 när du är klar: säker att du vill gå vidare (har du läst alla?) */}
             Välj nu ut de fem absolut viktigaste värderingarna av de tio du
-            valde tidigare.
+           valde tidigare. Har du svårt att välja testa återigen att ställa dig
+           frågan: hur hade jag velat bli ihågkommen? 
+
           </Typography>
           <br></br>
           {/* om values finns så körs ValuesComponet  */}

@@ -50,8 +50,9 @@ function ValueCompassStep1() {
             sx={{ fontWeight: "bold", lineHeight: 1.7, mt: "25px" }}
             gutterBottom
           >
-            Värderingar kan beskrivas som vår inre kompass, de styr vad vi gör
-            och säger. De står för den vi vill vara och hur vi vill agera.
+            Värderingar kan beskrivas som vår inre kompass, är vi i kontakt med våra värderingar hjälper dom oss
+             att hitta rätt.
+            De står för hur vi vill vara och hur vi vill agera i världen.
             Värderingar handlar inte om vad du vill uppnå, ha eller prestera,
             utan representerar kvaliteter som du – medvetet eller omedvetet –
             har önskar att du har och agerar ifrån. Vad vill du att ditt liv ska
@@ -127,8 +128,9 @@ function ValueCompassStep1() {
           >
             Värdekompassen är uppbyggd i tre steg. I det första steget kommer du
             välja ut tio värderingsord ur vår värderingslista. I det andra
-            steget ska du välja mellan dina värderingar för att hitta de fem
-            värderingar som är absolut viktigast för dig. När du har gjort detta
+            steget ska du välja fem värdingar av dom tio valda för att hitta dom
+            som är absolut viktigast för dig. I det tredje steget kommer du jämnföra dina fem värderingsord
+            mot varandra och ta ställning till vilket som är viktigast för dig. När du har gjort detta
             kommer du få se ditt resultat och få möjlighet att läsa mer om dina
             valda värderingar. När du läser värderingslistan kommer du kanske
             att märka att olika värderingar kan ha olika vikt i olika delar av
@@ -197,7 +199,7 @@ function ValueCompassStep1() {
                 </Avatar>
               </ListItemAvatar>
               <ListItemText
-                primary="Se ditt resultat"
+                primary="Ta ställning"
                 secondary="Ställ ord mot ord för att rangordna din lista."
               />
             </ListItem>

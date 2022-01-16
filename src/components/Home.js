@@ -79,7 +79,7 @@ export default function Home() {
         <Box
           sx={{
             bordeRadius: "0px 0px 6px 6px",
-            backgroundColor: "valueCompass.main",
+            backgroundColor: "white",
             borderBottom: 1,
             borderColor: "divider",
           }}
@@ -102,8 +102,11 @@ export default function Home() {
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
             <Grid item xs={12}>
-              <Typography variant="h1" align="center">
-                Värderingar
+              <Typography variant="h1" align="center"   fontSize={{
+    md: "2rem",
+    xs: "1.5rem"
+  }}>
+                Värderingskompassen
               </Typography>
             </Grid>
             <Grid item xs={12} sm={4} md={4}>
@@ -146,6 +149,16 @@ export default function Home() {
             spacing={{ xs: 2, md: 3 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
+                    <Grid item xs={12}>
+              <Typography variant="h1" align="center"   fontSize={{
+    md: "2rem",
+    xs: "1.5rem"
+  }}>
+                Målkartan
+              </Typography>
+            </Grid>
+
+            
             <Grid item xs={12} sm={4} md={4}>
               <Cards
                 text={"Vi jobbar hårt för att få detta färdigt"}
@@ -161,6 +174,14 @@ export default function Home() {
             spacing={{ xs: 2, md: 3 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
+                    <Grid item xs={12}>
+              <Typography variant="h1" align="center"   fontSize={{
+    md: "2rem",
+    xs: "1.5rem"
+  }}>
+                Din Loggbok
+              </Typography>
+            </Grid>
             <Grid item xs={12} sm={4} md={4}>
               <Cards
                 text={"Kommer snart"}

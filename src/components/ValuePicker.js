@@ -164,12 +164,12 @@ export default function ValueLister({
                     }}
                   >
                     <label htmlFor={`custom-checkbox-${id}`}>
-                      <Typography variant="h3" sx={{ padding: "10px", pb:"0px" }}>
+                      <Typography variant="h3" sx={{ padding: "10px", pb:"0px", width: "90%" }}>
                         {id + 1 + ". " + title + " "}
                       </Typography>
                       <Typography
                         variant="body1"
-                        sx={{ padding: "10px", pt: "0px" }}
+                        sx={{ padding: "10px", pt: "0px" , width: "90%"}}
                       >
                         {desc}
                       </Typography>
