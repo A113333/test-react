@@ -14,7 +14,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Fade from "@mui/material/Fade";
 import Headline from "./Headline";
 
-function CardSorter({ valueArray: arryOfValues }) {
+function CardSorter({ valueArray: arryOfValues, next, back }) {
   //  console.log("arryOfValues ");
   console.log(arryOfValues);
   const history = useHistory();
@@ -32,7 +32,7 @@ function CardSorter({ valueArray: arryOfValues }) {
 
   const goToResult = () => {
     history.push({
-      pathname: "/valueResults",
+      pathname: next,
       state: valueArray,
     });
   };
@@ -205,18 +205,6 @@ function CardSorter({ valueArray: arryOfValues }) {
       />
       <Slide direction="left" in={slide}>
         <Container>
-          <Headline text="Prioritera din värdering" />
-
-          <Typography
-            variant="body1"
-            align="center"
-            sx={{ mb: "25px", mt: "25px" }}
-          >
-            {" "}
-            Om du enbart kunde leva efter en av de två värderingarna, vilken
-            hade du valt?
-          </Typography>
-
           <Box textAlign="center" sx={{ mt: "15px", mb: "15px" }}>
             <Button
               disabled={cardsSorted === 0 ? true : false}
@@ -236,7 +224,10 @@ function CardSorter({ valueArray: arryOfValues }) {
             <Box>
               {valueArray.map(({ title, desc, id }, index) => {
                 return (
-                  <Fade timeout={{enter: 1200, exit: 1200,}} in={showTop === index}>
+                  <Fade
+                    timeout={{ enter: 1200, exit: 1200 }}
+                    in={showTop === index}
+                  >
                     <Box
                       key={"topCard" + id.toString()}
                       className={index === showTop ? "show" : "hidden"}
@@ -328,7 +319,10 @@ function CardSorter({ valueArray: arryOfValues }) {
               {" "}
               {valueArray.map(({ title, desc, id }, index) => {
                 return (
-                  <Fade timeout={{enter: 1200, exit: 1200,}} in={showBottom === index}>
+                  <Fade
+                    timeout={{ enter: 1200, exit: 1200 }}
+                    in={showBottom === index}
+                  >
                     <Box
                       key={"bottomCard" + id.toString()}
                       className={showBottom === index ? "show" : "hidden"}
@@ -393,7 +387,7 @@ function CardSorter({ valueArray: arryOfValues }) {
               width: "100%",
             }}
           >
-            <BackButton data={valueArray} goTo="/valj5" />
+            <BackButton data={valueArray} goTo={back} />
 
             {isItDone && (
               <Button

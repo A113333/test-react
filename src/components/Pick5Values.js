@@ -25,19 +25,24 @@ export default function ValueList() {
   return (
     <div>
       <ExerciseAppbar header={"Värdekompassen"} step={"Steg 2 av 3"} />
-      <StepperExercise activeStep={1} />
+      <StepperExercise
+        activeStep={1}
+        steps={["Välj tio", "Välj fem", "Prioritera"]}
+      />
       <Slide direction="left" in={slide} mountOnEnter unmountOnExit>
         <Container sx={{ backgroundColor: "white" }}>
           <Headline text="Välj dina värderingsord" />
-
-          <Typography variant="body1">
-            {/* finns x antal ord läs igenom alla innan du går vidare 
+          <div className="text">
+            {" "}
+            <Typography variant="body1">
+              {/* finns x antal ord läs igenom alla innan du går vidare 
                 när du är klar: säker att du vill gå vidare (har du läst alla?) */}
-            Välj nu ut de fem absolut viktigaste värderingarna av de tio du
-           valde tidigare. Har du svårt att välja testa återigen att ställa dig
-           frågan: hur hade jag velat bli ihågkommen? 
+              Välj nu ut de fem absolut viktigaste värderingarna av de tio du
+              valde tidigare. Har du svårt att välja testa återigen att ställa
+              dig frågan: hur hade jag velat bli ihågkommen?
+            </Typography>
+          </div>
 
-          </Typography>
           <br></br>
           {/* om values finns så körs ValuesComponet  */}
 
@@ -45,7 +50,7 @@ export default function ValueList() {
             <ValuePicker
               values={valueArray}
               nrsToPick={5}
-              next="/valueSorter"
+              next="/varderingsPrioritering"
               back="/valj10varder"
             />
           )}

@@ -22,7 +22,7 @@ export default function Navbar() {
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" sx={{ boxShadow: 1}}>
+        <AppBar position="static" sx={{ boxShadow: 1 }}>
           <Toolbar>
             <IconButton
               size="large"

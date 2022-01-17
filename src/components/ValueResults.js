@@ -70,7 +70,10 @@ function ValueResults(obj) {
     <Slide direction="left" in={slide} mountOnEnter unmountOnExit>
       <div>
         <ExerciseAppbar header={"Värderinskompassen"} step={"3 av 3"} />
-        <StepperExercise activeStep={3} />
+        <StepperExercise
+          activeStep={3}
+          steps={["Välj tio", "Välj fem", "Prioritera"]}
+        />
         <Container maxWidth="md">
           <div>
             <Typography
@@ -85,102 +88,110 @@ function ValueResults(obj) {
             <Typography
               variant="body1"
               gutterBottom
-              align="center"
-              sx={{ mb: "25px", mt: "25px" }}
+              sx={{ mb: "25px", mt: "25px", maxWidth: "725px", mx: "auto" }}
             >
               Bra jobbat, ta ett djupt andetag och tacka dig själv, du har
               precis gjort något viktigt och meningsfullt för din egna skull. Ta
-              nu en noggran titt på dina värderingar.
+              en noggrann titt på dina värderingar. Vi kommer utforska vad dom
+              betyder för dig och hur du kan bli bättre på att låta dom vägleda
+              dig genom livet i övning 3, men börja gärna redan nu fundera över
+              vad dessa värderingar betyder för dig.
             </Typography>
             <div className="noStyleList">
               {results.map(({ title, desc, pts }, index) => {
                 return (
-                  <Slide direction="up" in={true} timeout={index }mountOnEnter unmountOnExit> 
-                  <Box
-                    onClick={() => handleShowValueInfo(index)}
-                    key={index}
-                    className={
-                      ShowValueInfo === index ? "transform90" : "not active"
-                    }
-                    sx={{
-                      display: "table",
-                      mx: "auto",
-                      transform: "scale(1)",
-                      margin: "auto",
-                      mt: "15px",
-                      boxShadow: 5,
-                      borderColor: "grey.500",
-                      width: "95%",
-                      height: "200px",
-                      maxWidth: "450px",
-                      bgcolor: "primary.light",
-                      color: "white",
-
-                      borderRadius: "6px",
-                      mb: "25px",
-                      "&:hover": {
-                        transform: "scale(1.05)",
-                      },
-                    }}
+                  <Slide
+                    direction="up"
+                    in={true}
+                    timeout={index}
+                    mountOnEnter
+                    unmountOnExit
                   >
-                    <Avatar
+                    <Box
+                      onClick={() => handleShowValueInfo(index)}
+                      key={index}
+                      className={
+                        ShowValueInfo === index ? "transform90" : "not active"
+                      }
                       sx={{
-                        position: "absolute",
-                        bgcolor: "white",
-                        color: "primary.dark",
-                        float: "left",
-                        width: 30,
-                        height: 30,
+                        display: "table",
+                        mx: "auto",
+                        transform: "scale(1)",
+                        margin: "auto",
                         mt: "15px",
-                        ml: "15px",
-                        fontWeight: "bold",
+                        boxShadow: 5,
+                        borderColor: "grey.500",
+                        width: "95%",
+                        height: "200px",
+                        maxWidth: "450px",
+                        bgcolor: "primary.light",
+                        color: "white",
+
+                        borderRadius: "6px",
+                        mb: "25px",
+                        "&:hover": {
+                          transform: "scale(1.05)",
+                        },
                       }}
                     >
-                      <Typography
-                        variant="body1"
-                        sx={{ fontWeight: "bold", userSelect: "none" }}
-                      >
-                        {" "}
-                        {index + 1}
-                      </Typography>{" "}
-                    </Avatar>
-
-                    <li key={index}>
-                      <Typography
-                        variant="h2"
+                      <Avatar
                         sx={{
-                          textAlign: "center",
-                          paddingBottom: "5px",
-                          pt: "25px",
-                          ml: "30px",
-                          mr: "30px",
-                          pb: "5px",
-                          mt: "5px",
-
-                          color: "white",
-                          userSelect: "none",
+                          position: "absolute",
+                          bgcolor: "white",
+                          color: "primary.dark",
+                          float: "left",
+                          width: 30,
+                          height: 30,
+                          mt: "15px",
+                          ml: "15px",
+                          fontWeight: "bold",
                         }}
                       >
-                        {title}
-                      </Typography>
-                      <Divider
-                        className="white"
-                        sx={{ width: "65%", mx: "auto" }}
-                      ></Divider>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          p: "15px",
-                          fontSize: "1.1rem",
-                          userSelect: "none",
-                          ml: "25px",
-                          mr: "25px",
-                        }}
-                      >
-                        {" Jag vill " + desc.toLocaleLowerCase()}
-                      </Typography>
-                    </li>
-                  </Box>
+                        <Typography
+                          variant="body1"
+                          sx={{ fontWeight: "bold", userSelect: "none" }}
+                        >
+                          {" "}
+                          {index + 1}
+                        </Typography>{" "}
+                      </Avatar>
+
+                      <li key={index}>
+                        <Typography
+                          variant="h2"
+                          sx={{
+                            textAlign: "center",
+                            paddingBottom: "5px",
+                            pt: "25px",
+                            ml: "30px",
+                            mr: "30px",
+                            pb: "5px",
+                            mt: "5px",
+
+                            color: "white",
+                            userSelect: "none",
+                          }}
+                        >
+                          {title}
+                        </Typography>
+                        <Divider
+                          className="white"
+                          sx={{ width: "65%", mx: "auto" }}
+                        ></Divider>
+                        <Typography
+                          variant="body1"
+                          sx={{
+                            p: "15px",
+                            fontSize: "1.1rem",
+                            userSelect: "none",
+                            ml: "25px",
+                            mr: "25px",
+                          }}
+                        >
+                          {" Jag vill " + desc.toLocaleLowerCase()}
+                        </Typography>
+                      </li>
+                    </Box>
                   </Slide>
                 );
               })}
@@ -188,14 +199,17 @@ function ValueResults(obj) {
             <br></br>
             <Typography
               variant="h3"
-              text="center"
+              gutterBottom
               sx={{
+                mb: "25px",
+                mt: "25px",
+                maxWidth: "725px",
                 textAlign: "center",
               }}
-              gutterBottom
             >
               Hur bra tycker du att du lever efter dessa fem värderingar idag?
             </Typography>
+            <Divider />
             <Box
               sx={{
                 mx: "auto",
@@ -203,6 +217,7 @@ function ValueResults(obj) {
                 display: "flex",
                 alignItems: "center",
                 height: "40px",
+                mt: "25px",
               }}
             >
               <Rating
@@ -239,9 +254,9 @@ function ValueResults(obj) {
             </Typography>
             <Divider></Divider>
             <Typography variant="body1" gutterBottom sx={{ pt: "10px" }}>
-              I nästa övning, "Dina livsområden" kommer vi fortsätta fördjupa oss i värderingar. Där
-              kommer vi utforska hur dina värderingar ser ut i olika livsområden
-              och hur du värderar olika delarna av livet.
+              I nästa övning, "Dina livsområden" kommer vi fortsätta fördjupa
+              oss i värderingar. Där kommer vi utforska hur dina värderingar ser
+              ut i olika livsområden och hur du värderar olika delarna av livet.
             </Typography>
           </div>
           <Box textAlign="center">

@@ -34,7 +34,7 @@ function ItsDoneComponent({ title, text, onYes, option1, option2 }) {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>{option1}</Button>
+          {option1 && <Button onClick={handleClose}>{option1}</Button>}
           <Button onClick={onYes ? onYes : handleClose}>{option2}</Button>
         </DialogActions>
       </Dialog>

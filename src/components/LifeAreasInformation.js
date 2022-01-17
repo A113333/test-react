@@ -1,7 +1,7 @@
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import Slide from "@mui/material/Slide";
 import ExerciseAppbar from "./ExerciseAppbar";
 import Container from "@mui/material/Container";
@@ -18,7 +18,7 @@ import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Headline from "./Headline";
 
-function ValueCompassStep1() {
+function LifeAreasInformation() {
   const [slide, setSlide] = useState(true);
 
   useEffect(() => {
@@ -26,15 +26,19 @@ function ValueCompassStep1() {
   }, []);
 
   const history = useHistory();
+
   const nextPage = () => {
     history.push({
-      pathname: "/valj10varder",
+      pathname: "/valj-livsomraden",
     });
   };
 
   const prevPage = () => {
     history.goBack();
   };
+  const location = useLocation();
+  const valueArray = location.state; // tar valueArray från "history.push"
+  console.log(valueArray);
 
   const smallScreen = useMediaQuery("(max-width:445px)");
   console.log(smallScreen);
@@ -42,9 +46,9 @@ function ValueCompassStep1() {
   return (
     <Slide direction="left" in={slide} mountOnEnter unmountOnExit>
       <div>
-        <ExerciseAppbar header={"Värdekompassen"} step={" "} />
+        <ExerciseAppbar header={"Dina livsområden"} step={" "} />
         <Container maxWidth="md">
-          <Headline text="Vad är en värdering?" />
+          <Headline text="Vad är ett livsområde?" />
           <Box sx={{ maxWidth: "725px", mx: "auto" }}>
             <Typography
               variant="body1"
@@ -164,7 +168,7 @@ function ValueCompassStep1() {
                 <ListItemText
                   primary="Välj värderingar"
                   secondary="Välj ut de 10 värderingsord som känns viktigast 
-        för dig ur vår värderingslista."
+      för dig ur vår värderingslista."
                 />
               </ListItem>
 
@@ -265,4 +269,4 @@ function ValueCompassStep1() {
   );
 }
 
-export default ValueCompassStep1;
+export default LifeAreasInformation;

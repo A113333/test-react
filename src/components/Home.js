@@ -102,23 +102,28 @@ export default function Home() {
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
             <Grid item xs={12}>
-              <Typography variant="h1" align="center"   fontSize={{
-    md: "2rem",
-    xs: "1.5rem"
-  }}>
+              <Typography
+                variant="h1"
+                align="center"
+                fontSize={{
+                  md: "2rem",
+                  xs: "1.5rem",
+                }}
+              >
                 Värderingskompassen
               </Typography>
             </Grid>
             <Grid item xs={12} sm={4} md={4}>
               <Cards
                 text={
-                  "Ett verktyg för att hitta dina värderingar. Hitta svar på frågor som: hur vill du vara som människa? Vad viktigt för dig?"
+                  "En djupdykning i dina värderingar. Utforska hur vill du vara som människa, Vad viktigt för dig?"
                 }
-                rubrik={"Övning 1: Värdekompassen"}
+                rubrik={"Dina värderingar"}
                 linkTo={"/varderingar-information"}
                 isActive={true}
                 img={compassImg}
                 backgroundcolor={"valueCompass.main"}
+                nr={1}
               />
             </Grid>
             <Grid item xs={12} sm={4} md={4}>
@@ -129,16 +134,19 @@ export default function Home() {
                 rubrik={"Dina livsområden"}
                 img={roadImg}
                 backgroundcolor={"lifeAreas.main"}
+                nr={2}
+                linkTo={"/livsomraden-information"}
               />
             </Grid>{" "}
             <Grid item xs={12} sm={4} md={4}>
               <Cards
                 text={
-                  "Här presenteras några verktyg för att hjälpa  dig att leva mer efter dina värderingar"
+                  "Här presenteras några verktyg för att hjälpa  dig att leva mer efter dina värderingar."
                 }
                 rubrik={"Lev som du önskar"}
                 img={waterImg}
                 backgroundcolor={"liveByValues.main"}
+                nr={3}
               />
             </Grid>
           </Grid>
@@ -149,16 +157,19 @@ export default function Home() {
             spacing={{ xs: 2, md: 3 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
-                    <Grid item xs={12}>
-              <Typography variant="h1" align="center"   fontSize={{
-    md: "2rem",
-    xs: "1.5rem"
-  }}>
+            <Grid item xs={12}>
+              <Typography
+                variant="h1"
+                align="center"
+                fontSize={{
+                  md: "2rem",
+                  xs: "1.5rem",
+                }}
+              >
                 Målkartan
               </Typography>
             </Grid>
 
-            
             <Grid item xs={12} sm={4} md={4}>
               <Cards
                 text={"Vi jobbar hårt för att få detta färdigt"}
@@ -174,11 +185,15 @@ export default function Home() {
             spacing={{ xs: 2, md: 3 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
-                    <Grid item xs={12}>
-              <Typography variant="h1" align="center"   fontSize={{
-    md: "2rem",
-    xs: "1.5rem"
-  }}>
+            <Grid item xs={12}>
+              <Typography
+                variant="h1"
+                align="center"
+                fontSize={{
+                  md: "2rem",
+                  xs: "1.5rem",
+                }}
+              >
                 Din Loggbok
               </Typography>
             </Grid>

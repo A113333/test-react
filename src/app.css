@@ -89,7 +89,6 @@ input[type="checkbox"] {
 }
 
 .app {
-
   max-width: 852px;
   margin: auto;
   height: 100vh;
@@ -243,9 +242,14 @@ body {
 }
 
 .primary {
-  background-color: #7A7978;
+  background-color: #7a7978;
 }
 
 .success {
   background-color: #388e3c;
+}
+
+.text {
+  max-width: "725px";
+  margin: "auto";
 }

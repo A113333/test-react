@@ -5,6 +5,8 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import { useHistory } from "react-router-dom";
+import { Divider } from "@mui/material";
+import Avatar from "@mui/material/Avatar";
 
 export default function MultiActionAreaCard({
   text,
@@ -15,6 +17,7 @@ export default function MultiActionAreaCard({
   backgroundcolor,
   isActive,
   img,
+  nr,
 }) {
   console.log(stateColor);
 
@@ -38,17 +41,46 @@ export default function MultiActionAreaCard({
         <CardMedia component="img" height="100" image={img} alt="Kompass" />
 
         <CardContent
-          sx={{ padding: "8px", minHeight: "160px", verticalAlign: "center" }}
+          sx={{
+            padding: "0px",
+            minHeight: "160px",
+          }}
         >
+          <Avatar
+            sx={{
+              bgcolor: "primary.main",
+              color: "white",
+              fontWeight: "bold",
+              fontSize: "0.8rem",
+              width: 24,
+              height: 24,
+              position: "absolute",
+              top: "0px",
+              margin: "3px",
+              boxShadow: 3,
+            }}
+          >
+            {nr}
+          </Avatar>
           <Typography
-            gutterBottom
             variant="body1"
             component="div"
-            sx={{ fontWeight: "bold", fontSize: "1,4rem" }}
+            sx={{
+              fontWeight: "bold",
+              fontSize: "1,4rem",
+              padding: "5px",
+              pb: "1px",
+              textAlign: "center",
+            }}
           >
             {rubrik}
           </Typography>
-          <Typography variant="body1">{text}</Typography>
+
+          <Divider />
+
+          <Typography variant="body1" sx={{ padding: "5px" }}>
+            {text}
+          </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions sx={{ padding: "0px" }}>

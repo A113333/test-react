@@ -16,6 +16,9 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { blue, green, blueGrey } from "@mui/material/colors";
 import ScrollToTop from "./components/ScrollToTop";
 import PHQ9 from "./components/Skattningar/PHQ9";
+import LifeAreasInformation from "./components/LifeAreasInformation";
+import LifeAreasPriority from "./components/LifeAreasPriority";
+import PickLifeareas from "./components/PickLifeareas";
 
 /* hur många ord i listan?
 mer mellanrum mellan korten
@@ -24,7 +27,7 @@ container resultat
 */
 
 // json-server --watch db.json --port8000
- 
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -104,11 +107,24 @@ function App() {
                   <Pick5Values />
                 </Route>
 
-                <Route exact path="/valueSorter">
+                <Route exact path="/varderingsPrioritering">
                   <ValueSorter />
                 </Route>
-                <Route exact path="/valueResults">
+
+                <Route exact path="/varderingarResultat">
                   <ValueResults />
+                </Route>
+
+                <Route exact path="/livsomraden-information">
+                  <LifeAreasInformation />
+                </Route>
+
+                <Route exact path="/valj-livsomraden">
+                  <PickLifeareas />
+                </Route>
+
+                <Route exact path="/livsomraden-prioriteringar">
+                  <LifeAreasPriority />
                 </Route>
 
                 <Route path="/createValue">
@@ -120,7 +136,7 @@ function App() {
                 </Route>
 
                 <Route path="/phq9">
-                  <PHQ9/>
+                  <PHQ9 />
                 </Route>
 
                 {/*  * fångar alla routes, måste vara i botten 404*/}
