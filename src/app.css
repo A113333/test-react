@@ -246,10 +246,37 @@ body {
 }
 
 .success {
-  background-color: #388e3c;
+  background-color: #1b521f;
 }
 
 .text {
   max-width: "725px";
   margin: "auto";
+}
+
+
+.inverted-border-radius-left::before {
+  content: "";
+  position: absolute;
+  
+  background-color: transparent;
+  bottom: -50px;
+  left: 0;
+  height: 50px;
+  width: 20px;
+  border-top-left-radius: 20px;
+  box-shadow: 0 -20px 0 0 #455964; /* This is where the magic happens! */
+}
+
+.inverted-border-radius-right::before {
+  content: "";
+  position: absolute;
+  
+  background-color: transparent;
+  bottom: -50px;
+  right: 0;
+  height: 50px;
+  width: 20px;
+  border-top-right-radius: 20px;
+  box-shadow:  0 -20px 0 0   #455964; /* This is where the magic happens! */
 }

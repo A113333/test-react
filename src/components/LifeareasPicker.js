@@ -9,8 +9,9 @@ import Headline from "./Headline";
 import values from "./values";
 import { useLocation } from "react-router-dom";
 import StepperExercise from "./StepperExcercise";
+import Box from "@mui/material/Box";
 
-function PickLifeareas() {
+function LifeareasPicker() {
   const location = useLocation();
   const valueArray = location.state;
   console.log(valueArray);
@@ -30,8 +31,8 @@ function PickLifeareas() {
         <Slide direction="left" in={slide} mountOnEnter unmountOnExit>
           <Container sx={{ backgroundColor: "white" }}>
             <Headline text="Välj dina livsområden" />
-            <div className="text">
-              {" "}
+            <Box sx={{ maxWidth: "725px", mx: "auto" }}>
+          
               <Typography variant="body1">
                 {/* finns x antal ord läs igenom alla innan du går vidare 
                 när du är klar: säker att du vill gå vidare (har du läst alla?) */}
@@ -42,7 +43,7 @@ function PickLifeareas() {
                 in reprehenderit in voluptate velit esse cillum dolore eu fugiat
                 nulla pariatur. Excepteur sint occaecat cupidatat
               </Typography>
-            </div>
+              </Box>
 
             <br></br>
             {/* om values finns så körs ValuesComponet  */}
@@ -62,4 +63,4 @@ function PickLifeareas() {
   );
 }
 
-export default PickLifeareas;
+export default LifeareasPicker;

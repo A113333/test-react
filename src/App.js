@@ -18,7 +18,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import PHQ9 from "./components/Skattningar/PHQ9";
 import LifeAreasInformation from "./components/LifeAreasInformation";
 import LifeAreasPriority from "./components/LifeAreasPriority";
-import PickLifeareas from "./components/PickLifeareas";
+import LifeareasPicker from "./components/LifeareasPicker";
 
 /* hur många ord i listan?
 mer mellanrum mellan korten
@@ -32,6 +32,7 @@ const theme = createTheme({
   palette: {
     primary: {
       main: "#455a64",
+      extraLight: "#ebeeefad",
     },
     secondary: {
       main: "#7A7978",
@@ -120,7 +121,7 @@ function App() {
                 </Route>
 
                 <Route exact path="/valj-livsomraden">
-                  <PickLifeareas />
+                  <LifeareasPicker />
                 </Route>
 
                 <Route exact path="/livsomraden-prioriteringar">

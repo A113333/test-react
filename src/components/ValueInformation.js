@@ -118,6 +118,8 @@ function ValueCompassStep1() {
               uppnådda..
             </Typography>
 
+
+<Box sx={{bgcolor:"primary.extraLight", padding: "25px", borderRadius: "6px", mt:"25px" }}>
             <Typography variant="h3" sx={{ mt: "15px" }} gutterBottom>
               Tips när du jobbar med värderingar
             </Typography>
@@ -139,6 +141,7 @@ function ValueCompassStep1() {
               blått är din favoritfärg, det är ditt tycke och din smak.
             </Typography>
 
+            </Box>
             <List
               sx={{
                 display: "flex",

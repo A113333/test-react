@@ -48,7 +48,7 @@ function LifeAreasPriority() {
     <div>
       <ExerciseAppbar header={"Dina Livsområden"} step={" "} />
       <Container>
-        <StepperExercise activeStep={1} />
+        <StepperExercise activeStep={1} steps={["Välj områden", "Prioritera", "Placeholder"]}/>
         <Headline text="Prioritera dina livsområden" />
         <Box sx={{ maxWidth: "725px", mx: "auto" }}>
           <Typography>
@@ -57,7 +57,12 @@ function LifeAreasPriority() {
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip ex ea commodo consequat. Duis aute irure dolor in
             reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat
+            pariatur. Excepteur sint occaecat cupidatat.
+            (0 = helt onöjd; 10 = helt
+                  och hållet nöjd).
+                  0 = helt oviktigt ; 10 =
+                  väldigt viktigt)
+            
           </Typography>
         </Box>
         <Box>
@@ -67,18 +72,26 @@ function LifeAreasPriority() {
               <Box
                 boxShadow={2}
                 sx={{
-                  border: "1px solid black",
+                  border: "1px solid primary",
                   margin: "15px",
                   borderRadius: "6px",
-                  padding: "15px",
+                  
                   mx: "auto",
                   maxWidth: "100%",
                 }}
               >
-                <Headline text={title} />
-                <Typography sx={{ mb: "35px" }}>
-                  Hur nöjd är du med {title} idag? (0 = helt onöjd; 10 = helt
-                  och hållet nöjd).
+                <Box sx={{bgcolor:"primary.main", color:"white", padding:"15px", pt:"20px", pb:"20px",
+                 borderRadius: "6px 6px 0px 0px", position: "relative", }}> 
+
+                <Box className="inverted-border-radius-left" > </Box>
+                <Box className="inverted-border-radius-right" > </Box>
+
+             <Typography variant="h2" textAlign={"center"} sx={{  }}> {title}</Typography>
+              </Box>
+                <Box sx={{bgcolor:"primary.extraLight", padding:"15px", pt:"30px", pb:"30px", borderRadius: "0px 0px 0px 0px"}}> 
+               
+                <Typography variant="h4" textAlign={"center"} sx={{ mb: "35px" }}>
+                  Hur nöjd är du med {title} idag? 
                 </Typography>
                 <Stack
                   spacing={2}
@@ -90,24 +103,25 @@ function LifeAreasPriority() {
                     0
                   </Typography>
                   <Slider
-                    aria-label={title}
-                    defaultValue={5}
-                    getAriaValueText={valuetext}
-                    step={1}
-                    marks
-                    min={0}
-                    max={10}
-                    valueLabelDisplay="on"
-                    sx={{ width: "75%" }}
+                       aria-label={title}
+                       defaultValue={5}
+                       getAriaValueText={valuetext}
+                       valueLabelDisplay="auto"
+                       step={1}
+                       
+                       min={0}
+                       max={10}
+                       sx={{ width: "75%" }}
                   />
                   <Typography sx={{ fontWeight: "bold", pt: "3px" }}>
                     10
                   </Typography>
                 </Stack>
+                </Box>
 
-                <Typography sx={{ mb: "35px" }}>
-                  Hur viktigt är {title} för dig? ( 0 = helt oviktigt ; 10 =
-                  väldigt viktigt)
+                <Box sx={{ padding:"15px", pt:"30px", pb:"30px", }}> 
+                <Typography variant="h4" textAlign={"center"} sx={{ mb: "35px" }}>
+                  Hur viktigt är {title} för dig? 
                 </Typography>
                 <Stack
                   spacing={2}
@@ -125,7 +139,7 @@ function LifeAreasPriority() {
                     getAriaValueText={valuetext}
                     valueLabelDisplay="auto"
                     step={1}
-                    marks
+                    
                     min={0}
                     max={10}
                     sx={{ width: "75%" }}
@@ -135,16 +149,21 @@ function LifeAreasPriority() {
                     10{" "}
                   </Typography>
                 </Stack>
-                <Typography sx={{ mb: "15px" }}>
+                </Box>
+
+               <Box sx={{bgcolor:"primary.extraLight", padding:"25px", pt:"30px", pb:"30px" }}>  
+                <Typography variant="h4" textAlign={"center"} sx={{ mb: "15px" }}>
                   {" "}
-                  Vad hindrar dig från att ha {title} såsom du vill ha det?{" "}
+                  Finns det något som  hindrar dig från att ha {title} såsom du vill ha det?{" "}
                 </Typography>
                 <TextField
                   fullWidth
                   id="obstacle"
-                  label="Skriv in vad som hindrar dig här"
+                  label="Om Ja, skriva in vad som hindrar dig här"
                   variant="outlined"
+                  sx={{ backgroundColor: "white"}}
                 />
+                </Box> 
               </Box>
             );
           })}

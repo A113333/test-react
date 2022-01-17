@@ -68,7 +68,7 @@ export default function ExerciseAppbar({ header, step }) {
       {showCloseDialog && (
         <CloseConfirmation
           title="Är du säker att du vill avsluta övningen?"
-          text="Avslutar du nu kommer ditt resultat kommer inte sparas och du får börja om från början nästa gång"
+          text="Avslutar du övningen kommer ditt resultat inte sparas och du får börja om från början nästa gång"
           option1="Nej"
           option2="Ja"
           donotQuite={donotQuite}
