@@ -26,7 +26,7 @@ export default function ValueLister({
     new Array(values.length).fill(false)
   );
   const [nrsPicked, setnrsPicked] = useState(0);
-  const [itsDone, setitsDone] = useState(false);
+  const [isItDone, setisItsDone] = useState(false);
   const [showItsDone, setshowItsDone] = useState(false);
   const smallScreen = useMediaQuery("(max-width:322px)");
   //  [checkedState]);  gör att enbart kör när checkedstate ändras
@@ -42,9 +42,9 @@ export default function ValueLister({
     };
     updateNrsPicked();
     if (nr >= nrsToPick) {
-      setitsDone(true);
+      setisItsDone(true);
     } else {
-      setitsDone(false);
+      setisItsDone(false);
     }
   }, [checkedState]);
 
@@ -54,10 +54,10 @@ export default function ValueLister({
       index === id ? !item : item
     );
 
-    if (itsDone && checkedState[id]) {
+    if (isItDone && checkedState[id]) {
       setCheckedState(updatedCheckedState);
       setshowItsDone(false);
-    } else if (itsDone) {
+    } else if (isItDone) {
       setshowItsDone(true);
     } else {
       setCheckedState(updatedCheckedState);
@@ -104,7 +104,7 @@ export default function ValueLister({
           }}
         />
         <Box 
-           className={itsDone? "success" : "primary"}
+           className={isItDone? "success" : "primary"}
            sx={{ position: "fixed",
             top: "45px",
             maxWidth: "854px",
@@ -187,7 +187,7 @@ export default function ValueLister({
         >
           <BackButton goTo={back} />
 
-          {itsDone && (
+          {isItDone && (
             <Button
               variant="contained"
               color="primary"

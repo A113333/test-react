@@ -77,6 +77,7 @@ function LifeAreasPriority() {
                   borderRadius: "6px",
                   
                   mx: "auto",
+                  mb: "50px",
                   maxWidth: "100%",
                 }}
               >
@@ -96,7 +97,7 @@ function LifeAreasPriority() {
                 <Stack
                   spacing={2}
                   direction="row"
-                  sx={{ mb: 1 }}
+                  sx={{ }}
                   justifyContent="center"
                 >
                   <Typography sx={{ fontWeight: "bold", pt: "3px" }}>

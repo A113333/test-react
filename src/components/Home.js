@@ -16,6 +16,10 @@ import compassImg from "./img/compass.jpg";
 import commingSoonImg from "./img/darkSky.jpg";
 import roadImg from "./img/road.jpg";
 import waterImg from "./img/water.jpg";
+import lakeImg from "./img/lake.jpg";
+import { Divider, Stack } from "@mui/material";
+import Paper from "@mui/material/Paper";
+import Footer from "./Footer";
 
 // Grid är 12 columer
 /*
@@ -38,7 +42,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box sx={{ p: 0 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -75,48 +79,71 @@ export default function Home() {
     <div className="">
       <Navbar />
 
-      <Box sx={{ width: "100%" }}>
+      <Box sx={{ width: "100%", padding:"0px", margin:"0px" }}>
         <Box
           sx={{
-            bordeRadius: "0px 0px 6px 6px",
+            bordeRadius: "6px 6px 6px 6px",
             backgroundColor: "white",
             borderBottom: 1,
             borderColor: "divider",
+            mb: "35px",
+            
           }}
         >
           <Tabs
             value={value}
             onChange={handleChange}
-            aria-label="basic tabs example"
+            aria-label="Navigerings tabbar"
             centered
+            textColor="primary"
+            sx={{    }}
           >
-            <Tab icon={<ExploreIcon />} label="Värderingar" {...a11yProps(0)} />
-            <Tab icon={<MapIcon />} label="Mål" {...a11yProps(1)} />
-            <Tab icon={<BookIcon />} label="Loggbok" {...a11yProps(2)} />
+            <Tab sx={{ fontSize: "0.7rem", padding: 0, margin: 0 }}  icon={<ExploreIcon />} label="Värderingar" {...a11yProps(0)} />
+            <Tab sx={{ fontSize: "0.7rem", padding: 0, margin: 0 }} icon={<MapIcon  />} label="Mål" {...a11yProps(1)} />
+            <Tab  sx={{ fontSize: "0.7rem", padding: 0, margin: 0  }} icon={<BookIcon />} label="Loggbok" {...a11yProps(2)} />
           </Tabs>
         </Box>
-        <TabPanel value={value} index={0}>
-          <Grid
-            container
-            spacing={{ xs: 2, md: 3 }}
-            columns={{ xs: 4, sm: 8, md: 12 }}
-          >
-            <Grid item xs={12}>
+
+        <TabPanel value={value} index={0} sx={{bgColor: "primary.light"}}>
+
+        <Grid item xs={12} spacing={0} 
+            sx={{  paddingLeft: "0px", pr: "0px", }}>    
+            <Stack direction="row"  justifyContent="center" alignItems="center" spacing={2}> 
+
+            
+
               <Typography
                 variant="h1"
                 align="center"
                 fontSize={{
                   md: "2rem",
-                  xs: "1.5rem",
-                }}
-              >
-                Värderingskompassen
+                  xs: "1.2rem",
+                }} >
+                              Värderingskompassen 
+              </Typography>
+              </Stack>
+              <Typography
+              variant="subtitle1"
+                align="center"
+                fontSize={{
+                  md: "1rem",
+                  xs: "0.75rem",
+                }}>
+                              - Hitta din riktning i livet 
               </Typography>
             </Grid>
+          <Container sx={{ pb:"35px", pt:"35px", border: "1px solid transpernt", borderRadius:"px"}}>
+          <Grid
+            container
+            spacing={{ xs: 2, md: 3 }}
+            columns={{ xs: 4, sm: 8, md: 12 }}>
+
+            
+    
             <Grid item xs={12} sm={4} md={4}>
               <Cards
                 text={
-                  "En djupdykning i dina värderingar. Utforska hur vill du vara som människa, Vad viktigt för dig?"
+                  "En djupdykning i dina värderingar. Utforska hur du vill vara som människa och vad viktigt för dig."
                 }
                 rubrik={"Dina värderingar"}
                 linkTo={"/varderingar-information"}
@@ -126,6 +153,7 @@ export default function Home() {
                 nr={1}
               />
             </Grid>
+      
             <Grid item xs={12} sm={4} md={4}>
               <Cards
                 text={
@@ -138,6 +166,7 @@ export default function Home() {
                 linkTo={"/livsomraden-information"}
               />
             </Grid>{" "}
+
             <Grid item xs={12} sm={4} md={4}>
               <Cards
                 text={
@@ -149,7 +178,15 @@ export default function Home() {
                 nr={3}
               />
             </Grid>
+          
           </Grid>
+        
+
+          </Container>
+   
+
+         
+
         </TabPanel>
         <TabPanel value={value} index={1}>
           <Grid
@@ -208,10 +245,7 @@ export default function Home() {
           </Grid>
         </TabPanel>
       </Box>
-
-      <div className="padderTop">
-        <Container></Container>
-      </div>
+<Footer/>
     </div>
   );
 }

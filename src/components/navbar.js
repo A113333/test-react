@@ -21,9 +21,9 @@ export default function Navbar() {
 
   return (
     <div>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1, }}>
         <AppBar position="static" sx={{ boxShadow: 1 }}>
-          <Toolbar>
+          <Toolbar variant="dense" >
             <IconButton
               size="large"
               edge="start"
@@ -56,7 +56,7 @@ export default function Navbar() {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Bli Fri
             </Typography>
-            <Button color="inherit">Login</Button>
+            <Button color="inherit"> </Button>
           </Toolbar>
         </AppBar>
       </Box>

@@ -44,24 +44,11 @@ export default function MultiActionAreaCard({
           sx={{
             padding: "0px",
             minHeight: "160px",
+            
+           
           }}
         >
-          <Avatar
-            sx={{
-              bgcolor: "primary.main",
-              color: "white",
-              fontWeight: "bold",
-              fontSize: "0.8rem",
-              width: 24,
-              height: 24,
-              position: "absolute",
-              top: "0px",
-              margin: "3px",
-              boxShadow: 3,
-            }}
-          >
-            {nr}
-          </Avatar>
+
           <Typography
             variant="body1"
             component="div"
@@ -78,7 +65,9 @@ export default function MultiActionAreaCard({
 
           <Divider />
 
-          <Typography variant="body1" sx={{ padding: "5px" }}>
+          <Typography variant="body1" sx={{ padding: "5px", pl: "10px", pr:"10px",  margin: "0", 
+
+  }}>
             {text}
           </Typography>
         </CardContent>
@@ -96,7 +85,7 @@ export default function MultiActionAreaCard({
             borderRadius: 0,
           }}
         >
-          {isActive ? "STARTA ÖVNINGEN" : "kommer snart"}
+          {isActive ? "STARTA ÖVNINGEN"  : "kommer snart"}
         </Button>
       </CardActions>
     </Card>

@@ -203,6 +203,28 @@ function CardSorter({ valueArray: arryOfValues, next, back }) {
           // borderRadius: 5,
         }}
       />
+      <Box 
+           className={isItDone? "success" : "primary"}
+           sx={{ position: "fixed",
+            top: "45px",
+            maxWidth: "854px",
+            left: "50%",
+            transform: "translate(-50%, 0)",
+            zIndex: "1000",
+           minWidth: "52px",
+           textAlign: "center",
+            color: "white",
+            fontWeight: "bold",
+            fontSize: "0.9rem",
+            padding: "5px",
+            pb: "12px",
+            pt: "12px",
+            border: "2px solid white",
+            borderRadius: '50%' }}
+            > 
+            
+             {cardsSorted } / {totalClicks}
+            </Box>
       <Slide direction="left" in={slide}>
         <Container>
           <Box textAlign="center" sx={{ mt: "15px", mb: "15px" }}>
