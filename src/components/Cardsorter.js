@@ -13,11 +13,11 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Fade from "@mui/material/Fade";
 import Headline from "./Headline";
+import ProgressTracker from "./utility/ProgressTracker";
 
-function CardSorter({ valueArray: arryOfValues, next, back }) {
-  //  console.log("arryOfValues ");
-  console.log(arryOfValues);
+function CardSorter({ valueArray: arryOfValues, next, back, saveAs }) {
   const history = useHistory();
+
   const [valueArray] = useState(arryOfValues);
   const [showTop, setShowTop] = useState(0);
   const [showBottom, setShowBottom] = useState(1);
@@ -31,6 +31,7 @@ function CardSorter({ valueArray: arryOfValues, next, back }) {
   const smallScreen = useMediaQuery("(max-width:322px)");
 
   const goToResult = () => {
+    localStorage.setItem(saveAs, JSON.stringify(valueArray));
     history.push({
       pathname: next,
       state: valueArray,
@@ -186,45 +187,12 @@ function CardSorter({ valueArray: arryOfValues, next, back }) {
 
   return (
     <div>
-      <LinearProgress
-        variant="determinate"
-        value={Math.round(100 / totalClicks) * cardsSorted}
-        color="secondary"
-        sx={{
-          position: "fixed",
-          top: "64px",
-          width: "100%",
-          maxWidth: "854px",
-          left: "50%",
-          transform: "translate(-50%, 0)",
-          padding: "0px",
-          zIndex: 100,
-          height: 15,
-          // borderRadius: 5,
-        }}
+      <ProgressTracker
+        nrsToPick={totalClicks}
+        nrsPicked={cardsSorted}
+        isItDone={isItDone}
       />
-      <Box 
-           className={isItDone? "success" : "primary"}
-           sx={{ position: "fixed",
-            top: "45px",
-            maxWidth: "854px",
-            left: "50%",
-            transform: "translate(-50%, 0)",
-            zIndex: "1000",
-           minWidth: "52px",
-           textAlign: "center",
-            color: "white",
-            fontWeight: "bold",
-            fontSize: "0.9rem",
-            padding: "5px",
-            pb: "12px",
-            pt: "12px",
-            border: "2px solid white",
-            borderRadius: '50%' }}
-            > 
-            
-             {cardsSorted } / {totalClicks}
-            </Box>
+
       <Slide direction="left" in={slide}>
         <Container>
           <Box textAlign="center" sx={{ mt: "15px", mb: "15px" }}>

@@ -19,6 +19,7 @@ import PHQ9 from "./components/Skattningar/PHQ9";
 import LifeAreasInformation from "./components/LifeAreasInformation";
 import LifeAreasPriority from "./components/LifeAreasPriority";
 import LifeareasPicker from "./components/LifeareasPicker";
+import LifeAreasValues from "./components/lifeAreas/LifeAreasValues";
 
 /* hur många ord i listan?
 mer mellanrum mellan korten
@@ -53,28 +54,36 @@ const theme = createTheme({
 
   typography: {
     fontFamily: "Montserrat",
-    fontWeightRegular: 500,
-    fontWeightMedium: 600,
-    fontWeightBold: 800,
+    fontWeightRegular: 400,
+    fontWeightMedium: 500,
+    fontWeightBold: 600,
+
     h1: {
       fontSize: "2rem",
-      fontWeight: "bolder",
+      fontWeight: "medium",
+      color: "#455a64",
     },
     h2: {
       fontSize: "1.6rem",
-      fontWeight: "bold",
+      fontWeight: "medium",
+      color: "#455a64",
     },
     h3: {
       fontSize: "1,3rem",
-      fontWeight: "bold",
+      fontWeight: "medium",
+      color: "#455a64",
     },
     h4: {
       fontSize: "1rem",
       fontWeight: "bold",
+      color: "#455a64",
+    },
+    body1: {
+      color: "#455a64",
     },
 
     button: {
-      fontWeight: "800",
+      fontWeight: "500",
     },
   },
 });
@@ -126,6 +135,10 @@ function App() {
 
                 <Route exact path="/livsomraden-prioriteringar">
                   <LifeAreasPriority />
+                </Route>
+
+                <Route exact path="/livsomraden-varderingar">
+                  <LifeAreasValues />
                 </Route>
 
                 <Route path="/createValue">

@@ -74,7 +74,9 @@ function LifeAreasInformation() {
                 m: "25px",
                 mt: "40px",
                 mx: "auto",
-                p: "15px",
+                padding: "35px",
+                pt: "15px",
+                pb: "15px",
                 width: smallScreen ? "90%" : "45%",
                 float: smallScreen ? null : "right",
                 bgcolor: "primary.main",
@@ -82,10 +84,15 @@ function LifeAreasInformation() {
               }}
             >
               <Typography textAlign="center" sx={{ fontWeight: "bold" }}>
-                Att ha insikt i och leva efter sina värderingar hjälper dig att:{" "}
+                Livsområden
               </Typography>
               <Divider
-                sx={{ bgcolor: "white", width: "90%", mx: "auto", mt: "5px" }}
+                sx={{
+                  bgcolor: "white",
+                  width: "100%",
+                  mx: "auto",
+                  mt: "5px",
+                }}
               >
                 {" "}
               </Divider>

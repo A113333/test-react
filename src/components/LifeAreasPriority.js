@@ -22,10 +22,19 @@ import Slider from "@mui/material/Slider";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import StepperExercise from "./StepperExcercise";
-
 import { useLocation } from "react-router-dom";
+import lifeAreasArray from "./lifeAreas";
+import ProgressTracker from "./utility/ProgressTracker";
 
 function LifeAreasPriority() {
+  const [lifeAreasState, setLifeAreas] = React.useState([]);
+  const [today, setToDay] = React.useState(0);
+  const [howImportent, setHowImportent] = React.useState(0);
+  const [obstacle, setObstacle] = React.useState("");
+  const [lifeAreasDone, setLifeAreasDone] = React.useState(2);
+  const [isItDone, setIsItDone] = React.useState(false);
+  const [showLifeArea, setShowLifeArea] = React.useState(0);
+
   function valuetext(value) {
     return "${value}";
   }
@@ -41,14 +50,48 @@ function LifeAreasPriority() {
   };
 
   const location = useLocation();
-  const lifeAreas = location.state;
+
+  const lifeAreas = lifeAreasArray;
+  // location.state;
   console.log(lifeAreas);
+
+  const nextLifeArea = () => {
+    console.log("hehe");
+  };
+
+  const handleSubmit = ({ title }) => {
+    let lifeArea = {
+      title: title,
+      today: today,
+      howImportent: howImportent,
+      obstacle: obstacle,
+      diff: howImportent - today,
+    };
+    console.log("---------------------");
+    console.log(lifeAreasState);
+    setLifeAreas((prevValues) => [...prevValues, lifeArea]);
+    setShowLifeArea(showLifeArea + 1);
+  };
+
+  useEffect(() => {
+    if (showLifeArea === lifeAreas.length) {
+      setIsItDone(true);
+    }
+  }, [showLifeArea]);
 
   return (
     <div>
       <ExerciseAppbar header={"Dina Livsområden"} step={" "} />
+      <ProgressTracker
+        nrsToPick={lifeAreas.length}
+        nrsPicked={showLifeArea}
+        isItDone={isItDone}
+      />
       <Container>
-        <StepperExercise activeStep={1} steps={["Välj områden", "Prioritera", "Placeholder"]}/>
+        <StepperExercise
+          activeStep={1}
+          steps={["Välj områden", "Prioritera", "Placeholder"]}
+        />
         <Headline text="Prioritera dina livsområden" />
         <Box sx={{ maxWidth: "725px", mx: "auto" }}>
           <Typography>
@@ -57,114 +100,190 @@ function LifeAreasPriority() {
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip ex ea commodo consequat. Duis aute irure dolor in
             reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat.
-            (0 = helt onöjd; 10 = helt
-                  och hållet nöjd).
-                  0 = helt oviktigt ; 10 =
-                  väldigt viktigt)
-            
+            pariatur. Excepteur sint occaecat cupidatat. (0 = helt onöjd; 10 =
+            helt och hållet nöjd). 0 = helt oviktigt ; 10 = väldigt viktigt)
           </Typography>
         </Box>
         <Box>
           {lifeAreas.map(({ title }, index) => {
-            console.log(title);
+            // console.log(title);
             return (
               <Box
-                boxShadow={2}
+                className={index === showLifeArea ? "show" : "hidden"}
+                boxShadow={10}
                 sx={{
-                  border: "1px solid primary",
+                  display: "table",
+                  border: "1px solid lightgrey",
                   margin: "15px",
                   borderRadius: "6px",
-                  
                   mx: "auto",
                   mb: "50px",
                   maxWidth: "100%",
+
+                  "&:hover": {
+                    transform: "scale(1.02)",
+                  },
                 }}
               >
-                <Box sx={{bgcolor:"primary.main", color:"white", padding:"15px", pt:"20px", pb:"20px",
-                 borderRadius: "6px 6px 0px 0px", position: "relative", }}> 
-
-                <Box className="inverted-border-radius-left" > </Box>
-                <Box className="inverted-border-radius-right" > </Box>
-
-             <Typography variant="h2" textAlign={"center"} sx={{  }}> {title}</Typography>
-              </Box>
-                <Box sx={{bgcolor:"primary.extraLight", padding:"15px", pt:"30px", pb:"30px", borderRadius: "0px 0px 0px 0px"}}> 
-               
-                <Typography variant="h4" textAlign={"center"} sx={{ mb: "35px" }}>
-                  Hur nöjd är du med {title} idag? 
-                </Typography>
-                <Stack
-                  spacing={2}
-                  direction="row"
-                  sx={{ }}
-                  justifyContent="center"
+                <Box
+                  boxShadow={1}
+                  sx={{
+                    color: "white",
+                    padding: "15px",
+                    pt: "20px",
+                    pb: "20px",
+                    borderRadius: "6px 6px 0px 0px",
+                    position: "relative",
+                  }}
                 >
-                  <Typography sx={{ fontWeight: "bold", pt: "3px" }}>
-                    0
-                  </Typography>
-                  <Slider
-                       aria-label={title}
-                       defaultValue={5}
-                       getAriaValueText={valuetext}
-                       valueLabelDisplay="auto"
-                       step={1}
-                       
-                       min={0}
-                       max={10}
-                       sx={{ width: "75%" }}
-                  />
-                  <Typography sx={{ fontWeight: "bold", pt: "3px" }}>
-                    10
-                  </Typography>
-                </Stack>
-                </Box>
+                  <Box className="inverted-border-radius-left"> </Box>
+                  <Box className="inverted-border-radius-right"> </Box>
 
-                <Box sx={{ padding:"15px", pt:"30px", pb:"30px", }}> 
-                <Typography variant="h4" textAlign={"center"} sx={{ mb: "35px" }}>
-                  Hur viktigt är {title} för dig? 
-                </Typography>
-                <Stack
-                  spacing={2}
-                  direction="row"
-                  sx={{ mb: 1 }}
-                  justifyContent="center"
-                >
-                  <Typography sx={{ fontWeight: "bold", pt: "3px" }}>
+                  <Typography variant="h2" textAlign={"center"} sx={{}}>
                     {" "}
-                    0{" "}
-                  </Typography>{" "}
-                  <Slider
-                    aria-label={title}
-                    defaultValue={5}
-                    getAriaValueText={valuetext}
-                    valueLabelDisplay="auto"
-                    step={1}
-                    
-                    min={0}
-                    max={10}
-                    sx={{ width: "75%" }}
-                  />
-                  <Typography sx={{ fontWeight: "bold", pt: "3px" }}>
-                    {" "}
-                    10{" "}
+                    {title}
                   </Typography>
-                </Stack>
                 </Box>
+                <form onSubmit={handleSubmit}>
+                  <Box
+                    sx={{
+                      bgcolor: "primary.extraLight",
+                      padding: "15px",
+                      pt: "30px",
+                      pb: "30px",
+                      borderRadius: "0px 0px 0px 0px",
+                    }}
+                  >
+                    <Typography
+                      variant="h4"
+                      textAlign={"center"}
+                      sx={{ mb: "35px" }}
+                    >
+                      Hur nöjd är du med {title} idag?
+                    </Typography>
+                    <Stack
+                      spacing={2}
+                      direction="row"
+                      sx={{}}
+                      justifyContent="center"
+                    >
+                      <Typography sx={{ fontWeight: "bold", pt: "3px" }}>
+                        0
+                      </Typography>
+                      <Slider
+                        aria-label={title}
+                        defaultValue={5}
+                        getAriaValueText={valuetext}
+                        valueLabelDisplay="auto"
+                        step={1}
+                        min={0}
+                        max={10}
+                        sx={{ width: "75%" }}
+                        onChange={(e) => setToDay(e.target.value)}
+                      />
+                      <Typography sx={{ fontWeight: "bold", pt: "3px" }}>
+                        10
+                      </Typography>
+                    </Stack>
+                  </Box>
 
-               <Box sx={{bgcolor:"primary.extraLight", padding:"25px", pt:"30px", pb:"30px" }}>  
-                <Typography variant="h4" textAlign={"center"} sx={{ mb: "15px" }}>
-                  {" "}
-                  Finns det något som  hindrar dig från att ha {title} såsom du vill ha det?{" "}
-                </Typography>
-                <TextField
-                  fullWidth
-                  id="obstacle"
-                  label="Om Ja, skriva in vad som hindrar dig här"
-                  variant="outlined"
-                  sx={{ backgroundColor: "white"}}
-                />
-                </Box> 
+                  <Box sx={{ padding: "15px", pt: "30px", pb: "30px" }}>
+                    <Typography
+                      variant="h4"
+                      textAlign={"center"}
+                      sx={{ mb: "35px" }}
+                    >
+                      Hur viktigt är {title} för dig?
+                    </Typography>
+                    <Stack
+                      spacing={2}
+                      direction="row"
+                      sx={{ mb: 1 }}
+                      justifyContent="center"
+                    >
+                      <Typography sx={{ fontWeight: "bold", pt: "3px" }}>
+                        {" "}
+                        0{" "}
+                      </Typography>{" "}
+                      <Slider
+                        aria-label={title}
+                        defaultValue={5}
+                        getAriaValueText={valuetext}
+                        valueLabelDisplay="auto"
+                        step={1}
+                        min={0}
+                        max={10}
+                        sx={{ width: "75%" }}
+                        onChange={(e) => setHowImportent(e.target.value)}
+                      />
+                      <Typography sx={{ fontWeight: "bold", pt: "3px" }}>
+                        {" "}
+                        10{" "}
+                      </Typography>
+                    </Stack>
+                  </Box>
+
+                  <Box
+                    sx={{
+                      bgcolor: "primary.extraLight",
+                      padding: "25px",
+                      pt: "30px",
+                      pb: "60px",
+                    }}
+                  >
+                    <Typography
+                      variant="h4"
+                      textAlign={"center"}
+                      sx={{ mb: "15px" }}
+                    >
+                      {" "}
+                      Finns det något som hindrar dig från att ha {title} såsom
+                      du vill ha det?{" "}
+                    </Typography>
+                    <TextField
+                      fullWidth
+                      id="obstacle"
+                      label="Om Ja, skriva in vad som hindrar dig här"
+                      variant="outlined"
+                      sx={{ backgroundColor: "white" }}
+                      onChange={(e) => setObstacle(e.target.value)}
+                    />
+
+                    <Button
+                      variant="contained"
+                      aria-label="Backa"
+                      startIcon={<ArrowBackIosIcon />}
+                      onClick={() => handleSubmit({ title: title })}
+                      sx={{
+                        position: "absolute",
+                        padding: "10px",
+                        borderRadius: " 0  0 0 6px",
+                        left: "0px",
+                        bottom: "0px",
+                      }}
+                    >
+                      {" "}
+                      Gå tillbaka{" "}
+                    </Button>
+
+                    <Button
+                      variant="contained"
+                      aria-label="Backa"
+                      endIcon={<ArrowForwardIosIcon />}
+                      onClick={() => handleSubmit({ title: title })}
+                      sx={{
+                        position: "absolute",
+                        padding: "10px",
+                        borderRadius: "0 0  6px 0",
+                        right: "0px",
+                        bottom: "0px",
+                      }}
+                    >
+                      {" "}
+                      Nästa livsområde{" "}
+                    </Button>
+                  </Box>
+                </form>
               </Box>
             );
           })}

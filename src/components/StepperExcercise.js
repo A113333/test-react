@@ -11,7 +11,7 @@ export default function HorizontalLinearStepper(props) {
   const [activeStep, setActiveStep] = React.useState(props.activeStep);
   const [skipped, setSkipped] = React.useState(new Set());
   const smallScreen = useMediaQuery("(max-width:322px)");
-  console.log(props);
+  //console.log(props);
   const steps = props.steps ? props.steps : ["1", "2", "3"];
 
   const handleNext = () => {

@@ -19,36 +19,37 @@ export default function MultiActionAreaCard({
   img,
   nr,
 }) {
-  console.log(stateColor);
-
   const history = useHistory();
   const goTo = () => {
     history.push({
       pathname: linkTo,
     });
   };
-  console.log(backgroundcolor);
+
   return (
     <Card
       sx={{
         backgroundColor: backgroundcolor,
-        boxShadow: 3,
+        boxShadow: 15,
         mx: "auto",
         transform: "scale(1)",
       }}
     >
       <CardActionArea onClick={goTo}>
-        <CardMedia component="img" height="100" image={img} alt="Kompass" />
+        <CardMedia
+          className="svg"
+          component="img"
+          height="200"
+          image={img}
+          alt="Värderingsbild"
+        />
 
         <CardContent
           sx={{
             padding: "0px",
             minHeight: "160px",
-            
-           
           }}
         >
-
           <Typography
             variant="body1"
             component="div"
@@ -58,6 +59,7 @@ export default function MultiActionAreaCard({
               padding: "5px",
               pb: "1px",
               textAlign: "center",
+              color: "primary.main",
             }}
           >
             {rubrik}
@@ -65,9 +67,15 @@ export default function MultiActionAreaCard({
 
           <Divider />
 
-          <Typography variant="body1" sx={{ padding: "5px", pl: "10px", pr:"10px",  margin: "0", 
-
-  }}>
+          <Typography
+            variant="body1"
+            sx={{
+              padding: "5px",
+              pl: "10px",
+              pr: "10px",
+              margin: "0",
+            }}
+          >
             {text}
           </Typography>
         </CardContent>
@@ -76,7 +84,7 @@ export default function MultiActionAreaCard({
         <Button
           fullWidth={true}
           onClick={goTo}
-          variant="contained"
+          variant="text"
           color={stateColor}
           disabled={!isActive}
           sx={{
@@ -85,7 +93,7 @@ export default function MultiActionAreaCard({
             borderRadius: 0,
           }}
         >
-          {isActive ? "STARTA ÖVNINGEN"  : "kommer snart"}
+          {isActive ? "STARTA ÖVNINGEN" : "kommer snart"}
         </Button>
       </CardActions>
     </Card>

@@ -9,6 +9,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Box from "@mui/material/Box";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Checkbox from "@mui/material/Checkbox";
+import ProgressTracker from "./utility/ProgressTracker";
 
 //import FormGroup from "@mui/material/FormGroup";
 //import FormControlLabel from "@mui/material/FormControlLabel";
@@ -21,6 +22,7 @@ export default function ValueLister({
   nrsToPick: nrsToPick,
   next,
   back,
+  saveAs,
 }) {
   const [checkedState, setCheckedState] = useState(
     new Array(values.length).fill(false)
@@ -76,7 +78,8 @@ export default function ValueLister({
         userValueArray.push(values[index]);
       }
     });
-
+    console.log(saveAs);
+    localStorage.setItem(saveAs, JSON.stringify(userValueArray));
     history.push({
       pathname: next,
       state: userValueArray,
@@ -85,47 +88,12 @@ export default function ValueLister({
 
   return (
     <Box sx={{ overflow: "hidden" }}>
+      <ProgressTracker
+        isItDone={isItDone}
+        nrsPicked={nrsPicked}
+        nrsToPick={nrsToPick}
+      />
       <div>
-        <LinearProgress
-          variant="determinate"
-          value={(100 / nrsToPick) * nrsPicked}
-          color="secondary"
-          sx={{
-            position: "fixed",
-            top: "64px",
-            width: "100%",
-            maxWidth: "854px",
-            left: "50%",
-            transform: "translate(-50%, 0)",
-            padding: "0px",
-            zIndex: 100,
-            height: 15,
-            // borderRadius: 5,
-          }}
-        />
-        <Box 
-           className={isItDone? "success" : "primary"}
-           sx={{ position: "fixed",
-            top: "45px",
-            maxWidth: "854px",
-            left: "50%",
-            transform: "translate(-50%, 0)",
-            zIndex: "1000",
-           minWidth: "52px",
-           textAlign: "center",
-            color: "white",
-            fontWeight: "bold",
-            fontSize: "0.9rem",
-            padding: "5px",
-            pb: "12px",
-            pt: "12px",
-            border: "2px solid white",
-            borderRadius: '50%' }}
-            > 
-            
-            {nrsPicked} / {nrsToPick } 
-           
-            </Box>
         <List
           sx={{
             width: "100%",
@@ -157,19 +125,27 @@ export default function ValueLister({
                   />
                   <Box
                     sx={{
-                    
                       "&:hover": {
                         transform: "scale(1.01)",
                       },
                     }}
                   >
                     <label htmlFor={`custom-checkbox-${id}`}>
-                      <Typography variant="h3" sx={{ padding: "10px", pb:"0px", width: "90%" }}>
+                      <Typography
+                        variant="h3"
+                        sx={{
+                          padding: "10px",
+                          pb: "0px",
+                          width: "90%",
+                          color: "black",
+                          fontWeight: "bold",
+                        }}
+                      >
                         {id + 1 + ". " + title + " "}
                       </Typography>
                       <Typography
                         variant="body1"
-                        sx={{ padding: "10px", pt: "0px" , width: "90%"}}
+                        sx={{ padding: "10px", pt: "0px", width: "90%" }}
                       >
                         {desc}
                       </Typography>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Cards from "./Cards";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
@@ -12,14 +12,19 @@ import Box from "@mui/material/Box";
 import ExploreIcon from "@mui/icons-material/Explore";
 import MapIcon from "@mui/icons-material/Map";
 import BookIcon from "@mui/icons-material/Book";
-import compassImg from "./img/compass.jpg";
-import commingSoonImg from "./img/darkSky.jpg";
-import roadImg from "./img/road.jpg";
-import waterImg from "./img/water.jpg";
-import lakeImg from "./img/lake.jpg";
 import { Divider, Stack } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import Footer from "./Footer";
+import { ReactComponent as ValueImg } from "./img/undraw_job_hunt_re_q203.svg";
+import valueImg from "./img/undraw_job_hunt_re_q203.svg";
+import lifeAreaImg from "./img/undraw_process_re_gws7.svg";
+import liveByValues from "./img/undraw_happy_news_re_tsbd.svg";
+import commingSoonImg from "./img/undraw_under_construction_-46-pa.svg";
+import bliFriLogo from "./img/bliFriIcon.png";
+import { StickyNav } from "react-js-stickynav";
+import "react-js-stickynav/dist/index.css";
+
+import { ReactComponent as RoadSignSvg } from "./img/undraw_road_sign_re_3kc3.svg";
 
 // Grid är 12 columer
 /*
@@ -66,8 +71,9 @@ function a11yProps(index) {
 export default function Home() {
   const { data: user } = useFetch("http://localhost:8000/user");
 
-  console.log(user);
   //  { ...user.values && user.values  }
+
+  const top5ValuesLocal = JSON.parse(localStorage.getItem("top5Values"));
 
   const [value, setValue] = React.useState(0);
 
@@ -75,122 +81,214 @@ export default function Home() {
     setValue(newValue);
   };
 
-  return (
-    <div className="">
-      <Navbar />
+  console.log(localStorage);
+  let headerText;
+  if (top5ValuesLocal) {
+    headerText = top5ValuesLocal.map(({ title }, index) => {
+      return (
+        <li className="noStyleList" key={index}>
+          {title}
+        </li>
+      );
+    });
+  } else {
+    headerText = <Typography> Vi hjälper dig hitta vägen </Typography>;
+  }
 
-      <Box sx={{ width: "100%", padding:"0px", margin:"0px" }}>
+  return (
+    <div>
+      {/*  ---------   Header med bild och text   ---------  */}
+      <Box sx={{ textAlign: "center", mt: "90px" }}>
+        <RoadSignSvg
+          title="Livets korsning"
+          width={"100%"}
+          height={"77vh"}
+          fill="#7A7978"
+        />
+
         <Box
           sx={{
-            bordeRadius: "6px 6px 6px 6px",
-            backgroundColor: "white",
-            borderBottom: 1,
-            borderColor: "divider",
-            mb: "35px",
-            
+            position: "absolute",
+            top: "75px",
+            right: 0,
+
+            width: "25%",
+            margin: "45px",
           }}
         >
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            aria-label="Navigerings tabbar"
-            centered
-            textColor="primary"
-            sx={{    }}
+          {top5ValuesLocal && (
+            <Typography
+              variant="body1"
+              fontSize={{
+                md: "2rem",
+                xs: "1rem",
+              }}
+            >
+              {" "}
+              Dina Viktigaste Värderingar{" "}
+            </Typography>
+          )}
+
+          <Typography
+            variant="body1"
+            fontSize={{
+              md: "2rem",
+              xs: "1rem",
+            }}
           >
-            <Tab sx={{ fontSize: "0.7rem", padding: 0, margin: 0 }}  icon={<ExploreIcon />} label="Värderingar" {...a11yProps(0)} />
-            <Tab sx={{ fontSize: "0.7rem", padding: 0, margin: 0 }} icon={<MapIcon  />} label="Mål" {...a11yProps(1)} />
-            <Tab  sx={{ fontSize: "0.7rem", padding: 0, margin: 0  }} icon={<BookIcon />} label="Loggbok" {...a11yProps(2)} />
-          </Tabs>
+            {headerText}
+          </Typography>
         </Box>
+      </Box>
+      <Divider />
+      {/*  ---------   Nav/tab - bar  med iconer och loga   ---------  */}
 
-        <TabPanel value={value} index={0} sx={{bgColor: "primary.light"}}>
+      <Box
+        sx={{
+          backgroundColor: "white",
+          boxShadow: 3,
+          position: "fixed",
+          top: 0,
+          left: 0,
+          zIndex: 1000,
+          width: "100%",
+        }}
+      >
+        <img src={bliFriLogo} alt="Logo" className="navBarLogo" />
 
-        <Grid item xs={12} spacing={0} 
-            sx={{  paddingLeft: "0px", pr: "0px", }}>    
-            <Stack direction="row"  justifyContent="center" alignItems="center" spacing={2}> 
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="Navigerings tabbar"
+          centered
+          textColor="primary"
+          sx={{ textAlign: "center" }}
+        >
+          <Tab
+            sx={{
+              fontSize: {
+                md: "1rem",
+                xs: "0.7rem",
+              },
+              padding: 0,
+              margin: 0,
+            }}
+            icon={<ExploreIcon />}
+            label="Värderingar"
+            {...a11yProps(0)}
+          />
+          <Tab
+            sx={{
+              fontSize: {
+                md: "1rem",
+                xs: "0.7rem",
+              },
+              padding: 0,
+              margin: 0,
+            }}
+            icon={<MapIcon />}
+            label="Mål"
+            {...a11yProps(1)}
+          />
+          <Tab
+            sx={{
+              fontSize: {
+                md: "1rem",
+                xs: "0.7rem",
+              },
+              padding: 0,
+              mr: "80px",
+            }}
+            icon={<BookIcon />}
+            label="Loggbok"
+            {...a11yProps(2)}
+          />
+        </Tabs>
+      </Box>
 
-            
-
+      {/*  ------------------   Innehållet i de olika Tabsen   ------------------  */}
+      <Container>
+        <TabPanel value={value} index={0} sx={{ bgColor: "primary.light" }}>
+          <Grid item xs={12} spacing={0} sx={{ pb: "15px", mt: "50px" }}>
+            <Stack
+              direction="row"
+              justifyContent="center"
+              alignItems="center"
+              spacing={2}
+            >
               <Typography
                 variant="h1"
                 align="center"
+                sx={{}}
                 fontSize={{
                   md: "2rem",
                   xs: "1.2rem",
-                }} >
-                              Värderingskompassen 
+                }}
+              >
+                VÄRDERINGAR
               </Typography>
-              </Stack>
-              <Typography
+            </Stack>
+            <Typography
               variant="subtitle1"
-                align="center"
-                fontSize={{
-                  md: "1rem",
-                  xs: "0.75rem",
-                }}>
-                              - Hitta din riktning i livet 
-              </Typography>
-            </Grid>
-          <Container sx={{ pb:"35px", pt:"35px", border: "1px solid transpernt", borderRadius:"px"}}>
+              align="center"
+              sx={{ color: "primary.main", opacity: "50%" }}
+              fontSize={{
+                md: "1rem",
+                xs: "0.75rem",
+              }}
+            >
+              - Hitta din kurs.
+            </Typography>
+          </Grid>
+
           <Grid
             container
-            spacing={{ xs: 2, md: 3 }}
-            columns={{ xs: 4, sm: 8, md: 12 }}>
-
-            
-    
+            justifyContent="center"
+            spacing={{ xs: 3, md: 5 }}
+            columns={{ xs: 4, sm: 8, md: 12 }}
+          >
             <Grid item xs={12} sm={4} md={4}>
               <Cards
                 text={
-                  "En djupdykning i dina värderingar. Utforska hur du vill vara som människa och vad viktigt för dig."
+                  "En djupdykning i dina värderingar. Utforska hur du vill vara som människa och vad som är viktigt för dig."
                 }
-                rubrik={"Dina värderingar"}
+                rubrik={"Hur vill du vara?"}
                 linkTo={"/varderingar-information"}
                 isActive={true}
-                img={compassImg}
-                backgroundcolor={"valueCompass.main"}
+                img={valueImg}
+                backgroundcolor={"white"}
                 nr={1}
               />
             </Grid>
-      
             <Grid item xs={12} sm={4} md={4}>
               <Cards
                 text={
-                  "Fortsätt fördjupa dig i värderingar, nu utifrån livsområden. Lägger du din tid och energi på rätt saker?"
+                  "Fortsätt fördjupa dig i dina värderingar, nu utifrån livsområden. Lägger du din tid och energi på rätt saker?"
                 }
-                rubrik={"Dina livsområden"}
-                img={roadImg}
-                backgroundcolor={"lifeAreas.main"}
+                rubrik={"Vad är viktigt för dig?"}
+                img={lifeAreaImg}
+                backgroundcolor={"white"}
                 nr={2}
                 linkTo={"/livsomraden-information"}
               />
             </Grid>{" "}
-
             <Grid item xs={12} sm={4} md={4}>
               <Cards
                 text={
-                  "Här presenteras några verktyg för att hjälpa  dig att leva mer efter dina värderingar."
+                  "Här presenteras några verktyg för att hjälpa dig att bli bättre på att leva och agera efter med dina värderingar."
                 }
                 rubrik={"Lev som du önskar"}
-                img={waterImg}
-                backgroundcolor={"liveByValues.main"}
+                img={liveByValues}
+                backgroundcolor={"white"}
                 nr={3}
               />
             </Grid>
-          
           </Grid>
-        
-
-          </Container>
-   
-
-         
-
         </TabPanel>
         <TabPanel value={value} index={1}>
           <Grid
             container
+            justifyContent="center"
             spacing={{ xs: 2, md: 3 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
@@ -221,6 +319,7 @@ export default function Home() {
             container
             spacing={{ xs: 2, md: 3 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
+            justifyContent="center"
           >
             <Grid item xs={12}>
               <Typography
@@ -244,8 +343,9 @@ export default function Home() {
             </Grid>
           </Grid>
         </TabPanel>
-      </Box>
-<Footer/>
+      </Container>
+      <div className="shapedividers_com-2737"></div>
+      <Footer />
     </div>
   );
 }

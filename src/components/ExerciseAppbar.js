@@ -28,19 +28,18 @@ export default function ExerciseAppbar({ header, step }) {
       <Box sx={{ flexGrow: 1 }}>
         <AppBar
           sx={{
-            height: "64px",
+            height: "55px",
             width: "100%",
-            maxWidth: "853px",
-            left: "50%",
-            transform: "translate(-50%)",
-            bgcolor: "primary.main",
+            bgcolor: "white",
             boxShadow: 1,
             zIndex: 900,
+            color: "primary.main",
           }}
         >
           <Toolbar
+            variant="dense"
             sx={{
-              bgcolor: "primary.main",
+              bgcolor: "white",
             }}
           >
             <ExploreIcon sx={{ mr: "15px", fontSize: 35 }} />

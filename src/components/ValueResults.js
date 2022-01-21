@@ -74,7 +74,7 @@ function ValueResults(obj) {
           activeStep={3}
           steps={["Välj tio", "Välj fem", "Prioritera"]}
         />
-        <Container maxWidth="md">
+        <div className="textWrapper">
           <div>
             <Typography
               variant="h2"
@@ -94,8 +94,7 @@ function ValueResults(obj) {
               precis gjort något viktigt och meningsfullt för din egna skull. Ta
               en noggrann titt på dina värderingar. Vi kommer utforska vad dom
               betyder för dig och hur du kan bli bättre på att låta dom vägleda
-              dig genom livet i övning 3, men börja gärna redan nu fundera över
-              vad dessa värderingar betyder för dig.
+              dig genom livet i övning 3.
             </Typography>
             <div className="noStyleList">
               {results.map(({ title, desc, pts }, index) => {
@@ -119,26 +118,25 @@ function ValueResults(obj) {
                         transform: "scale(1)",
                         margin: "auto",
                         mt: "15px",
-                        boxShadow: 5,
+                        boxShadow: 7,
                         borderColor: "grey.500",
                         width: "95%",
                         height: "200px",
                         maxWidth: "450px",
-                        bgcolor: "primary.light",
-                        color: "white",
-
+                        bgColor: "primary.main",
+                        color: "primary.main",
                         borderRadius: "6px",
                         mb: "25px",
                         "&:hover": {
-                          transform: "scale(1.05)",
+                          bgColor: "scale(1.1)",
                         },
                       }}
                     >
                       <Avatar
                         sx={{
                           position: "absolute",
-                          bgcolor: "white",
-                          color: "primary.dark",
+                          bgcolor: "primary.extraLight",
+                          color: "primary.main",
                           float: "left",
                           width: 30,
                           height: 30,
@@ -168,7 +166,6 @@ function ValueResults(obj) {
                             pb: "5px",
                             mt: "5px",
 
-                            color: "white",
                             userSelect: "none",
                           }}
                         >
@@ -263,7 +260,7 @@ function ValueResults(obj) {
             {" "}
             <BackToHomeButton />{" "}
           </Box>
-        </Container>
+        </div>
       </div>
     </Slide>
   );

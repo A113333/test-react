@@ -70,22 +70,27 @@ function ValueCompassStep1() {
                 m: "25px",
                 mt: "40px",
                 mx: "auto",
-                p: "15px",
+                p: "20px",
+                pl: "35px",
+                pr: "20px",
                 width: smallScreen ? "90%" : "45%",
                 float: smallScreen ? null : "right",
                 bgcolor: "primary.main",
                 color: "white",
               }}
             >
-              <Typography textAlign="center" sx={{ fontWeight: "bold" }}>
+              <Typography
+                textAlign="center"
+                sx={{ fontWeight: "bold", color: "white" }}
+              >
                 Att ha insikt i och leva efter sina värderingar hjälper dig att:{" "}
               </Typography>
               <Divider
-                sx={{ bgcolor: "white", width: "90%", mx: "auto", mt: "5px" }}
+                sx={{ bgcolor: "white", width: "100%", mx: "auto", mt: "5px" }}
               >
                 {" "}
               </Divider>
-              <Typography variant="body1">
+              <Typography variant="body1" sx={{ color: "white", mt: "15px" }}>
                 <ul>
                   <li>Minska nedstämdhet </li>
                   <li> Skapa mening och motivation</li>
@@ -118,29 +123,33 @@ function ValueCompassStep1() {
               uppnådda..
             </Typography>
 
-
-<Box sx={{bgcolor:"primary.extraLight", padding: "25px", borderRadius: "6px", mt:"25px" }}>
-            <Typography variant="h3" sx={{ mt: "15px" }} gutterBottom>
-              Tips när du jobbar med värderingar
-            </Typography>
-            <Divider></Divider>
-
-            <Typography
-              variant="body1"
-              sx={{ lineHeight: 1.7, mt: "10px" }}
-              gutterBottom
+            <Box
+              sx={{
+                bgcolor: "primary.extraLight",
+                padding: "34px",
+                borderRadius: "6px",
+              }}
             >
-              Tänka på att dina värderingar ska vara dina egna. Värderingar
-              tappar sitt värde om dom är baserad på hur du tror att andra vill
-              att du ska vara. Det finns inte rätt och fel, bra eller dåliga
-              värderingar. Dina värderingar ska vara dina egna, för att dom ska
-              kunna fungera vägvisande i livet och för att dem ska bli
-              meningsfulla för dig är det viktigt att dom kommer från dig. Du
-              behöver aldrig kunna förklara varför en värdering är viktig för
-              dig; precis som att du aldrig behöver ha ett argument för varför
-              blått är din favoritfärg, det är ditt tycke och din smak.
-            </Typography>
+              <Typography variant="h3" textAlign={"center"} gutterBottom>
+                Tips när du jobbar med värderingar
+              </Typography>
+              <Divider></Divider>
 
+              <Typography
+                variant="body1"
+                sx={{ lineHeight: 1.7, mt: "10px" }}
+                gutterBottom
+              >
+                Tänka på att dina värderingar ska vara dina egna. Värderingar
+                tappar sitt värde om dom är baserad på hur du tror att andra
+                vill att du ska vara. Det finns inte rätt och fel, bra eller
+                dåliga värderingar. Dina värderingar ska vara dina egna, för att
+                dom ska kunna fungera vägvisande i livet och för att dem ska bli
+                meningsfulla för dig är det viktigt att dom kommer från dig. Du
+                behöver aldrig kunna förklara varför en värdering är viktig för
+                dig; precis som att du aldrig behöver ha ett argument för varför
+                blått är din favoritfärg, det är ditt tycke och din smak.
+              </Typography>
             </Box>
             <List
               sx={{

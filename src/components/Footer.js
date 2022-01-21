@@ -5,16 +5,28 @@ import Divider from '@mui/material/Divider'
 function Footer() {
     return (
         <Box sx={{
-            mt: "55px", 
-            height: "55px",  
+          bgcolor: "primary.main",
+            height: "65px",  
+            color: "white",
+            borderRadius:"6px 6px 0px 0px ", 
+            display: "table",
+            verticalAlign: "middle",
            
-            marginTop: "15%",
+         
             width: "100%",
-            maxWidth: "852px", }}>
-        <Divider/>
-        <Button variant="outlined"  sx={{float: "right", mt:"25px"}}> Kontakta oss  </Button>  
-        <Typography sx={{pt:"30px", width:"50%"}}> Bli Fri vill hjälpa dig hitta rätt genom livet. </Typography>
+            }}>
+    
+        
+        <Typography sx={{ pl:"20px", width:"50%", display: "table-cell",
+    verticalAlign: "middle"}}> 
+    Bli Fri vill hjälpa dig hitta rätt genom livet. 
+    </Typography>
        
+    <Button variant="contained" color='secondary' sx={{float: "right", mr:"25px", mt:"10px", color:"white", display: "table-cell",
+    verticalAlign: "middle"}}> 
+    Kontakta oss 
+     </Button>  
+
         </Box>
 
 

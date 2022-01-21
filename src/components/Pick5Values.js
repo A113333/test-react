@@ -8,11 +8,15 @@ import Headline from "./Headline";
 import values from "./values";
 import { useLocation } from "react-router-dom";
 import StepperExercise from "./StepperExcercise";
+import Fade from "@mui/material/Fade";
 
 export default function ValueList() {
   // deconstruct return obj {data:values} döper om data till values
+  console.log("localStorage.getItem()");
+  console.log(localStorage.getItem("userValues10"));
   const location = useLocation();
-  const valueArray = location.state;
+  const localValues = localStorage.getItem("userValues10");
+  const valueArray = location.state ? location.state : JSON.parse(localValues);
   console.log(valueArray);
 
   const [slide, setSlide] = useState(false);
@@ -29,11 +33,10 @@ export default function ValueList() {
         activeStep={1}
         steps={["Välj tio", "Välj fem", "Prioritera"]}
       />
-      <Slide direction="left" in={slide} mountOnEnter unmountOnExit>
+      <Fade in={slide} mountOnEnter unmountOnExit>
         <Container sx={{ backgroundColor: "white" }}>
-          <Headline text="Välj dina värderingsord" />
-          <div className="text">
-            {" "}
+          <div className="textWrapper">
+            <Headline text="Välj dina värderingsord" />{" "}
             <Typography variant="body1">
               {/* finns x antal ord läs igenom alla innan du går vidare 
                 när du är klar: säker att du vill gå vidare (har du läst alla?) */}
@@ -41,21 +44,20 @@ export default function ValueList() {
               valde tidigare. Har du svårt att välja testa återigen att ställa
               dig frågan: hur hade jag velat bli ihågkommen?
             </Typography>
+            <br></br>
+            {/* om values finns så körs ValuesComponet  */}
+            {values && (
+              <ValuePicker
+                values={valueArray}
+                nrsToPick={5}
+                next="/varderingsPrioritering"
+                back="/valj10varder"
+                saveAs="userValues5"
+              />
+            )}
           </div>
-
-          <br></br>
-          {/* om values finns så körs ValuesComponet  */}
-
-          {values && (
-            <ValuePicker
-              values={valueArray}
-              nrsToPick={5}
-              next="/varderingsPrioritering"
-              back="/valj10varder"
-            />
-          )}
         </Container>
-      </Slide>
+      </Fade>
     </div>
   );
 }

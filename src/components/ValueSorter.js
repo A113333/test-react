@@ -9,7 +9,9 @@ import Box from "@mui/material/Box";
 
 export default function ValueSorter(obj) {
   const location = useLocation();
-  const valueArray = location.state; // tar valueArray från "history.push"
+  const localValues = localStorage.getItem("userValues5");
+  const valueArray = location.state ? location.state : JSON.parse(localValues);
+  // tar valueArray från "history.push"
   console.log(valueArray);
   //const valueArray = obj.valueArray;
   // console.log(obj);
@@ -24,7 +26,7 @@ export default function ValueSorter(obj) {
         activeStep={2}
         steps={["Välj tio", "Välj fem", "Prioritera"]}
       />
-      <Box sx={{ maxWidth: "725px", mx: "auto" }}>
+      <div className="textWrapper">
         <Headline text="Prioritera din värdering" />
 
         <Typography variant="body1" sx={{ mb: "25px", mt: "25px" }}>
@@ -33,17 +35,18 @@ export default function ValueSorter(obj) {
           att välja en. Tryck på det värderingskort som är viktigast för dig av
           de två som visas, så kommer du få ett nytt kort att ta ställning till.
         </Typography>
-      </Box>
 
-      {valueArray ? (
-        <CardSorter
-          valueArray={valueArray}
-          next="/varderingarResultat"
-          back="/valj5"
-        />
-      ) : (
-        <ErrorPage />
-      )}
+        {valueArray ? (
+          <CardSorter
+            valueArray={valueArray}
+            next="/varderingarResultat"
+            back="/valj5"
+            saveAs={"top5Values"}
+          />
+        ) : (
+          <ErrorPage />
+        )}
+      </div>
     </div>
   );
 }

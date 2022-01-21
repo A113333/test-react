@@ -8,6 +8,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import bliFriLogo from "./img/invertedBliFriIcon.png";
 
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -21,15 +22,23 @@ export default function Navbar() {
 
   return (
     <div>
-      <Box sx={{ flexGrow: 1, }}>
-        <AppBar position="static" sx={{ boxShadow: 1 }}>
-          <Toolbar variant="dense" >
+      <Box sx={{ flexGrow: 1, zIndex: 1000 }}>
+        <AppBar position="static" sx={{ boxShadow: "none" }}>
+          <Toolbar variant="dense">
+            <img src={bliFriLogo} alt="Logo" className="headerLogo" />
+
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1, fontWeight: "bold", pl: "3px" }}
+            ></Typography>
+            <Button color="inherit"> </Button>
+
             <IconButton
               size="large"
               edge="start"
               color="inherit"
               aria-label="menu"
-              sx={{ mr: 2 }}
               id="basic-button"
               aria-controls={open ? "basic-menu" : undefined}
               aria-haspopup="true"
@@ -52,11 +61,6 @@ export default function Navbar() {
               <MenuItem onClick={handleClose}>Konto</MenuItem>
               <MenuItem onClick={handleClose}>Logga ut</MenuItem>
             </Menu>
-
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Bli Fri
-            </Typography>
-            <Button color="inherit"> </Button>
           </Toolbar>
         </AppBar>
       </Box>
