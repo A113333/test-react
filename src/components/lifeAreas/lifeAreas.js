@@ -9,6 +9,10 @@ const lifeAreas = [
     desc: "Hur du vill vara som bror, syster osv",
   },
   { title: "Föräldraskap", desc: "Hur du vill vara som bror, syster osv" },
+  {
+    title: "Samhällsengagemang",
+    desc: "Hur du vill vara som bror, syster osv",
+  },
 ];
 
 export default lifeAreas;

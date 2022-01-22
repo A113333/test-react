@@ -1,6 +1,6 @@
-import ExerciseAppbar from "./ExerciseAppbar";
-import Headline from "./Headline";
-import BackButton from "./BackButton";
+import ExerciseAppbar from "../ExerciseAppbar.js";
+import Headline from "../Headline";
+import BackButton from "../BackButton";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import React, { useState, useEffect } from "react";
@@ -21,19 +21,27 @@ import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
-import StepperExercise from "./StepperExcercise";
+import StepperExercise from "../StepperExcercise";
 import { useLocation } from "react-router-dom";
 import lifeAreasArray from "./lifeAreas";
-import ProgressTracker from "./utility/ProgressTracker";
+import ProgressTracker from "../utility/ProgressTracker";
 
 function LifeAreasPriority() {
   const [lifeAreasState, setLifeAreas] = React.useState([]);
   const [today, setToDay] = React.useState(0);
   const [howImportent, setHowImportent] = React.useState(0);
   const [obstacle, setObstacle] = React.useState("");
-  const [lifeAreasDone, setLifeAreasDone] = React.useState(2);
+  const [lifeAreasDone, setLifeAreasDone] = React.useState(0);
   const [isItDone, setIsItDone] = React.useState(false);
   const [showLifeArea, setShowLifeArea] = React.useState(0);
+
+  let saveAs = "prioLifeAreas";
+
+  useEffect(() => {
+    if (showLifeArea === lifeAreas.length) {
+      setIsItDone(true);
+    }
+  }, [showLifeArea]);
 
   function valuetext(value) {
     return "${value}";
@@ -41,17 +49,19 @@ function LifeAreasPriority() {
   const history = useHistory();
 
   const nextPage = () => {
-    const lifeAreas = [];
+    localStorage.setItem(saveAs, JSON.stringify(lifeAreasDone));
 
     history.push({
-      pathname: "/next",
-      state: lifeAreas,
+      pathname: "/livsomraden-varderingar",
+      state: lifeAreasState,
     });
   };
 
   const location = useLocation();
-
-  const lifeAreas = lifeAreasArray;
+  const localLifeAreas = localStorage.getItem("lifeAreas");
+  const lifeAreas = location.state
+    ? location.state
+    : JSON.parse(localLifeAreas);
   // location.state;
   console.log(lifeAreas);
 
@@ -92,17 +102,24 @@ function LifeAreasPriority() {
           activeStep={1}
           steps={["Välj områden", "Prioritera", "Placeholder"]}
         />
-        <Headline text="Prioritera dina livsområden" />
+
+        {isItDone && <Headline text="Bra jobbat" />}
+        {!isItDone && <Headline text="Prioritera dina livsområden" />}
+
         <Box sx={{ maxWidth: "725px", mx: "auto" }}>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat. (0 = helt onöjd; 10 =
-            helt och hållet nöjd). 0 = helt oviktigt ; 10 = väldigt viktigt)
-          </Typography>
+          {isItDone && <Typography>Du är färdig! Duktig du är!</Typography>}
+          {!isItDone && (
+            <Typography>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat. (0 = helt
+              onöjd; 10 = helt och hållet nöjd). 0 = helt oviktigt ; 10 =
+              väldigt viktigt)
+            </Typography>
+          )}
         </Box>
         <Box>
           {lifeAreas.map(({ title }, index) => {
@@ -159,7 +176,7 @@ function LifeAreasPriority() {
                       textAlign={"center"}
                       sx={{ mb: "35px" }}
                     >
-                      Hur nöjd är du med {title} idag?
+                      Hur nöjd är du med {title} idag? {today}
                     </Typography>
                     <Stack
                       spacing={2}
@@ -193,7 +210,7 @@ function LifeAreasPriority() {
                       textAlign={"center"}
                       sx={{ mb: "35px" }}
                     >
-                      Hur viktigt är {title} för dig?
+                      Hur viktigt är {title} för dig? {howImportent}
                     </Typography>
                     <Stack
                       spacing={2}
@@ -257,7 +274,8 @@ function LifeAreasPriority() {
                       sx={{
                         position: "absolute",
                         padding: "10px",
-                        borderRadius: " 0  0 0 6px",
+                        borderRadius: " 0  6px 0 6px",
+
                         left: "0px",
                         bottom: "0px",
                       }}
@@ -274,7 +292,7 @@ function LifeAreasPriority() {
                       sx={{
                         position: "absolute",
                         padding: "10px",
-                        borderRadius: "0 0  6px 0",
+                        borderRadius: "6px 0  6px 0",
                         right: "0px",
                         bottom: "0px",
                       }}
@@ -291,9 +309,9 @@ function LifeAreasPriority() {
         <BackButton goTo={"/valj-livsomraden"}>Tillbaka</BackButton>
         <Button
           variant="contained"
-          disabled
+          disabled={!isItDone}
           color="success"
-          aria-label="Backa"
+          aria-label="Nästa"
           endIcon={<ArrowForwardIosIcon />}
           onClick={nextPage}
           sx={{ float: "right", mb: "15px", mt: "45px", mr: "15px" }}

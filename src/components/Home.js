@@ -12,7 +12,7 @@ import Box from "@mui/material/Box";
 import ExploreIcon from "@mui/icons-material/Explore";
 import MapIcon from "@mui/icons-material/Map";
 import BookIcon from "@mui/icons-material/Book";
-import { Divider, Stack } from "@mui/material";
+import { Button, Divider, Stack } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import Footer from "./Footer";
 import { ReactComponent as ValueImg } from "./img/undraw_job_hunt_re_q203.svg";
@@ -25,6 +25,8 @@ import { StickyNav } from "react-js-stickynav";
 import "react-js-stickynav/dist/index.css";
 
 import { ReactComponent as RoadSignSvg } from "./img/undraw_road_sign_re_3kc3.svg";
+import { ReactComponent as RoadSignSvgHalfway } from "./img/undraw_road_sign_halfWay.svg";
+import { ReactComponent as RoadSignSvgDone } from "./img/undraw_road_sign_Done.svg";
 
 // Grid är 12 columer
 /*
@@ -68,8 +70,20 @@ function a11yProps(index) {
   };
 }
 
+const clearStorage = () => {
+  console.log("körs");
+  localStorage.clear();
+};
+
 export default function Home() {
   const { data: user } = useFetch("http://localhost:8000/user");
+
+  let localStorage;
+  try {
+    localStorage = window.localStorage;
+  } catch (e) {
+    // Access denied :-(
+  }
 
   //  { ...user.values && user.values  }
 
@@ -80,6 +94,8 @@ export default function Home() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  let headerImg = RoadSignSvg;
 
   console.log(localStorage);
   let headerText;
@@ -99,13 +115,22 @@ export default function Home() {
     <div>
       {/*  ---------   Header med bild och text   ---------  */}
       <Box sx={{ textAlign: "center", mt: "90px" }}>
-        <RoadSignSvg
-          title="Livets korsning"
-          width={"100%"}
-          height={"77vh"}
-          fill="#7A7978"
-        />
-
+        {!top5ValuesLocal && (
+          <RoadSignSvg
+            title="Livets korsning"
+            width={"100%"}
+            height={"77vh"}
+            fill="#7A7978"
+          />
+        )}
+        {top5ValuesLocal && (
+          <RoadSignSvgHalfway
+            title="Livets korsning"
+            width={"100%"}
+            height={"77vh"}
+            fill="#7A7978"
+          />
+        )}
         <Box
           sx={{
             position: "absolute",
@@ -120,20 +145,22 @@ export default function Home() {
             <Typography
               variant="body1"
               fontSize={{
-                md: "2rem",
+                md: "1.5rem",
                 xs: "1rem",
               }}
+              textAlign={"left"}
+              sx={{ fontWeight: "bold" }}
             >
               {" "}
-              Dina Viktigaste Värderingar{" "}
+              Dina viktigaste <br></br> värderingar:{" "}
             </Typography>
           )}
 
           <Typography
             variant="body1"
             fontSize={{
-              md: "2rem",
-              xs: "1rem",
+              md: "1.4rem",
+              xs: "0.9rem",
             }}
           >
             {headerText}
@@ -284,6 +311,10 @@ export default function Home() {
               />
             </Grid>
           </Grid>
+          <Button variant="contained" onClick={clearStorage}>
+            {" "}
+            Börja om etappen
+          </Button>
         </TabPanel>
         <TabPanel value={value} index={1}>
           <Grid

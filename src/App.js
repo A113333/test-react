@@ -16,9 +16,9 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { blue, green, blueGrey } from "@mui/material/colors";
 import ScrollToTop from "./components/ScrollToTop";
 import PHQ9 from "./components/Skattningar/PHQ9";
-import LifeAreasInformation from "./components/LifeAreasInformation";
-import LifeAreasPriority from "./components/LifeAreasPriority";
-import LifeareasPicker from "./components/LifeareasPicker";
+import LifeAreasInformation from "./components/lifeAreas/LifeAreasInformation";
+import LifeAreasPriority from "./components/lifeAreas/LifeAreasPriority";
+import LifeareasPicker from "./components/lifeAreas/LifeareasPicker";
 import LifeAreasValues from "./components/lifeAreas/LifeAreasValues";
 
 /* hur många ord i listan?
@@ -104,39 +104,30 @@ function App() {
                 <Route exact path="/">
                   <Home />
                 </Route>
-
                 <Route exact path="/varderingar-information">
                   <ValueInformation />
                 </Route>
-
                 <Route exact path="/valj10varder">
                   <Pick10Values />
                 </Route>
-
                 <Route exact path="/valj5">
                   <Pick5Values />
                 </Route>
-
                 <Route exact path="/varderingsPrioritering">
                   <ValueSorter />
                 </Route>
-
                 <Route exact path="/varderingarResultat">
                   <ValueResults />
                 </Route>
-
                 <Route exact path="/livsomraden-information">
                   <LifeAreasInformation />
                 </Route>
-
                 <Route exact path="/valj-livsomraden">
                   <LifeareasPicker />
                 </Route>
-
                 <Route exact path="/livsomraden-prioriteringar">
                   <LifeAreasPriority />
                 </Route>
-
                 <Route exact path="/livsomraden-varderingar">
                   <LifeAreasValues />
                 </Route>
@@ -148,11 +139,9 @@ function App() {
                 <Route path="/values/:id">
                   <ValueDetalis />
                 </Route>
-
                 <Route path="/phq9">
                   <PHQ9 />
                 </Route>
-
                 {/*  * fångar alla routes, måste vara i botten 404*/}
                 <Route path="*">
                   <NotFound />

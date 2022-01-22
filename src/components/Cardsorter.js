@@ -286,7 +286,12 @@ function CardSorter({ valueArray: arryOfValues, next, back, saveAs }) {
                         <Typography
                           variant="body1"
                           align="center"
-                          sx={{ p: "30px", pt: "15px", fontSize: "1.1rem" }}
+                          sx={{
+                            color: "white",
+                            p: "30px",
+                            pt: "15px",
+                            fontSize: "1.1rem",
+                          }}
                         >
                           {desc}
                         </Typography>
@@ -361,7 +366,12 @@ function CardSorter({ valueArray: arryOfValues, next, back, saveAs }) {
                       <Typography
                         variant="body1"
                         align="center"
-                        sx={{ p: "30px", pt: "15px", fontSize: "1.1rem" }}
+                        sx={{
+                          color: "white",
+                          p: "30px",
+                          pt: "15px",
+                          fontSize: "1.1rem",
+                        }}
                       >
                         {desc}
                       </Typography>

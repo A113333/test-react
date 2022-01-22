@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
-import ValuePicker from "./ValuePicker";
+import ValuePicker from "../ValuePicker";
 import lifeAreas from "./lifeAreas";
 import { Typography } from "@mui/material";
-import ExerciseAppbar from "./ExerciseAppbar";
+import ExerciseAppbar from "../ExerciseAppbar";
 import Slide from "@mui/material/Slide";
 import Container from "@mui/material/Container";
-import Headline from "./Headline";
-import values from "./values";
+import Headline from "../Headline";
+import values from "../values";
 import { useLocation } from "react-router-dom";
-import StepperExercise from "./StepperExcercise";
+import StepperExercise from "../StepperExcercise";
 import Box from "@mui/material/Box";
+import Fade from "@mui/material/Fade";
 
 function LifeareasPicker() {
   const location = useLocation();
@@ -28,11 +29,10 @@ function LifeareasPicker() {
       <div>
         <ExerciseAppbar header={"Livsområden"} step={""} />
         <StepperExercise activeStep={0} />
-        <Slide direction="left" in={slide} mountOnEnter unmountOnExit>
+        <Fade in={slide} mountOnEnter unmountOnExit>
           <Container sx={{ backgroundColor: "white" }}>
             <Headline text="Välj dina livsområden" />
             <Box sx={{ maxWidth: "725px", mx: "auto" }}>
-          
               <Typography variant="body1">
                 {/* finns x antal ord läs igenom alla innan du går vidare 
                 när du är klar: säker att du vill gå vidare (har du läst alla?) */}
@@ -43,7 +43,7 @@ function LifeareasPicker() {
                 in reprehenderit in voluptate velit esse cillum dolore eu fugiat
                 nulla pariatur. Excepteur sint occaecat cupidatat
               </Typography>
-              </Box>
+            </Box>
 
             <br></br>
             {/* om values finns så körs ValuesComponet  */}
@@ -51,13 +51,14 @@ function LifeareasPicker() {
             {lifeAreas && (
               <ValuePicker
                 values={lifeAreas}
-                nrsToPick={5}
+                nrsToPick={3}
                 next="/livsomraden-prioriteringar"
                 back="/livsomraden-information"
+                saveAs="lifeAreas"
               />
             )}
           </Container>
-        </Slide>
+        </Fade>
       </div>
     </div>
   );

@@ -63,7 +63,11 @@ export default function ValueList() {
                   padding: "25px",
                 }}
               >
-                <Typography textAlign="center" sx={{ fontWeight: "bold" }}>
+                <Typography
+                  variant="body2"
+                  textAlign="center"
+                  sx={{ fontWeight: "bold" }}
+                >
                   Tips inför övningen:{" "}
                 </Typography>
                 <Divider
@@ -77,7 +81,7 @@ export default function ValueList() {
                 >
                   {" "}
                 </Divider>
-                <Typography variant="body1">
+                <Typography variant="body2">
                   <ul>
                     <li>
                       Du kan hela tiden se hur många värderingar du valt högst

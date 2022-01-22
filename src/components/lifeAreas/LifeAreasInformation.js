@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import React, { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import Slide from "@mui/material/Slide";
-import ExerciseAppbar from "./ExerciseAppbar";
+import ExerciseAppbar from "../ExerciseAppbar";
 import Container from "@mui/material/Container";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -16,7 +16,7 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
-import Headline from "./Headline";
+import Headline from "../Headline";
 
 function LifeAreasInformation() {
   const [slide, setSlide] = useState(true);

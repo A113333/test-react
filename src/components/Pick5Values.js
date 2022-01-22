@@ -12,12 +12,10 @@ import Fade from "@mui/material/Fade";
 
 export default function ValueList() {
   // deconstruct return obj {data:values} döper om data till values
-  console.log("localStorage.getItem()");
-  console.log(localStorage.getItem("userValues10"));
+
   const location = useLocation();
   const localValues = localStorage.getItem("userValues10");
   const valueArray = location.state ? location.state : JSON.parse(localValues);
-  console.log(valueArray);
 
   const [slide, setSlide] = useState(false);
 
@@ -52,7 +50,7 @@ export default function ValueList() {
                 nrsToPick={5}
                 next="/varderingsPrioritering"
                 back="/valj10varder"
-                saveAs="userValues5"
+                saveAs=""
               />
             )}
           </div>
