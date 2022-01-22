@@ -43,7 +43,7 @@ const values = [
   },
   {
     id: 8,
-    title: "Mod",
+    title: "Modig",
     desc: "Våga stå kvar när jag möter fara, risk eller hot.",
     pts: 0,
   },

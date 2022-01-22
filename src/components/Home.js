@@ -151,8 +151,7 @@ export default function Home() {
               textAlign={"left"}
               sx={{ fontWeight: "bold" }}
             >
-              {" "}
-              Dina viktigaste <br></br> värderingar:{" "}
+              Du är
             </Typography>
           )}
 
