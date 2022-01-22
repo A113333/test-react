@@ -28,12 +28,42 @@ import ProgressTracker from "../utility/ProgressTracker";
 
 function LifeAreasPriority() {
   const [lifeAreasState, setLifeAreas] = React.useState([]);
-  const [today, setToDay] = React.useState(0);
-  const [howImportent, setHowImportent] = React.useState(0);
+  const [today, setToday] = React.useState();
+  const [todayError, setTodayError] = React.useState(false);
+  const [howImportent, setHowImportent] = React.useState();
+  const [howImportentError, setHowImportentError] = React.useState(false);
   const [obstacle, setObstacle] = React.useState("");
   const [lifeAreasDone, setLifeAreasDone] = React.useState(0);
   const [isItDone, setIsItDone] = React.useState(false);
   const [showLifeArea, setShowLifeArea] = React.useState(0);
+
+  const howHappyLable = [
+    "Helt och hållet missnöjd",
+    "Mycket missnöjd",
+    "Missnöjd",
+    "Ganska missnöjd",
+    "Lite missnöjd",
+    "Varken nöjd eller missnöjd",
+    "Lite nöjd",
+    "Ganska nöjd",
+    "Nöjd",
+    "Mycket nöjd",
+    "Helt och hållet nöjd",
+  ];
+
+  const howImportentLable = [
+    "Helt och hållet oviktigt",
+    "Mycket oviktigt",
+    "Oviktigt",
+    "Ganska oviktigt",
+    "Lite oviktigt",
+    "Varken viktigt eller oviktigt",
+    "Lite viktigt",
+    "Ganska viktigt",
+    "Viktigt",
+    "Mycket viktigt",
+    "Så viktigt det kan bli",
+  ];
 
   let saveAs = "prioLifeAreas";
 
@@ -68,8 +98,29 @@ function LifeAreasPriority() {
   const nextLifeArea = () => {
     console.log("hehe");
   };
+  const resetVaules = () => {
+    setToday();
+
+    setHowImportent();
+  };
 
   const handleSubmit = ({ title }) => {
+    if (!today && !howImportent) {
+      console.log("noToday");
+      setTodayError(true);
+      setHowImportentError(true);
+      return;
+    }
+    if (!today) {
+      console.log("noToday");
+      setTodayError(true);
+      return;
+    }
+    if (!howImportent) {
+      console.log("noImportente");
+      setHowImportentError(true);
+      return;
+    }
     let lifeArea = {
       title: title,
       today: today,
@@ -81,6 +132,7 @@ function LifeAreasPriority() {
     console.log(lifeAreasState);
     setLifeAreas((prevValues) => [...prevValues, lifeArea]);
     setShowLifeArea(showLifeArea + 1);
+    resetVaules();
   };
 
   useEffect(() => {
@@ -88,6 +140,18 @@ function LifeAreasPriority() {
       setIsItDone(true);
     }
   }, [showLifeArea]);
+
+  useEffect(() => {
+    setHowImportentError(false);
+  }, [howImportent]);
+
+  useEffect(() => {
+    setTodayError(false);
+  }, [today]);
+
+  const goBackOneCard = () => {
+    console.log("backar");
+  };
 
   return (
     <div>
@@ -136,14 +200,14 @@ function LifeAreasPriority() {
                   mx: "auto",
                   mb: "50px",
                   maxWidth: "100%",
-
+                  mt: "50px",
                   "&:hover": {
                     transform: "scale(1.02)",
                   },
                 }}
               >
                 <Box
-                  boxShadow={1}
+                  boxShadow={0}
                   sx={{
                     color: "white",
                     padding: "15px",
@@ -163,6 +227,7 @@ function LifeAreasPriority() {
                 </Box>
                 <form onSubmit={handleSubmit}>
                   <Box
+                    className={todayError && "errorBorder"}
                     sx={{
                       bgcolor: "primary.extraLight",
                       padding: "15px",
@@ -174,10 +239,29 @@ function LifeAreasPriority() {
                     <Typography
                       variant="h4"
                       textAlign={"center"}
-                      sx={{ mb: "35px" }}
+                      sx={{ mb: "10px" }}
                     >
-                      Hur nöjd är du med {title} idag? {today}
+                      Hur nöjd är du med {title} idag?
                     </Typography>
+                    {!todayError ? (
+                      <Typography
+                        variant="body1"
+                        textAlign={"center"}
+                        sx={{ mb: "10px" }}
+                      >
+                        - {howHappyLable[today]}{" "}
+                      </Typography>
+                    ) : (
+                      <Typography
+                        variant="body1"
+                        textAlign={"center"}
+                        sx={{ mb: "10px", color: "error.main" }}
+                      >
+                        Du måste svara på hur nöjd du är med detta område idag
+                        för att gå vidare
+                      </Typography>
+                    )}
+
                     <Stack
                       spacing={2}
                       direction="row"
@@ -196,7 +280,7 @@ function LifeAreasPriority() {
                         min={0}
                         max={10}
                         sx={{ width: "75%" }}
-                        onChange={(e) => setToDay(e.target.value)}
+                        onChange={(e) => setToday(e.target.value)}
                       />
                       <Typography sx={{ fontWeight: "bold", pt: "3px" }}>
                         10
@@ -204,14 +288,37 @@ function LifeAreasPriority() {
                     </Stack>
                   </Box>
 
-                  <Box sx={{ padding: "15px", pt: "30px", pb: "30px" }}>
+                  <Box
+                    className={howImportentError && "errorBorder"}
+                    sx={{ padding: "15px", pt: "30px", pb: "30px" }}
+                  >
                     <Typography
                       variant="h4"
                       textAlign={"center"}
-                      sx={{ mb: "35px" }}
+                      sx={{ mb: "10px" }}
                     >
-                      Hur viktigt är {title} för dig? {howImportent}
+                      Hur viktigt är {title} för dig?
                     </Typography>
+
+                    {!howImportentError ? (
+                      <Typography
+                        variant="body1"
+                        textAlign={"center"}
+                        sx={{ mb: "10px" }}
+                      >
+                        - {howImportentLable[howImportent]}
+                      </Typography>
+                    ) : (
+                      <Typography
+                        variant="body1"
+                        textAlign={"center"}
+                        sx={{ mb: "10px", color: "error.main" }}
+                      >
+                        Du måste välja hur viktigt detta område är för att gå
+                        vidare
+                      </Typography>
+                    )}
+
                     <Stack
                       spacing={2}
                       direction="row"
@@ -270,18 +377,17 @@ function LifeAreasPriority() {
                       variant="contained"
                       aria-label="Backa"
                       startIcon={<ArrowBackIosIcon />}
-                      onClick={() => handleSubmit({ title: title })}
+                      onClick={() => goBackOneCard()}
                       sx={{
                         position: "absolute",
                         padding: "10px",
                         borderRadius: " 0  6px 0 6px",
-
                         left: "0px",
                         bottom: "0px",
                       }}
                     >
                       {" "}
-                      Gå tillbaka{" "}
+                      Förra livsområdet{" "}
                     </Button>
 
                     <Button
