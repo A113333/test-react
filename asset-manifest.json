@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/test-react/static/css/main.5bbef1b2.chunk.css",
-    "main.js": "/test-react/static/js/main.15525793.chunk.js",
-    "main.js.map": "/test-react/static/js/main.15525793.chunk.js.map",
+    "main.css": "/test-react/static/css/main.72a0f066.chunk.css",
+    "main.js": "/test-react/static/js/main.a7a4c7fc.chunk.js",
+    "main.js.map": "/test-react/static/js/main.a7a4c7fc.chunk.js.map",
     "runtime-main.js": "/test-react/static/js/runtime-main.8888574e.js",
     "runtime-main.js.map": "/test-react/static/js/runtime-main.8888574e.js.map",
     "static/css/2.87d231a2.chunk.css": "/test-react/static/css/2.87d231a2.chunk.css",
-    "static/js/2.5e19b511.chunk.js": "/test-react/static/js/2.5e19b511.chunk.js",
-    "static/js/2.5e19b511.chunk.js.map": "/test-react/static/js/2.5e19b511.chunk.js.map",
+    "static/js/2.e5841081.chunk.js": "/test-react/static/js/2.e5841081.chunk.js",
+    "static/js/2.e5841081.chunk.js.map": "/test-react/static/js/2.e5841081.chunk.js.map",
     "static/js/3.05f5f9bf.chunk.js": "/test-react/static/js/3.05f5f9bf.chunk.js",
     "static/js/3.05f5f9bf.chunk.js.map": "/test-react/static/js/3.05f5f9bf.chunk.js.map",
     "index.html": "/test-react/index.html",
     "static/css/2.87d231a2.chunk.css.map": "/test-react/static/css/2.87d231a2.chunk.css.map",
-    "static/css/main.5bbef1b2.chunk.css.map": "/test-react/static/css/main.5bbef1b2.chunk.css.map",
-    "static/js/2.5e19b511.chunk.js.LICENSE.txt": "/test-react/static/js/2.5e19b511.chunk.js.LICENSE.txt",
+    "static/css/main.72a0f066.chunk.css.map": "/test-react/static/css/main.72a0f066.chunk.css.map",
+    "static/js/2.e5841081.chunk.js.LICENSE.txt": "/test-react/static/js/2.e5841081.chunk.js.LICENSE.txt",
     "static/media/material-icons.css": "/test-react/static/media/material-icons.6c307c85.woff2",
     "static/media/undraw_happy_news_re_tsbd.2cad6c07.svg": "/test-react/static/media/undraw_happy_news_re_tsbd.2cad6c07.svg",
     "static/media/undraw_job_hunt_re_q203.52f2ca5b.svg": "/test-react/static/media/undraw_job_hunt_re_q203.52f2ca5b.svg",
@@ -26,8 +26,8 @@
   "entrypoints": [
     "static/js/runtime-main.8888574e.js",
     "static/css/2.87d231a2.chunk.css",
-    "static/js/2.5e19b511.chunk.js",
-    "static/css/main.5bbef1b2.chunk.css",
-    "static/js/main.15525793.chunk.js"
+    "static/js/2.e5841081.chunk.js",
+    "static/css/main.72a0f066.chunk.css",
+    "static/js/main.a7a4c7fc.chunk.js"
   ]
 }
